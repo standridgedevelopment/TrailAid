@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.Data.Entity.ModelConfiguration;
+using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
@@ -43,4 +44,5 @@ namespace TrailAid.WebAPI
             return manager;
         }
     }
+    
 }
