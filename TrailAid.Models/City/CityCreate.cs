@@ -8,5 +8,6 @@ namespace TrailAid.Models.City
 {
     public class CityCreate
     {
+        // City Addition
     }
 }
