@@ -37,7 +37,8 @@ namespace TrailAid.Services
                 var query = ctx.Cities.Select
                     (e => new CityListItem
                     {
-                        Name = e.Name
+                        Name = e.Name,
+                        ID = e.ID
                     }
                     );
                 return query.ToArray();
