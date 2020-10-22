@@ -12,7 +12,7 @@ namespace TrailAid.Data
         [Key]
         public Guid ID { get; set; }
         [Required]
-        public string Name { get; set; }
+        public string FirstName { get; set; }
         [Required]
         public string City { get; set; }
         [Required]
