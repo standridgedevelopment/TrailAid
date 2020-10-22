@@ -6,7 +6,13 @@ using System.Threading.Tasks;
 
 namespace TrailAid.Models.Park
 {
-    class ParkEdit
+    public class ParkEdit
     {
+        public int CityID { get; set; }
+        public string Name { get; set; }
+        public int Acreage { get; set; }
+        public string Hours { get; set; }
+        public string PhoneNumber { get; set; }
+        public string Website { get; set; }
     }
 }

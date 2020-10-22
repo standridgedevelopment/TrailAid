@@ -8,5 +8,8 @@ namespace TrailAid.Models.Park
 {
     public class ParkListItem
     {
+        public string Name { get; set; }
+        public string CityName { get; set; }
+        public int ID { get; set; }
     }
 }
