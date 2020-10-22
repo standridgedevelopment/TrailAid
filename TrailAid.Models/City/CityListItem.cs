@@ -9,5 +9,6 @@ namespace TrailAid.Models.City
     public class CityListItem
     {
         public string Name { get; set; }
+        public int ID { get; set; }
     }
 }
