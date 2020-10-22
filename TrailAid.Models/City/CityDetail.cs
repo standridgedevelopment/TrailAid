@@ -8,5 +8,6 @@ namespace TrailAid.Models.City
 {
     public class CityDetail
     {
+        public string Name { get; set; }
     }
 }
