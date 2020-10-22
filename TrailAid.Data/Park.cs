@@ -10,11 +10,13 @@ namespace TrailAid.Data
 {
     public class Park
     {
+        public string Name { get; set; }
         [Key]
         public int ID { get; set; }
         [ForeignKey (nameof(City))]
         public int CityID { get; set; }
         public virtual City City { get; set; }
+        public string CityName { get; set; }
         public virtual List<Trail> Trails { get; set; } = new List<Trail>();
         public int Acreage { get; set; }
         public string Hours { get; set; }
