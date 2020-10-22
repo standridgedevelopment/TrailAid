@@ -10,6 +10,7 @@ using Microsoft.Owin.Security.OAuth;
 using Owin;
 using TrailAid.WebAPI.Providers;
 using TrailAid.WebAPI.Models;
+using TrailAid.Data;
 
 namespace TrailAid.WebAPI
 {
