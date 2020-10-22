@@ -3,7 +3,7 @@ namespace TrailAid.Data.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class city : DbMigration
+    public partial class City : DbMigration
     {
         public override void Up()
         {

@@ -7,9 +7,9 @@ namespace TrailAid.Data.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.0-30225")]
-    public sealed partial class city : IMigrationMetadata
+    public sealed partial class City : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(city));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(City));
         
         string IMigrationMetadata.Id
         {
