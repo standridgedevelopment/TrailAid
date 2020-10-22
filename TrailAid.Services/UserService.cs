@@ -30,8 +30,8 @@ namespace TrailAid.Services
             using (var ctx = new ApplicationDbContext())
             {
                 ctx.Users.Add(entity);
-                var testing = ctx.SaveChanges();
-                return true;
+                //var testing = ctx.SaveChanges();
+                return ctx.SaveChanges() == 1;
             }
         }
         public IEnumerable<UserListItem> GetUsers()
