@@ -7,7 +7,7 @@ using System.Web.Http;
 
 namespace TrailAid.WebAPI.Controllers
 {
-    public class ReviewsController : ApiController
+    public class VisitedController : ApiController
     {
     }
 }

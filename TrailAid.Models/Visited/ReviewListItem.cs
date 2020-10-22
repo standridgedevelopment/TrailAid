@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TrailAid.Data
+namespace TrailAid.Models.Visited
 {
-    public class Reviews
+    public class VisitedListItem
     {
     }
 }
