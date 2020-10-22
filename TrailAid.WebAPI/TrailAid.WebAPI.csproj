@@ -209,7 +209,7 @@
     <Compile Include="Controllers\CityController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ParkController.cs" />
-    <Compile Include="Controllers\ReviewsController.cs" />
+    <Compile Include="Controllers\VisitedController.cs" />
     <Compile Include="Controllers\TrailController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />

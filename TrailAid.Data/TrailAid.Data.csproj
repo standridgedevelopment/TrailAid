@@ -89,7 +89,7 @@
     <Compile Include="Park.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Trail.cs" />
-    <Compile Include="Reviews.cs" />
+    <Compile Include="Visited.cs" />
     <Compile Include="User.cs" />
   </ItemGroup>
   <ItemGroup>

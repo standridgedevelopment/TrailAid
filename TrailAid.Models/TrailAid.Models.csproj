@@ -63,10 +63,10 @@
     <Compile Include="Park\ParkEdit.cs" />
     <Compile Include="Park\ParkListItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Reviews\ReviewCreate.cs" />
-    <Compile Include="Reviews\ReviewDetail.cs" />
-    <Compile Include="Reviews\ReviewEdit.cs" />
-    <Compile Include="Reviews\ReviewListItem.cs" />
+    <Compile Include="Visited\VisitedCreate.cs" />
+    <Compile Include="Visited\VisitedDetail.cs" />
+    <Compile Include="Visited\VisitedEdit.cs" />
+    <Compile Include="Visited\ReviewListItem.cs" />
     <Compile Include="Trail\TrailCreate.cs" />
     <Compile Include="Trail\TrailDetail.cs" />
     <Compile Include="Trail\TrailEdit.cs" />

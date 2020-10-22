@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TrailAid.Services
 {
-    class ReviewService
+    class VisitedService
     {
     }
 }
