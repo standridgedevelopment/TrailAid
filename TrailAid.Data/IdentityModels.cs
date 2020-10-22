@@ -36,6 +36,7 @@ namespace TrailAid.Data
         public DbSet<User> Users { get; set; }
 #pragma warning restore CS0114 // Member hides inherited member; missing override keyword
         public DbSet<City> Cities { get; set; }
+        public DbSet<Park> Parks { get; set; }
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder
