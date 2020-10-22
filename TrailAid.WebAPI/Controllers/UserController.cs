@@ -14,8 +14,8 @@ namespace TrailAid.WebAPI.Controllers
     {
         public IHttpActionResult Get()
         {
-            UserService noteService = CreateUserService();
-            var user = noteService.GetUsers();
+            UserService userService = CreateUserService();
+            var user = userService.GetUsers();
             return Ok(user);
         }
         public IHttpActionResult Get(string id)
