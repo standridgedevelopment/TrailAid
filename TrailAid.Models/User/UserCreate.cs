@@ -10,7 +10,9 @@ namespace TrailAid.Models.User
     public class UserCreate
     {
         [Required]
-        public string Name { get; set; }
+        public string FirstName { get; set; }
+        [Required]
+        public string LastName { get; set; }
         [Required]
         public string City { get; set; }
         [Required]

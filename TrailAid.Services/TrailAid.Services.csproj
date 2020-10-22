@@ -65,5 +65,15 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\TrailAid.Data\TrailAid.Data.csproj">
+      <Project>{C28503FB-487F-4B6C-B431-DF7F9A98737E}</Project>
+      <Name>TrailAid.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TrailAid.Models\TrailAid.Models.csproj">
+      <Project>{5BCF8402-9B31-4ADB-8D86-A80DE04958D9}</Project>
+      <Name>TrailAid.Models</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
