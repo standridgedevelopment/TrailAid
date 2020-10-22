@@ -13,6 +13,7 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.OAuth;
+using TrailAid.Data;
 using TrailAid.WebAPI.Models;
 using TrailAid.WebAPI.Providers;
 using TrailAid.WebAPI.Results;
