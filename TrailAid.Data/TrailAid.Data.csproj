@@ -94,6 +94,10 @@
     <Compile Include="Migrations\202010222040426_city.Designer.cs">
       <DependentUpon>202010222040426_city.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202010231323427_update.cs" />
+    <Compile Include="Migrations\202010231323427_update.Designer.cs">
+      <DependentUpon>202010231323427_update.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Park.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -111,6 +115,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202010222040426_city.resx">
       <DependentUpon>202010222040426_city.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202010231323427_update.resx">
+      <DependentUpon>202010231323427_update.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
