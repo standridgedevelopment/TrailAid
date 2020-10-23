@@ -14,13 +14,11 @@ namespace TrailAid.Data
         public int ID { get; set; }
         [Required]
         public string Name { get; set; }
-        [Required]
-        [ForeignKey(nameof(CityID))]
-        public int CityID { get; set; }
+        [ForeignKey(nameof(City))]
+        public int? CityID { get; set; }
         public virtual City City { get; set; }
-        [ForeignKey(nameof(ParkID))]
-        [Required]
-        public int ParkID { get; set; }
+        [ForeignKey(nameof(Park))]
+        public int? ParkID { get; set; }
         public virtual Park Park { get; set; }
         public int Rating { get; set; }
         public string Difficulty { get; set; }
