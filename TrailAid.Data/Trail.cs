@@ -10,6 +10,9 @@ namespace TrailAid.Data
 {
     public class Trail
     {
+        [Key]
+        public int ID { get; set; }
+        
         [Required]
         public string Name { get; set; }
         [Required]
