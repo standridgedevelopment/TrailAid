@@ -38,6 +38,7 @@ namespace TrailAid.Data
         public DbSet<City> Cities { get; set; }
         public DbSet<Park> Parks { get; set; }
         public DbSet<Trail> Trails { get; set; }
+        public DbSet<AllTags> AllTags { get; set; }
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder
