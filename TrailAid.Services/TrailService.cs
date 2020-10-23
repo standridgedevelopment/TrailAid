@@ -17,6 +17,12 @@ namespace TrailAid.Services
         {
             _userId = userId;
         }
+        private readonly int TagKey;
+
+        public TrailService()
+        {
+            TagKey = 1;
+        }
         public bool CreateTrail(TrailCreate model)
         {
             var entity = new Trail()
@@ -30,7 +36,6 @@ namespace TrailAid.Services
                 Distance = model.Distance,
                 TypeOfTerrain = model.TypeOfTerrain,
                 Tags = model.Tags,
-                ListOfAllPossibleTags = model.ListOfAllPossibleTags,
                 Elevation = model.Elevation,
                 RouteType = model.RouteType
             };
@@ -112,7 +117,6 @@ namespace TrailAid.Services
                 entity.Distance = model.Distance;
                 entity.TypeOfTerrain = model.TypeOfTerrain;
                 entity.Tags = model.Tags;
-                entity.ListOfAllPossibleTags = model.ListOfAllPossibleTags;
                 entity.Elevation = model.Elevation;
                 entity.RouteType = model.RouteType;
 

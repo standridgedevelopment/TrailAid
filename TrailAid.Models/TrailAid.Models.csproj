@@ -54,6 +54,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AllTags\AllTagsCreate.cs" />
+    <Compile Include="AllTags\AllTagsDetail.cs" />
+    <Compile Include="AllTags\AllTagsEdit.cs" />
     <Compile Include="City\CityDetail.cs" />
     <Compile Include="City\CityEdit.cs" />
     <Compile Include="City\CityListItem.cs" />
