@@ -130,11 +130,6 @@ namespace TrailAid.Services
                 entity.Description = model.Description;
                 entity.Distance = model.Distance;
                 entity.TypeOfTerrain = model.TypeOfTerrain;
-<<<<<<< HEAD
-                //entity.Tags = model.Tags;
-=======
-                entity.Tags += $"{model.Tags} ";
->>>>>>> development
                 entity.Elevation = model.Elevation;
                 entity.RouteType = model.RouteType;
 
