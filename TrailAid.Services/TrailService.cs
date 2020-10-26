@@ -30,13 +30,14 @@ namespace TrailAid.Services
                 Description = model.Description,
                 Distance = model.Distance,
                 TypeOfTerrain = model.TypeOfTerrain,
-                Tags = $"{model.Tags} ",
+                Tags = model.Tags,
                 Elevation = model.Elevation,
                 RouteType = model.RouteType
             };
 
             if (model.Tags != null)
             {
+                entity.Tags = $"{model.Tags} ";
                 foreach (var tag in entity.Tags.Split(' '))
                 {
                     if (!entity.AllTags.ListOfAllTags.Contains(tag))
