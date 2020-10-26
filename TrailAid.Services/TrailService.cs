@@ -118,7 +118,7 @@ namespace TrailAid.Services
                 entity.Description = model.Description;
                 entity.Distance = model.Distance;
                 entity.TypeOfTerrain = model.TypeOfTerrain;
-                entity.Tags = model.Tags;
+                //entity.Tags = model.Tags;
                 entity.Elevation = model.Elevation;
                 entity.RouteType = model.RouteType;
 
@@ -130,8 +130,18 @@ namespace TrailAid.Services
                         {
                             return "Tag Error";
                         }
+                        else if(entity.Tags.Contains(model.Tags))
+                        {
+                            entity.Tags = entity.Tags;
+                            return "Tag Already Exists";
+                        }
+                        else
+                        {
+                            entity.Tags = $"{entity.Tags} " + model.Tags;
+                        }
                     }
                 }
+                else { entity.Tags = model.Tags; }
                 ctx.SaveChanges();
                 return "Okay";
             }

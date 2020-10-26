@@ -44,6 +44,8 @@ namespace TrailAid.WebAPI.Controllers
             var service = CreateTrailService();
             result = service.UpdateTrail(user, id);
             if (result == "Tag Error") return BadRequest("Tag does not exist.");
+            if (result == "Tag Already Exists") return BadRequest("Tag Already Exists.");
+
 
             return Ok();
         }
