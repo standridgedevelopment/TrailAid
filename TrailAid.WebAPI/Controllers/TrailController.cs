@@ -12,6 +12,7 @@ namespace TrailAid.WebAPI.Controllers
 {
     public class TrailController : ApiController
     {
+        public string result = "";
         public IHttpActionResult Get()
         {
             TrailService TrailService = CreateTrailService();
@@ -41,8 +42,8 @@ namespace TrailAid.WebAPI.Controllers
             if (!ModelState.IsValid) return BadRequest(ModelState);
 
             var service = CreateTrailService();
-
-            if (!service.UpdateTrail(user, id)) return InternalServerError();
+            result = service.UpdateTrail(user, id);
+            if (result == "Tag Error") return BadRequest("Tag does not exist.");
 
             return Ok();
         }

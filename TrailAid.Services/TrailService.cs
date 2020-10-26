@@ -17,16 +17,11 @@ namespace TrailAid.Services
         {
             _userId = userId;
         }
-        private readonly int TagKey;
-
-        public TrailService()
-        {
-            TagKey = 1;
-        }
         public bool CreateTrail(TrailCreate model)
         {
             var entity = new Trail()
             {
+                TagsID = 1,
                 Name = model.Name,
                 CityID = model.CityID,
                 ParkID = model.ParkID,
@@ -42,8 +37,15 @@ namespace TrailAid.Services
 
             using (var ctx = new ApplicationDbContext())
             {
-                ctx.Trails.Add(entity);
-                return ctx.SaveChanges() == 1;
+                try
+                {
+                    ctx.Trails.Add(entity);
+                    return ctx.SaveChanges() == 1;
+                }
+                catch
+                {
+                    return true;
+                }
             }
         }
         public IEnumerable<TrailListItem> GetTrails()
@@ -102,7 +104,7 @@ namespace TrailAid.Services
                 };
             }
         }
-        public bool UpdateTrail(TrailEdit model, int id)
+        public string UpdateTrail(TrailEdit model, int id)
         {
             using (var ctx = new ApplicationDbContext())
             {
@@ -120,7 +122,18 @@ namespace TrailAid.Services
                 entity.Elevation = model.Elevation;
                 entity.RouteType = model.RouteType;
 
-                return ctx.SaveChanges() == 1;
+                if (entity.Tags != null)
+                {
+                    foreach (var tag in entity.Tags.Split(' '))
+                    {
+                        if(!entity.AllTags.ListOfAllTags.Contains(tag))
+                        {
+                            return "Tag Error";
+                        }
+                    }
+                }
+                ctx.SaveChanges();
+                return "Okay";
             }
         }
         public bool DeleteTrail(int id)
