@@ -11,7 +11,6 @@ namespace TrailAid.Data
     {
         [Key]
         public int ID { get; set; }
-        [Required]
         public string ListOfAllTags { get; set; }
     }
 }

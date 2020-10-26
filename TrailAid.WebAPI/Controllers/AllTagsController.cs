@@ -18,15 +18,15 @@ namespace TrailAid.WebAPI.Controllers
             var tags = tagsService.GetAllTags();
             return Ok(tags);
         }
-        public IHttpActionResult Post(AllTagsCreate tag)
+        public IHttpActionResult Post()
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
             var service = CreateAllTagsService();
 
-            if (!service.CreateAllTags(tag))
-                return InternalServerError();
+            if (!service.CreateAllTags())
+                return BadRequest("List of tags already exists");
 
             return Ok();
         }
@@ -37,6 +37,16 @@ namespace TrailAid.WebAPI.Controllers
             var service = CreateAllTagsService();
 
             if (!service.UpdateAllTags(tags)) return InternalServerError();
+
+            return Ok();
+        }
+        public IHttpActionResult Delete(AllTagsEdit tags)
+        {
+            if (!ModelState.IsValid) return BadRequest(ModelState);
+
+            var service = CreateAllTagsService();
+
+            if (!service.DeleteTags(tags)) return BadRequest("Tag does not exist");
 
             return Ok();
         }
