@@ -12,6 +12,7 @@ namespace TrailAid.WebAPI.Controllers
 {
     public class ParkController : ApiController
     {
+        public string result = "";
         public IHttpActionResult Get()
         {
             ParkService ParkService = CreateParkService();
@@ -24,25 +25,26 @@ namespace TrailAid.WebAPI.Controllers
             var user = ParkService.GetParkByID(id);
             return Ok(user);
         }
-        public IHttpActionResult Post(ParkCreate user)
+        public IHttpActionResult Post(ParkCreate park)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
             var service = CreateParkService();
 
-            if (!service.CreatePark(user))
-                return InternalServerError();
+            result = service.CreatePark(park);
+            if (result == "Invalid City ID") return BadRequest("Invalid City ID.");
 
             return Ok();
         }
-        public IHttpActionResult Put(ParkEdit user, int id)
+        public IHttpActionResult Put(ParkEdit park, int id)
         {
             if (!ModelState.IsValid) return BadRequest(ModelState);
 
             var service = CreateParkService();
 
-            if (!service.UpdatePark(user, id)) return InternalServerError();
+            result = service.UpdatePark(park, id);
+            if (result == "Invalid City ID") return BadRequest("Invalid City ID.");
 
             return Ok();
         }

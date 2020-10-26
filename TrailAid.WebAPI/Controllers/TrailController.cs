@@ -34,6 +34,9 @@ namespace TrailAid.WebAPI.Controllers
 
             result = service.CreateTrail(user);
             if (result == "Tag Error") return BadRequest("Tag does not exist.");
+            if (result == "Invalid City ID & Park ID") return BadRequest("Invalid City ID & Park ID.");
+            if (result == "Invalid City ID") return BadRequest("Invalid City ID.");
+            if (result == "Invalid Park ID") return BadRequest("Invalid Park ID.");
 
             return Ok();
         }
@@ -45,7 +48,9 @@ namespace TrailAid.WebAPI.Controllers
             result = service.UpdateTrail(user, id);
             if (result == "Tag Error") return BadRequest("Tag does not exist.");
             if (result == "Tag Already Exists") return BadRequest("Tag Already Exists.");
-
+            if (result == "Invalid City ID & Park ID") return BadRequest("Invalid City ID & Park ID.");
+            if (result == "Invalid City ID") return BadRequest("Invalid City ID.");
+            if (result == "Invalid Park ID") return BadRequest("Invalid Park ID.");
 
             return Ok();
         }

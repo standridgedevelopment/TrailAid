@@ -49,16 +49,38 @@ namespace TrailAid.Services
 
             using (var ctx = new ApplicationDbContext())
             {
+                int result = 0;
                 try
                 {
                     ctx.Trails.Add(entity);
                     ctx.SaveChanges();
                     return "Okay";
                 }
+                catch { }
+
+                try
+                {
+                    var park = ctx.Parks.Single(e => e.ID == model.ParkID);
+                }
                 catch
                 {
-                    return "True";
+                    if (entity.Park == null) result += 1;
                 }
+
+                try
+                {
+                    var city = ctx.Cities.Single(e => e.ID == model.CityID);
+                }
+                catch
+                {
+                    if (entity.City == null) result += 2;
+                }
+
+                if (result == 1) return "Invalid Park ID";
+                if (result == 2) return "Invalid City ID";
+                if (result == 3) return "Invalid City ID & Park ID";
+
+                return "True";
             }
         }
         public IEnumerable<TrailListItem> GetTrails()
@@ -134,7 +156,7 @@ namespace TrailAid.Services
                 entity.Elevation = model.Elevation;
                 entity.RouteType = model.RouteType;
 
-                if (entity.Tags != null)
+                if (model.Tags != null)
                 {
                     foreach (var tag in entity.Tags.Split(' '))
                     {
@@ -142,7 +164,7 @@ namespace TrailAid.Services
                         {
                             return "Tag Error";
                         }
-                        else if(entity.Tags.Contains(model.Tags))
+                        else if (entity.Tags.Contains(model.Tags))
                         {
                             entity.Tags = entity.Tags;
                             return "Tag Already Exists";
@@ -154,8 +176,21 @@ namespace TrailAid.Services
                     }
                 }
                 else { entity.Tags = model.Tags; }
-                ctx.SaveChanges();
-                return "Okay";
+
+                try
+                {
+                    ctx.Trails.Add(entity);
+                    ctx.SaveChanges();
+                    return "Okay";
+                }
+                catch
+                {
+                    if (entity.City == null && entity.Park == null && entity.ParkID != null) return "Invalid City ID & Park ID";
+                    if (entity.City == null) return "Invalid City ID";
+                    if (entity.Park == null) return "Invalid Park ID";
+
+                    return "True";
+                }
             }
         }
         public bool DeleteTrail(int id)
