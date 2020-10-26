@@ -11,7 +11,6 @@ namespace TrailAid.Models.Trail
     {
         [Required]
         public string Name { get; set; }
-        [Required]
         public int? CityID { get; set; }
         public int? ParkID { get; set; }
         public int Rating { get; set; }

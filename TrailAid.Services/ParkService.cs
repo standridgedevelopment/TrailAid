@@ -16,7 +16,7 @@ namespace TrailAid.Services
         {
             _userId = userId;
         }
-        public bool CreatePark(ParkCreate model)
+        public string CreatePark(ParkCreate model)
         {
             var entity = new Park()
             {
@@ -30,8 +30,27 @@ namespace TrailAid.Services
 
             using (var ctx = new ApplicationDbContext())
             {
-                ctx.Parks.Add(entity);
-                return ctx.SaveChanges() == 1;
+                int result = 0;
+                try
+                {
+                    ctx.Parks.Add(entity);
+                    ctx.SaveChanges();
+                    return "Okay";
+                }
+                catch { }
+
+                try
+                {
+                    var city = ctx.Cities.Single(e => e.ID == model.CityID);
+                }
+                catch
+                {
+                    if (entity.City == null) result += 1;
+                }
+
+                if (result == 1) return "Invalid City ID";
+
+                return "True";
             }
         }
         public IEnumerable<ParkListItem> GetParks()
@@ -66,7 +85,7 @@ namespace TrailAid.Services
                 };
             }
         }
-        public bool UpdatePark(ParkEdit model, int id)
+        public string UpdatePark(ParkEdit model, int id)
         {
             using (var ctx = new ApplicationDbContext())
             {
@@ -79,14 +98,25 @@ namespace TrailAid.Services
                 entity.PhoneNumber = model.PhoneNumber;
                 entity.Website = model.Website;
 
-                return ctx.SaveChanges() == 1;
+                try
+                {
+                    ctx.Parks.Add(entity);
+                    ctx.SaveChanges();
+                    return "Okay";
+                }
+                catch
+                {
+                    if (entity.City == null) return "Invalid City ID";
+
+                    return "True";
+                }
             }
         }
         public bool DeletePark(int id)
         {
             using (var ctx = new ApplicationDbContext())
             {
-                var entity = ctx.Parks.Single(e =>e.ID == id);
+                var entity = ctx.Parks.Single(e => e.ID == id);
 
                 ctx.Parks.Remove(entity);
 
