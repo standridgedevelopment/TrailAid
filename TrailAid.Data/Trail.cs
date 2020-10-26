@@ -24,7 +24,7 @@ namespace TrailAid.Data
         public virtual Park Park { get; set; }
 
         [ForeignKey(nameof(AllTags))]
-        public string TagsID{ get; set; }
+        public int TagsID{ get; set; }
         public virtual AllTags AllTags { get; set; }
 
         public int Rating { get; set; }
