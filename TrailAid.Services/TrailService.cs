@@ -17,7 +17,7 @@ namespace TrailAid.Services
         {
             _userId = userId;
         }
-        public bool CreateTrail(TrailCreate model)
+        public string CreateTrail(TrailCreate model)
         {
             var entity = new Trail()
             {
@@ -30,21 +30,33 @@ namespace TrailAid.Services
                 Description = model.Description,
                 Distance = model.Distance,
                 TypeOfTerrain = model.TypeOfTerrain,
-                Tags = model.Tags,
+                Tags = $"{model.Tags} ",
                 Elevation = model.Elevation,
                 RouteType = model.RouteType
             };
+
+            if (model.Tags != null)
+            {
+                foreach (var tag in entity.Tags.Split(' '))
+                {
+                    if (!entity.AllTags.ListOfAllTags.Contains(tag))
+                    {
+                        return "Tag Error";
+                    }
+                }
+            }
 
             using (var ctx = new ApplicationDbContext())
             {
                 try
                 {
                     ctx.Trails.Add(entity);
-                    return ctx.SaveChanges() == 1;
+                    ctx.SaveChanges();
+                    return "Okay";
                 }
                 catch
                 {
-                    return true;
+                    return "True";
                 }
             }
         }
@@ -118,7 +130,11 @@ namespace TrailAid.Services
                 entity.Description = model.Description;
                 entity.Distance = model.Distance;
                 entity.TypeOfTerrain = model.TypeOfTerrain;
+<<<<<<< HEAD
                 //entity.Tags = model.Tags;
+=======
+                entity.Tags += $"{model.Tags} ";
+>>>>>>> development
                 entity.Elevation = model.Elevation;
                 entity.RouteType = model.RouteType;
 
@@ -126,7 +142,7 @@ namespace TrailAid.Services
                 {
                     foreach (var tag in entity.Tags.Split(' '))
                     {
-                        if(!entity.AllTags.ListOfAllTags.Contains(tag))
+                        if (!entity.AllTags.ListOfAllTags.Contains(tag))
                         {
                             return "Tag Error";
                         }
