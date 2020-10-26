@@ -32,8 +32,8 @@ namespace TrailAid.WebAPI.Controllers
 
             var service = CreateTrailService();
 
-            if (!service.CreateTrail(user))
-                return InternalServerError();
+            result = service.CreateTrail(user);
+            if (result == "Tag Error") return BadRequest("Tag does not exist.");
 
             return Ok();
         }
