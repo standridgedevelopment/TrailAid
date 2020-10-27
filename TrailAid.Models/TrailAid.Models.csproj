@@ -69,7 +69,7 @@
     <Compile Include="Visited\VisitedCreate.cs" />
     <Compile Include="Visited\VisitedDetail.cs" />
     <Compile Include="Visited\VisitedEdit.cs" />
-    <Compile Include="Visited\ReviewListItem.cs" />
+    <Compile Include="Visited\ListItem.cs" />
     <Compile Include="Trail\TrailCreate.cs" />
     <Compile Include="Trail\TrailDetail.cs" />
     <Compile Include="Trail\TrailEdit.cs" />

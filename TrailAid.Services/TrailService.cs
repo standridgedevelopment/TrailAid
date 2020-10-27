@@ -39,11 +39,11 @@ namespace TrailAid.Services
             {
                 if (model.Tags != null)
                 {
-                    var allTags = ctx.AllTags.Single(e => e.ID == 1);
+                    var AllTags = ctx.AllTags.Single(e => e.ID == 1);
                     entity.Tags = $"{model.Tags} ";
                     foreach (var tag in entity.Tags.Split(' '))
                     {
-                        if (!allTags.ListOfAllTags.Contains(tag))
+                        if (!AllTags.ListOfAllTags.Contains(tag))
                         {
                             return "Tag Error";
                         }
@@ -51,23 +51,11 @@ namespace TrailAid.Services
                 }
                 int result = 0;
                 
-                try
-                {
-                    var park = ctx.Parks.Single(e => e.ID == model.ParkID);
-                }
-                catch
-                {
-                    if (entity.Park == null) result += 1;
-                }
+                try {var park = ctx.Parks.Single(e => e.ID == model.ParkID);}
+                catch {if (entity.Park == null) result += 1;}
 
-                try
-                {
-                    var city = ctx.Cities.Single(e => e.ID == model.CityID);
-                }
-                catch
-                {
-                    if (entity.City == null) result += 2;
-                }
+                try {var city = ctx.Cities.Single(e => e.ID == model.CityID);}
+                catch { if (entity.City == null) result += 2; }
 
                 if (result == 1) return "Invalid Park ID";
                 if (result == 2) return "Invalid City ID";
