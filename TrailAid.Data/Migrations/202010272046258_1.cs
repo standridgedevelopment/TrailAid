@@ -3,7 +3,7 @@ namespace TrailAid.Data.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class InitialCreate : DbMigration
+    public partial class _1 : DbMigration
     {
         public override void Up()
         {
@@ -51,7 +51,6 @@ namespace TrailAid.Data.Migrations
                         CityID = c.Int(),
                         ParkID = c.Int(),
                         TagsID = c.Int(nullable: false),
-                        Rating = c.Int(nullable: false),
                         Difficulty = c.String(),
                         Description = c.String(),
                         Distance = c.Int(nullable: false),
@@ -67,6 +66,35 @@ namespace TrailAid.Data.Migrations
                 .Index(t => t.CityID)
                 .Index(t => t.ParkID)
                 .Index(t => t.TagsID);
+            
+            CreateTable(
+                "dbo.Visited",
+                c => new
+                    {
+                        ID = c.Int(nullable: false, identity: true),
+                        UserID = c.Guid(),
+                        TrailID = c.Int(),
+                        AddToFavorites = c.Boolean(nullable: false),
+                        Rating = c.Int(nullable: false),
+                        Review = c.String(),
+                    })
+                .PrimaryKey(t => t.ID)
+                .ForeignKey("dbo.Trail", t => t.TrailID)
+                .ForeignKey("dbo.User", t => t.UserID)
+                .Index(t => t.UserID)
+                .Index(t => t.TrailID);
+            
+            CreateTable(
+                "dbo.User",
+                c => new
+                    {
+                        ID = c.Guid(nullable: false),
+                        FirstName = c.String(nullable: false),
+                        LastName = c.String(nullable: false),
+                        City = c.String(nullable: false),
+                        State = c.String(nullable: false),
+                    })
+                .PrimaryKey(t => t.ID);
             
             CreateTable(
                 "dbo.IdentityRole",
@@ -91,18 +119,6 @@ namespace TrailAid.Data.Migrations
                 .ForeignKey("dbo.ApplicationUser", t => t.ApplicationUser_Id)
                 .Index(t => t.IdentityRole_Id)
                 .Index(t => t.ApplicationUser_Id);
-            
-            CreateTable(
-                "dbo.User",
-                c => new
-                    {
-                        ID = c.Guid(nullable: false),
-                        FirstName = c.String(nullable: false),
-                        LastName = c.String(nullable: false),
-                        City = c.String(nullable: false),
-                        State = c.String(nullable: false),
-                    })
-                .PrimaryKey(t => t.ID);
             
             CreateTable(
                 "dbo.ApplicationUser",
@@ -158,6 +174,8 @@ namespace TrailAid.Data.Migrations
             DropForeignKey("dbo.IdentityUserLogin", "ApplicationUser_Id", "dbo.ApplicationUser");
             DropForeignKey("dbo.IdentityUserClaim", "ApplicationUser_Id", "dbo.ApplicationUser");
             DropForeignKey("dbo.IdentityUserRole", "IdentityRole_Id", "dbo.IdentityRole");
+            DropForeignKey("dbo.Visited", "UserID", "dbo.User");
+            DropForeignKey("dbo.Visited", "TrailID", "dbo.Trail");
             DropForeignKey("dbo.Trail", "ParkID", "dbo.Park");
             DropForeignKey("dbo.Trail", "CityID", "dbo.City");
             DropForeignKey("dbo.Trail", "TagsID", "dbo.AllTags");
@@ -166,6 +184,8 @@ namespace TrailAid.Data.Migrations
             DropIndex("dbo.IdentityUserClaim", new[] { "ApplicationUser_Id" });
             DropIndex("dbo.IdentityUserRole", new[] { "ApplicationUser_Id" });
             DropIndex("dbo.IdentityUserRole", new[] { "IdentityRole_Id" });
+            DropIndex("dbo.Visited", new[] { "TrailID" });
+            DropIndex("dbo.Visited", new[] { "UserID" });
             DropIndex("dbo.Trail", new[] { "TagsID" });
             DropIndex("dbo.Trail", new[] { "ParkID" });
             DropIndex("dbo.Trail", new[] { "CityID" });
@@ -173,9 +193,10 @@ namespace TrailAid.Data.Migrations
             DropTable("dbo.IdentityUserLogin");
             DropTable("dbo.IdentityUserClaim");
             DropTable("dbo.ApplicationUser");
-            DropTable("dbo.User");
             DropTable("dbo.IdentityUserRole");
             DropTable("dbo.IdentityRole");
+            DropTable("dbo.User");
+            DropTable("dbo.Visited");
             DropTable("dbo.Trail");
             DropTable("dbo.Park");
             DropTable("dbo.City");

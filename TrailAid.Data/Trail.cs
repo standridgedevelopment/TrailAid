@@ -27,7 +27,20 @@ namespace TrailAid.Data
         public int TagsID{ get; set; }
         public virtual AllTags AllTags { get; set; }
 
-        public int Rating { get; set; }
+        public int Rating 
+        {
+            get
+            {
+                int totalRating = 0;
+                int averageRating = 0;
+                foreach (var rating in Ratings)
+                {
+                    totalRating += rating.Rating;
+                }
+                if (Ratings.Count != 0) averageRating = totalRating / Ratings.Count();
+                return averageRating;
+            }
+        }
         public string Difficulty { get; set; }
         public string Description { get; set; }
         public int Distance { get; set; }
@@ -35,5 +48,6 @@ namespace TrailAid.Data
         public string Tags { get; set; }
         public int Elevation { get; set; }
         public string RouteType { get; set; }
+        public virtual List<Visited> Ratings { get; set; } = new List<Visited>();
     }
 }

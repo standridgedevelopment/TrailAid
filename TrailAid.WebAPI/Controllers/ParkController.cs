@@ -31,10 +31,10 @@ namespace TrailAid.WebAPI.Controllers
             var user = ParkService.GetParkByName(name);
             return Ok(user);
         }
-        public IHttpActionResult GetByCityName(string cityName)
+        public IHttpActionResult GetByCityName(string CityName)
         {
             ParkService ParkService = CreateParkService();
-            var user = ParkService.GetParkByCityName(cityName);
+            var user = ParkService.GetParkByCityName(CityName);
             return Ok(user);
         }
         public IHttpActionResult GetByAcreage(int acreage)

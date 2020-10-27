@@ -20,5 +20,6 @@ namespace TrailAid.Models.Trail
         public string AddTags { get; set; }
         public int Elevation { get; set; }
         public string RouteType { get; set; }
+        
     }
 }

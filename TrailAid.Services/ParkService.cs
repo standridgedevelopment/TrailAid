@@ -10,6 +10,7 @@ namespace TrailAid.Services
 {
     public class ParkService
     {
+        List<ParkDetail> searchResults = new List<ParkDetail>();
         private readonly Guid _userId;
 
         public ParkService(Guid userId)
@@ -101,36 +102,48 @@ namespace TrailAid.Services
                 };
             }
         }
-        public ParkDetail GetParkByCityName(string cityName)
+        public List<ParkDetail> GetParkByCityName(string cityName)
         {
             using (var ctx = new ApplicationDbContext())
             {
-                var entity = ctx.Parks.Single(e => e.City.Name == cityName);
-                return new ParkDetail
+                var parks = ctx.Parks.Where(s => s.City.Name == cityName).ToList();
+                foreach (var park in parks)
                 {
-                    Name = entity.Name,
-                    CityName = entity.City.Name,
-                    Acreage = entity.Acreage,
-                    Hours = entity.Hours,
-                    PhoneNumber = entity.PhoneNumber,
-                    Website = entity.Website
-                };
+                    var foundPark = new ParkDetail
+                    {
+                        Name = park.Name,
+                        CityName = park.City.Name,
+                        Acreage = park.Acreage,
+                        Hours = park.Hours,
+                        PhoneNumber = park.PhoneNumber,
+                        Website = park.Website
+                    };
+                    searchResults.Add(foundPark);
+                }
+               
+                return searchResults;
             }
         }
-        public ParkDetail GetParkByAcreage(int acreage)
+        public List<ParkDetail> GetParkByAcreage(int acreage)
         {
             using (var ctx = new ApplicationDbContext())
             {
-                var entity = ctx.Parks.Single(e => e.Acreage == acreage);
-                return new ParkDetail
+                var parks = ctx.Parks.Where(e => e.Acreage == acreage).ToList();
+                foreach (var park in parks)
                 {
-                    Name = entity.Name,
-                    CityName = entity.City.Name,
-                    Acreage = entity.Acreage,
-                    Hours = entity.Hours,
-                    PhoneNumber = entity.PhoneNumber,
-                    Website = entity.Website
-                };
+                    var foundPark = new ParkDetail
+                    {
+                        Name = park.Name,
+                        CityName = park.City.Name,
+                        Acreage = park.Acreage,
+                        Hours = park.Hours,
+                        PhoneNumber = park.PhoneNumber,
+                        Website = park.Website
+                    };
+                    searchResults.Add(foundPark);
+                }
+
+                return searchResults;
             }
         }
         public string UpdatePark(ParkEdit model, int id)
