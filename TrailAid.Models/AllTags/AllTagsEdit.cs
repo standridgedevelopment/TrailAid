@@ -8,6 +8,8 @@ namespace TrailAid.Models.AllTags
 {
     public class AllTagsEdit
     {
+        public string AddTags { get; set; }
+        public string DeleteTags { get; set; }
         public string ListOfAllTags { get; set; }
     }
 }

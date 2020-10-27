@@ -16,8 +16,8 @@ namespace TrailAid.Models.Trail
         public string Description { get; set; }
         public int Distance { get; set; }
         public string TypeOfTerrain { get; set; }
-        public string Tags { get; set; }
-        public string ListOfAllPossibleTags { get; set; }
+        public string AddTags { get; set; }
+        public string DeleteTags { get; set; }
         public int Elevation { get; set; }
         public string RouteType { get; set; }
     }

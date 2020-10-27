@@ -30,17 +30,17 @@ namespace TrailAid.Services
                 Description = model.Description,
                 Distance = model.Distance,
                 TypeOfTerrain = model.TypeOfTerrain,
-                Tags = model.Tags,
+                Tags = model.AddTags,
                 Elevation = model.Elevation,
                 RouteType = model.RouteType
             };
 
             using (var ctx = new ApplicationDbContext())
             {
-                if (model.Tags != null)
+                if (model.AddTags != null)
                 {
                     var AllTags = ctx.AllTags.Single(e => e.ID == 1);
-                    entity.Tags = $"{model.Tags} ";
+                    entity.Tags = $"{model.AddTags} ";
                     foreach (var tag in entity.Tags.Split(' '))
                     {
                         if (!AllTags.ListOfAllTags.Contains(tag))
@@ -50,11 +50,11 @@ namespace TrailAid.Services
                     }
                 }
                 int result = 0;
-                
-                try {var park = ctx.Parks.Single(e => e.ID == model.ParkID);}
-                catch {if (entity.Park == null) result += 1;}
 
-                try {var city = ctx.Cities.Single(e => e.ID == model.CityID);}
+                try { var park = ctx.Parks.Single(e => e.ID == model.ParkID); }
+                catch { if (entity.ParkID != null && entity.Park == null) result += 1; }
+
+                try { var city = ctx.Cities.Single(e => e.ID == model.CityID); }
                 catch { if (entity.City == null) result += 2; }
 
                 if (result == 1) return "Invalid Park ID";
@@ -145,24 +145,35 @@ namespace TrailAid.Services
                 entity.Elevation = model.Elevation;
                 entity.RouteType = model.RouteType;
 
-                if ( model.Tags != null)
+                if (model.AddTags != null)
                 {
                     if (entity.Tags == null) entity.Tags = "";
-                    foreach (var tag in model.Tags.Split(' '))
+                    foreach (var tag in model.AddTags.Split(' '))
                     {
                         if (entity.AllTags != null && !entity.AllTags.ListOfAllTags.Contains(tag))
                         {
                             return "Tag Error";
                         }
-                        else if (entity.Tags.Contains(model.Tags))
+                        else if (entity.Tags.Contains(tag))
                         {
                             entity.Tags = entity.Tags;
                             return "Tag Already Exists";
                         }
-                        entity.Tags = $"{entity.Tags} " + model.Tags;
+                        entity.Tags += $"{tag} ";
                     }
                 }
-                else { entity.Tags = model.Tags; }
+
+                if (model.DeleteTags != null)
+                {
+                    foreach (var tag in model.DeleteTags.Split(' '))
+                    {
+                        int firstCount = entity.Tags.Count();
+                        string delete = entity.Tags.Replace($"{tag}", "");
+                        entity.Tags = delete.Replace("  ", " ");
+                        if (entity.Tags.Count() < firstCount) { }
+                        else return "Tag not found";
+                    }
+                }
 
                 try
                 {

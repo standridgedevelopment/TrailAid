@@ -31,13 +31,6 @@ namespace TrailAid.Services
             using (var ctx = new ApplicationDbContext())
             {
                 int result = 0;
-                try
-                {
-                    ctx.Parks.Add(entity);
-                    ctx.SaveChanges();
-                    return "Okay";
-                }
-                catch { }
 
                 try
                 {
@@ -50,6 +43,13 @@ namespace TrailAid.Services
 
                 if (result == 1) return "Invalid City ID";
 
+                try
+                {
+                    ctx.Parks.Add(entity);
+                    ctx.SaveChanges();
+                    return "Okay";
+                }
+                catch { }
                 return "True";
             }
         }

@@ -42,32 +42,40 @@ namespace TrailAid.Services
             }
 
         }
-        public bool UpdateAllTags(AllTagsEdit model)
+        public string UpdateAllTags(AllTagsEdit model)
         {
             using (var ctx = new ApplicationDbContext())
             {
                 var entity = ctx.AllTags.Single();
 
-                entity.ListOfAllTags += $"{model.ListOfAllTags} ";
-
-                return ctx.SaveChanges() == 1;
-            }
-        }
-        public bool DeleteTags(AllTagsEdit model)
-        {
-            using (var ctx = new ApplicationDbContext())
-            {
-                var entity = ctx.AllTags.Single();
-
-                int firstCount = entity.ListOfAllTags.Count();
-                string delete = entity.ListOfAllTags.Replace($"{model.ListOfAllTags}","");
-                entity.ListOfAllTags = delete.Replace("  "," ");
-                if (entity.ListOfAllTags.Count() < firstCount)
+                if (model.AddTags != null)
                 {
-                    return ctx.SaveChanges() == 1;
+                    if (entity.ListOfAllTags == null) entity.ListOfAllTags = "";
+                    foreach (var tag in model.AddTags.Split(' '))
+                    {
+                        if (entity.ListOfAllTags.Contains(tag))
+                        {
+                            entity.ListOfAllTags = entity.ListOfAllTags;
+                            return "Tag Already Exists";
+                        }
+                        entity.ListOfAllTags += $"{tag} ";
+                    }
                 }
 
-                return false;
+                if (model.DeleteTags != null)
+                {
+                    foreach (var tag in model.DeleteTags.Split(' '))
+                    {
+                        int firstCount = entity.ListOfAllTags.Count();
+                        string delete = entity.ListOfAllTags.Replace($"{tag}", "");
+                        entity.ListOfAllTags = delete.Replace("  ", " ");
+                        if (entity.ListOfAllTags.Count() < firstCount) { }
+                        else return "Tag not found";
+                    }
+                }
+
+                ctx.SaveChanges();
+                return "Okay";
             }
         }
     }

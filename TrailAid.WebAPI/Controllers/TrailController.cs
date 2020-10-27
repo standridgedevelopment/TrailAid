@@ -33,21 +33,22 @@ namespace TrailAid.WebAPI.Controllers
             var service = CreateTrailService();
 
             result = service.CreateTrail(user);
-            if (result == "Tag Error") return BadRequest("Tag does not exist.");
+            if (result == "Tag Error") return BadRequest("Tag Not Found.");
             if (result == "Invalid City ID & Park ID") return BadRequest("Invalid City ID & Park ID.");
             if (result == "Invalid City ID") return BadRequest("Invalid City ID.");
             if (result == "Invalid Park ID") return BadRequest("Invalid Park ID.");
 
             return Ok();
         }
-        public IHttpActionResult Put(TrailEdit user, int id)
+        public IHttpActionResult Put(TrailEdit trail, int id)
         {
             if (!ModelState.IsValid) return BadRequest(ModelState);
 
             var service = CreateTrailService();
-            result = service.UpdateTrail(user, id);
-            if (result == "Tag Error") return BadRequest("Tag does not exist.");
+            result = service.UpdateTrail(trail, id);
+            if (result == "Tag Error") return BadRequest("Tag Not Found.");
             if (result == "Tag Already Exists") return BadRequest("Tag Already Exists.");
+            if (result == "Tag not found") return BadRequest("Tag Not Found.");
             if (result == "Invalid City ID & Park ID") return BadRequest("Invalid City ID & Park ID.");
             if (result == "Invalid City ID") return BadRequest("Invalid City ID.");
             if (result == "Invalid Park ID") return BadRequest("Invalid Park ID.");
@@ -62,6 +63,7 @@ namespace TrailAid.WebAPI.Controllers
 
             return Ok();
         }
+
         private TrailService CreateTrailService()
         {
             var userID = Guid.Parse(User.Identity.GetUserId());

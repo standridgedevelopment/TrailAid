@@ -12,6 +12,7 @@ namespace TrailAid.WebAPI.Controllers
 {
     public class AllTagsController : ApiController
     {
+        public string result = "";
         public IHttpActionResult Get()
         {
             AllTagsService tagsService = CreateAllTagsService();
@@ -36,17 +37,9 @@ namespace TrailAid.WebAPI.Controllers
 
             var service = CreateAllTagsService();
 
-            if (!service.UpdateAllTags(tags)) return InternalServerError();
-
-            return Ok();
-        }
-        public IHttpActionResult Delete(AllTagsEdit tags)
-        {
-            if (!ModelState.IsValid) return BadRequest(ModelState);
-
-            var service = CreateAllTagsService();
-
-            if (!service.DeleteTags(tags)) return BadRequest("Tag does not exist");
+            result = service.UpdateAllTags(tags);
+            if (result == "Tag Already Exists") return BadRequest("Tag Already Exists.");
+            if (result == "Tag not found") return BadRequest("Tag Not Found.");
 
             return Ok();
         }
