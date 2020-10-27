@@ -19,10 +19,28 @@ namespace TrailAid.WebAPI.Controllers
             var user = ParkService.GetParks();
             return Ok(user);
         }
-        public IHttpActionResult Get(int id)
+        public IHttpActionResult GetByID(int id)
         {
             ParkService ParkService = CreateParkService();
             var user = ParkService.GetParkByID(id);
+            return Ok(user);
+        }
+        public IHttpActionResult GetByName(string name)
+        {
+            ParkService ParkService = CreateParkService();
+            var user = ParkService.GetParkByName(name);
+            return Ok(user);
+        }
+        public IHttpActionResult GetByCityName(string cityName)
+        {
+            ParkService ParkService = CreateParkService();
+            var user = ParkService.GetParkByCityName(cityName);
+            return Ok(user);
+        }
+        public IHttpActionResult GetByAcreage(int acreage)
+        {
+            ParkService ParkService = CreateParkService();
+            var user = ParkService.GetParkByAcreage(acreage);
             return Ok(user);
         }
         public IHttpActionResult Post(ParkCreate park)

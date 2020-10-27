@@ -19,10 +19,70 @@ namespace TrailAid.WebAPI.Controllers
             var user = TrailService.GetTrails();
             return Ok(user);
         }
-        public IHttpActionResult Get(int id)
+        public IHttpActionResult GetById(int id)
         {
             TrailService TrailService = CreateTrailService();
             var user = TrailService.GetTrailByID(id);
+            return Ok(user);
+        }
+        public IHttpActionResult GetByName(string name)
+        {
+            TrailService TrailService = CreateTrailService();
+            var user = TrailService.GetTrailByName(name);
+            return Ok(user);
+        }
+        public IHttpActionResult GetByCityName(string cityName)
+        {
+            TrailService TrailService = CreateTrailService();
+            var user = TrailService.GetTrailByCityName(cityName);
+            return Ok(user);
+        }
+        public IHttpActionResult GetByParkName(string cityName)
+        {
+            TrailService TrailService = CreateTrailService();
+            var user = TrailService.GetTrailByParkName(cityName);
+            return Ok(user);
+        }
+        public IHttpActionResult GetByRating(int rating)
+        {
+            TrailService TrailService = CreateTrailService();
+            var user = TrailService.GetTrailByRating(rating);
+            return Ok(user);
+        }
+        public IHttpActionResult GetByDifficulty(string difficulty)
+        {
+            TrailService TrailService = CreateTrailService();
+            var user = TrailService.GetTrailByDifficulty(difficulty);
+            return Ok(user);
+        }
+        public IHttpActionResult GetByDescription(string description)
+        {
+            TrailService TrailService = CreateTrailService();
+            var user = TrailService.GetTrailByDescription(description);
+            return Ok(user);
+        }
+        public IHttpActionResult GetByDistance(int distance)
+        {
+            TrailService TrailService = CreateTrailService();
+            var user = TrailService.GetTrailByDistance(distance);
+            return Ok(user);
+        }
+        public IHttpActionResult GetByTypeOfTerrain(string typeOfTerrain)
+        {
+            TrailService TrailService = CreateTrailService();
+            var user = TrailService.GetTrailByTypeOfTerrain(typeOfTerrain);
+            return Ok(user);
+        }
+        public IHttpActionResult GetByElevation(int elevation)
+        {
+            TrailService TrailService = CreateTrailService();
+            var user = TrailService.GetTrailByElevation(elevation);
+            return Ok(user);
+        }
+        public IHttpActionResult GetByRouteType(string routeType)
+        {
+            TrailService TrailService = CreateTrailService();
+            var user = TrailService.GetTrailByRouteType(routeType);
             return Ok(user);
         }
         public IHttpActionResult Post(TrailCreate user)

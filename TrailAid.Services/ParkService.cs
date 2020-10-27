@@ -85,6 +85,54 @@ namespace TrailAid.Services
                 };
             }
         }
+        public ParkDetail GetParkByName(string name)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity = ctx.Parks.Single(e => e.Name == name);
+                return new ParkDetail
+                {
+                    Name = entity.Name,
+                    CityName = entity.City.Name,
+                    Acreage = entity.Acreage,
+                    Hours = entity.Hours,
+                    PhoneNumber = entity.PhoneNumber,
+                    Website = entity.Website
+                };
+            }
+        }
+        public ParkDetail GetParkByCityName(string cityName)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity = ctx.Parks.Single(e => e.City.Name == cityName);
+                return new ParkDetail
+                {
+                    Name = entity.Name,
+                    CityName = entity.City.Name,
+                    Acreage = entity.Acreage,
+                    Hours = entity.Hours,
+                    PhoneNumber = entity.PhoneNumber,
+                    Website = entity.Website
+                };
+            }
+        }
+        public ParkDetail GetParkByAcreage(int acreage)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity = ctx.Parks.Single(e => e.Acreage == acreage);
+                return new ParkDetail
+                {
+                    Name = entity.Name,
+                    CityName = entity.City.Name,
+                    Acreage = entity.Acreage,
+                    Hours = entity.Hours,
+                    PhoneNumber = entity.PhoneNumber,
+                    Website = entity.Website
+                };
+            }
+        }
         public string UpdatePark(ParkEdit model, int id)
         {
             using (var ctx = new ApplicationDbContext())
