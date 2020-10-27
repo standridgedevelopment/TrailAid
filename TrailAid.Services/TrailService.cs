@@ -25,7 +25,6 @@ namespace TrailAid.Services
                 Name = model.Name,
                 CityID = model.CityID,
                 ParkID = model.ParkID,
-                Rating = model.Rating,
                 Difficulty = model.Difficulty,
                 Description = model.Description,
                 Distance = model.Distance,

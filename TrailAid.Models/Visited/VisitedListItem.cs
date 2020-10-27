@@ -8,5 +8,9 @@ namespace TrailAid.Models.Visited
 {
     public class VisitedListItem
     {
+        public int ID { get; set; }
+        public int? TrailID { get; set; }
+        public string TrailName { get; set; }
+        public int Rating { get; set; }
     }
 }
