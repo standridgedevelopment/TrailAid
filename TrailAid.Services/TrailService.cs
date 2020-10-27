@@ -35,29 +35,22 @@ namespace TrailAid.Services
                 RouteType = model.RouteType
             };
 
-            if (model.Tags != null)
-            {
-                entity.Tags = $"{model.Tags} ";
-                foreach (var tag in entity.Tags.Split(' '))
-                {
-                    if (!entity.AllTags.ListOfAllTags.Contains(tag))
-                    {
-                        return "Tag Error";
-                    }
-                }
-            }
-
             using (var ctx = new ApplicationDbContext())
             {
-                int result = 0;
-                try
+                if (model.Tags != null)
                 {
-                    ctx.Trails.Add(entity);
-                    ctx.SaveChanges();
-                    return "Okay";
+                    var allTags = ctx.AllTags.Single(e => e.ID == 1);
+                    entity.Tags = $"{model.Tags} ";
+                    foreach (var tag in entity.Tags.Split(' '))
+                    {
+                        if (!allTags.ListOfAllTags.Contains(tag))
+                        {
+                            return "Tag Error";
+                        }
+                    }
                 }
-                catch { }
-
+                int result = 0;
+                
                 try
                 {
                     var park = ctx.Parks.Single(e => e.ID == model.ParkID);
@@ -79,6 +72,14 @@ namespace TrailAid.Services
                 if (result == 1) return "Invalid Park ID";
                 if (result == 2) return "Invalid City ID";
                 if (result == 3) return "Invalid City ID & Park ID";
+
+                try
+                {
+                    ctx.Trails.Add(entity);
+                    ctx.SaveChanges();
+                    return "Okay";
+                }
+                catch { }
 
                 return "True";
             }
@@ -156,11 +157,12 @@ namespace TrailAid.Services
                 entity.Elevation = model.Elevation;
                 entity.RouteType = model.RouteType;
 
-                if (model.Tags != null)
+                if ( model.Tags != null)
                 {
-                    foreach (var tag in entity.Tags.Split(' '))
+                    if (entity.Tags == null) entity.Tags = "";
+                    foreach (var tag in model.Tags.Split(' '))
                     {
-                        if (!entity.AllTags.ListOfAllTags.Contains(tag))
+                        if (entity.AllTags != null && !entity.AllTags.ListOfAllTags.Contains(tag))
                         {
                             return "Tag Error";
                         }
@@ -169,17 +171,13 @@ namespace TrailAid.Services
                             entity.Tags = entity.Tags;
                             return "Tag Already Exists";
                         }
-                        else
-                        {
-                            entity.Tags = $"{entity.Tags} " + model.Tags;
-                        }
+                        entity.Tags = $"{entity.Tags} " + model.Tags;
                     }
                 }
                 else { entity.Tags = model.Tags; }
 
                 try
                 {
-                    ctx.Trails.Add(entity);
                     ctx.SaveChanges();
                     return "Okay";
                 }
