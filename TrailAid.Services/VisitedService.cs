@@ -16,16 +16,13 @@ namespace TrailAid.Services
         {
             _userId = userId;
         }
-        public string CreatePark(VisitedCreate model)
+        public string CreateVisit(VisitedCreate model)
         {
             var entity = new Visited()
             {
-                //TrailID = model.TrailID,
-                //Name = model.Name,
-                //Acreage = model.Acreage,
-                //Hours = model.Hours,
-                //PhoneNumber = model.PhoneNumber,
-                //Website = model.Website
+                TrailID = model.TrailID,
+                Rating = model.Rating,
+                Review = model.Review
             };
 
             using (var ctx = new ApplicationDbContext())
@@ -34,11 +31,11 @@ namespace TrailAid.Services
 
                 try
                 {
-                    var city = ctx.Visits.Single(e => e.ID == model.TrailID);
+                    var trail = ctx.Trails.Single(e => e.ID == model.TrailID);
                 }
                 catch
                 {
-                    if (entity.Trail == null) result += 1;
+                    result += 1;
                 }
 
                 if (result == 1) return "Invalid Trail ID";
@@ -60,9 +57,10 @@ namespace TrailAid.Services
                 var query = ctx.Visits.Select
                     (e => new VisitedListItem
                     {
-                        //Name = e.Name,
+                        ID = e.ID,
+                        TrailID =e.TrailID,
                         TrailName = e.Trail.Name,
-                        ID = e.ID
+                        Rating = e.Rating,
                     }
                     );
                 return query.ToArray();
@@ -74,14 +72,22 @@ namespace TrailAid.Services
             using (var ctx = new ApplicationDbContext())
             {
                 var entity = ctx.Visits.Single(e => e.ID == id);
-                return new VisitedDetail
+                if (entity.Trail.ParkID != null) return new VisitedDetail
                 {
-                    //Name = entity.Name,
-                    //CityName = entity.City.Name,
-                    //Acreage = entity.Acreage,
-                    //Hours = entity.Hours,
-                    //PhoneNumber = entity.PhoneNumber,
-                    //Website = entity.Website
+                    TrailID = entity.TrailID,
+                    TrailName = entity.Trail.Name,
+                    ParkName = entity.Trail.Park.Name,
+                    CityName = entity.Trail.City.Name,
+                    Rating = entity.Rating,
+                    Review = entity.Review,
+                };
+                else return new VisitedDetail
+                {
+                    TrailID = entity.TrailID,
+                    TrailName = entity.Trail.Name,
+                    CityName = entity.Trail.City.Name,
+                    Rating = entity.Rating,
+                    Review = entity.Review,
                 };
             }
         }
@@ -90,14 +96,9 @@ namespace TrailAid.Services
             using (var ctx = new ApplicationDbContext())
             {
                 var entity = ctx.Visits.Single(e => e.ID == id);
-
-                //entity.Name = model.Name;
-                //entity.CityID = model.CityID;
-                //entity.Acreage = model.Acreage;
-                //entity.Hours = model.Hours;
-                //entity.PhoneNumber = model.PhoneNumber;
-                //entity.Website = model.Website;
-
+                entity.TrailID = model.TrailID;
+                entity.Rating = model.Rating;
+                entity.Review = model.Review;
                 try
                 {
                     ctx.Visits.Add(entity);
