@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using TrailAid.Models.User;
+using TrailAid.Models.Visited;
 
 namespace TrailAid.Data
 {
@@ -20,18 +20,18 @@ namespace TrailAid.Data
         public string City { get; set; }
         [Required]
         public string State { get; set; }
-        public virtual List<UserDetail> Favorites
+        public virtual List<VisitedDetail> Favorites
         {
             get
             {
-                List<UserDetail> favorites = new List<UserDetail>();
+                List<VisitedDetail> favorites = new List<VisitedDetail>();
                 foreach (var visit in AllVisits)
                 {
                     if (visit.AddToFavorites == true)
                     {
-                        var visitdetails = new Visited();
-                        visitdetails.ID = visit.ID;
-                        visitdetails.Trail.Name = visit.Trail.Name;
+                        var visitdetails = new VisitedDetail();
+                        visitdetails.TrailID = visit.TrailID;
+                        visitdetails.TrailName = visit.Trail.Name;
                         favorites.Add(visitdetails);
                     }
                 }

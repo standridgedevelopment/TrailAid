@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TrailAid.Models.Visited;
 
 namespace TrailAid.Models.User
 {
@@ -12,6 +13,6 @@ namespace TrailAid.Models.User
         public string LastName { get; set; }
         public string City { get; set; }
         public string State { get; set; }
-        public List<Object> Favorites { get; set; }
+        public List<VisitedDetail> Favorites { get; set; }
     }
 }
