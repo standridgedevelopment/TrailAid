@@ -3,7 +3,7 @@ namespace TrailAid.Data.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class _1 : DbMigration
+    public partial class InitialCreate : DbMigration
     {
         public override void Up()
         {
@@ -37,6 +37,7 @@ namespace TrailAid.Data.Migrations
                         Hours = c.String(),
                         PhoneNumber = c.String(),
                         Website = c.String(),
+                        AverageTrailRating = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.ID)
                 .ForeignKey("dbo.City", t => t.CityID, cascadeDelete: true)
@@ -51,6 +52,7 @@ namespace TrailAid.Data.Migrations
                         CityID = c.Int(),
                         ParkID = c.Int(),
                         TagsID = c.Int(nullable: false),
+                        Rating = c.Int(nullable: false),
                         Difficulty = c.String(),
                         Description = c.String(),
                         Distance = c.Int(nullable: false),

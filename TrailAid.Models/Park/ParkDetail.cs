@@ -14,5 +14,6 @@ namespace TrailAid.Models.Park
         public string Hours { get; set; }
         public string PhoneNumber { get; set; }
         public string Website { get; set; }
+        public double AverageTrailRating { get; set; }
     }
 }

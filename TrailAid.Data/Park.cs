@@ -22,6 +22,24 @@ namespace TrailAid.Data
         public string Hours { get; set; }
         public string PhoneNumber { get; set; }
         public string Website { get; set; }
-        //public int AverageTrailRating { get; set; }
+        public double AverageTrailRating 
+        {
+            get
+            {
+                if (Trails.Count == 0 || Trails == null) return 0;
+                double totalRating = 0;
+                double totalReviews = 0;
+                double averageRating = 0;
+                foreach (var trail in Trails)
+                {
+                    totalRating += trail.Rating;
+                    totalReviews += trail.Ratings.Count();
+                }
+                if(totalRating != 0 && totalReviews !=0)
+                    averageRating = totalRating / totalReviews;
+                return Math.Round((double)averageRating, 2);
+            }
+            set { }
+        }
     }
 }

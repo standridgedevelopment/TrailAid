@@ -27,19 +27,21 @@ namespace TrailAid.Data
         public int TagsID{ get; set; }
         public virtual AllTags AllTags { get; set; }
 
-        public int Rating 
+        public double Rating
         {
             get
             {
-                int totalRating = 0;
-                int averageRating = 0;
+                if (Ratings.Count == 0 || Ratings == null) return 0;
+                double totalRating = 0;
+                double averageRating = 0;
                 foreach (var rating in Ratings)
                 {
                     totalRating += rating.Rating;
                 }
-                if (Ratings.Count != 0) averageRating = totalRating / Ratings.Count();
-                return averageRating;
+                averageRating = totalRating / Ratings.Count();
+                return Math.Round((double)averageRating, 2);
             }
+            set { }
         }
         public string Difficulty { get; set; }
         public string Description { get; set; }

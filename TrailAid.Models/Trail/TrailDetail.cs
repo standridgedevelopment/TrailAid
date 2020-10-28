@@ -13,7 +13,7 @@ namespace TrailAid.Models.Trail
         public string CityName { get; set; }
         public int? ParkID { get; set; }
         public string ParkName { get; set; }
-        public int Rating { get; set; }
+        public double Rating { get; set; }
         public string Difficulty { get; set; }
         public string Description { get; set; }
         public int Distance { get; set; }

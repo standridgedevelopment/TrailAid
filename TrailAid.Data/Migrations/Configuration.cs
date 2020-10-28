@@ -10,6 +10,7 @@ namespace TrailAid.Data.Migrations
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
+            ContextKey = "TrailAid.Data.ApplicationDbContext";
         }
 
         protected override void Seed(TrailAid.Data.ApplicationDbContext context)

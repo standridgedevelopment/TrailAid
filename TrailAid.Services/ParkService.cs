@@ -79,6 +79,7 @@ namespace TrailAid.Services
                 {
                     Name = entity.Name,
                     CityName = entity.City.Name,
+                    AverageTrailRating = entity.AverageTrailRating,
                     Acreage = entity.Acreage,
                     Hours = entity.Hours,
                     PhoneNumber = entity.PhoneNumber,
@@ -86,20 +87,26 @@ namespace TrailAid.Services
                 };
             }
         }
-        public ParkDetail GetParkByName(string name)
+        public List<ParkDetail> GetParkByName(string name)
         {
             using (var ctx = new ApplicationDbContext())
             {
-                var entity = ctx.Parks.Single(e => e.Name == name);
-                return new ParkDetail
+                var parks = ctx.Parks.Where(e => e.Name == name).ToList();
+                foreach (var park in parks)
                 {
-                    Name = entity.Name,
-                    CityName = entity.City.Name,
-                    Acreage = entity.Acreage,
-                    Hours = entity.Hours,
-                    PhoneNumber = entity.PhoneNumber,
-                    Website = entity.Website
-                };
+                    var foundPark = new ParkDetail
+                    {
+                        Name = park.Name,
+                        CityName = park.City.Name,
+                        Acreage = park.Acreage,
+                        Hours = park.Hours,
+                        PhoneNumber = park.PhoneNumber,
+                        Website = park.Website
+                    };
+                    searchResults.Add(foundPark);
+                }
+
+                return searchResults;
             }
         }
         public List<ParkDetail> GetParkByCityName(string cityName)

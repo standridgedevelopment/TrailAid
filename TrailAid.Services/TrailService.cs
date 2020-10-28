@@ -60,15 +60,9 @@ namespace TrailAid.Services
                 if (result == 2) return "Invalid City ID";
                 if (result == 3) return "Invalid City ID & Park ID";
 
-                try
-                {
-                    ctx.Trails.Add(entity);
-                    ctx.SaveChanges();
-                    return "Okay";
-                }
-                catch { }
-
-                return "True";
+                ctx.Trails.Add(entity);
+                ctx.SaveChanges();
+                return "Okay";
             }
         }
         public IEnumerable<TrailListItem> GetTrails()
