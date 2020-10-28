@@ -70,7 +70,9 @@ namespace TrailAid.Services
                 {
                     TrailID = entity.TrailID,
                     TrailName = entity.Trail.Name,
+                    ParkID = entity.Trail.Park.ID,
                     ParkName = entity.Trail.Park.Name,
+                    CityID = entity.Trail.City.ID,
                     CityName = entity.Trail.City.Name,
                     Rating = entity.Rating,
                     Review = entity.Review,
@@ -79,6 +81,7 @@ namespace TrailAid.Services
                 {
                     TrailID = entity.TrailID,
                     TrailName = entity.Trail.Name,
+                    CityID = entity.Trail.City.ID,
                     CityName = entity.Trail.City.Name,
                     Rating = entity.Rating,
                     Review = entity.Review,

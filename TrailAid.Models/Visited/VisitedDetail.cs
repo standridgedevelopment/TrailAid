@@ -10,7 +10,9 @@ namespace TrailAid.Models.Visited
     {
         public int? TrailID { get; set; }
         public string TrailName { get; set; }
+        public int? CityID { get; set; }
         public string CityName { get; set; }
+        public int? ParkID { get; set; }
         public string ParkName { get; set; }
         public int Rating { get; set; }
         public string Review { get; set; }
