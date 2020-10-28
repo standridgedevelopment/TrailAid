@@ -20,6 +20,7 @@ namespace TrailAid.Services
         {
             var entity = new Visited()
             {
+                UserID = _userId,
                 TrailID = model.TrailID,
                 Rating = model.Rating,
                 Review = model.Review
@@ -28,26 +29,19 @@ namespace TrailAid.Services
             using (var ctx = new ApplicationDbContext())
             {
                 int result = 0;
+                int visitResult = 0;
 
-                try
-                {
-                    var trail = ctx.Trails.Single(e => e.ID == model.TrailID);
-                }
-                catch
-                {
-                    result += 1;
-                }
-
+                try{var trail = ctx.Trails.Single(e => e.ID == model.TrailID);}
+                catch{result += 1;}
                 if (result == 1) return "Invalid Trail ID";
 
-                try
-                {
-                    ctx.Visits.Add(entity);
-                    ctx.SaveChanges();
-                    return "Okay";
-                }
-                catch { }
-                return "True";
+                try { var visited = ctx.Visits.Single(e => e.TrailID == model.TrailID && e.UserID == _userId); }
+                catch { visitResult += 1; }
+                if (visitResult != 1) return "User Revisit";
+
+                ctx.Visits.Add(entity);
+                ctx.SaveChanges();
+                return "Okay";
             }
         }
         public IEnumerable<VisitedListItem> GetVisits()
