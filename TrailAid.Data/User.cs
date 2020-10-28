@@ -29,10 +29,32 @@ namespace TrailAid.Data
                 {
                     if (visit.AddToFavorites == true)
                     {
-                        var visitdetails = new VisitedDetail();
-                        visitdetails.TrailID = visit.TrailID;
-                        visitdetails.TrailName = visit.Trail.Name;
-                        favorites.Add(visitdetails);
+                        if (visit.Trail.ParkID != null)
+                        {
+                            var visitdetails = new VisitedDetail();
+                            visitdetails.TrailID = visit.TrailID;
+                            visitdetails.TrailName = visit.Trail.Name;
+                            visitdetails.CityID = visit.Trail.CityID;
+                            visitdetails.CityName = visit.Trail.City.Name;
+                            visitdetails.ParkID = visit.Trail.ParkID;
+                            visitdetails.ParkName = visit.Trail.Park.Name;
+                            visitdetails.Rating = visit.Rating;
+                            visitdetails.Review = visit.Review;
+                            visitdetails.AddToFavorites = visit.AddToFavorites;
+                            favorites.Add(visitdetails);
+                        }
+                        else
+                        {
+                            var visitdetails = new VisitedDetail();
+                            visitdetails.TrailID = visit.TrailID;
+                            visitdetails.TrailName = visit.Trail.Name;
+                            visitdetails.CityID = visit.Trail.CityID;
+                            visitdetails.CityName = visit.Trail.City.Name;
+                            visitdetails.Rating = visit.Rating;
+                            visitdetails.Review = visit.Review;
+                            visitdetails.AddToFavorites = visit.AddToFavorites;
+                            favorites.Add(visitdetails);
+                        }
                     }
                 }
 

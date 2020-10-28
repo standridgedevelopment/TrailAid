@@ -87,6 +87,15 @@
     <Compile Include="AllTags.cs" />
     <Compile Include="City.cs" />
     <Compile Include="IdentityModels.cs" />
+    <Compile Include="Migrations\202010281935050_InitialCreate.cs" />
+    <Compile Include="Migrations\202010281935050_InitialCreate.Designer.cs">
+      <DependentUpon>202010281935050_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202010282014410_update.cs" />
+    <Compile Include="Migrations\202010282014410_update.Designer.cs">
+      <DependentUpon>202010282014410_update.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Park.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Trail.cs" />
@@ -102,6 +111,14 @@
       <Project>{5bcf8402-9b31-4adb-8d86-a80de04958d9}</Project>
       <Name>TrailAid.Models</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202010281935050_InitialCreate.resx">
+      <DependentUpon>202010281935050_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202010282014410_update.resx">
+      <DependentUpon>202010282014410_update.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
