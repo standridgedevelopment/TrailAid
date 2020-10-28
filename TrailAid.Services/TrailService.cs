@@ -11,6 +11,7 @@ namespace TrailAid.Services
 {
     public class TrailService
     {
+        List<TrailDetail> searchResults = new List<TrailDetail>();
         private readonly Guid _userId;
 
         public TrailService(Guid userId)
@@ -121,431 +122,543 @@ namespace TrailAid.Services
                 };
             }
         }
-        public TrailDetail GetTrailByCity(int id)
+        public List<TrailDetail> GetTrailByCity(int id)
         {
             using (var ctx = new ApplicationDbContext())
             {
-                var entity = ctx.Trails.Single(e => e.ID == id);
-                if (entity.ParkID != null) return new TrailDetail
+                var trails = ctx.Trails.Where(e => e.ID == id).ToList();
+                foreach (var trail in trails)
                 {
-                    Name = entity.Name,
-                    CityID = entity.CityID,
-                    CityName = entity.City.Name,
-                    ParkID = entity.ParkID,
-                    ParkName = entity.Park.Name,
-                    Rating = entity.Rating,
-                    Difficulty = entity.Difficulty,
-                    Description = entity.Description,
-                    Distance = entity.Distance,
-                    TypeOfTerrain = entity.TypeOfTerrain,
-                    Tags = entity.Tags,
-                    Elevation = entity.Elevation,
-                    RouteType = entity.RouteType,
-                };
-                else return new TrailDetail
-                {
-                    Name = entity.Name,
-                    CityID = entity.CityID,
-                    CityName = entity.City.Name,
-                    Rating = entity.Rating,
-                    Difficulty = entity.Difficulty,
-                    Description = entity.Description,
-                    Distance = entity.Distance,
-                    TypeOfTerrain = entity.TypeOfTerrain,
-                    Tags = entity.Tags,
-                    Elevation = entity.Elevation,
-                    RouteType = entity.RouteType,
-                };
+                    if (trail.ParkID != null)
+                    {
+                        var foundTrail = new TrailDetail
+                        {
+                            Name = trail.Name,
+                            CityID = trail.CityID,
+                            CityName = trail.City.Name,
+                            ParkID = trail.ParkID,
+                            ParkName = trail.Park.Name,
+                            Rating = trail.Rating,
+                            Difficulty = trail.Difficulty,
+                            Description = trail.Description,
+                            Distance = trail.Distance,
+                            TypeOfTerrain = trail.TypeOfTerrain,
+                            Tags = trail.Tags,
+                            Elevation = trail.Elevation,
+                            RouteType = trail.RouteType,
+                        };
+                        searchResults.Add(foundTrail);
+                    }
+                    else
+                    {
+                        var foundTrail = new TrailDetail
+                        {
+                            Name = trail.Name,
+                            CityID = trail.CityID,
+                            CityName = trail.City.Name,
+                            Rating = trail.Rating,
+                            Difficulty = trail.Difficulty,
+                            Description = trail.Description,
+                            Distance = trail.Distance,
+                            TypeOfTerrain = trail.TypeOfTerrain,
+                            Tags = trail.Tags,
+                            Elevation = trail.Elevation,
+                            RouteType = trail.RouteType,
+                        };
+                        searchResults.Add(foundTrail);
+                    }
+                }
+                return searchResults;
             }
         }
-        public TrailDetail GetTrailByName(string name)
+        public List<TrailDetail> GetTrailByName(string name)
         {
             using (var ctx = new ApplicationDbContext())
             {
-                var entity = ctx.Trails.Single(e => e.Name == name);
+                var trails = ctx.Trails.Where(e => e.Name == name).ToList();
+                foreach (var trail in trails)
                 {
-                    if (entity.ParkID != null) return new TrailDetail
+                    if (trail.ParkID != null)
                     {
-                        Name = entity.Name,
-                        CityID = entity.CityID,
-                        CityName = entity.City.Name,
-                        ParkID = entity.ParkID,
-                        ParkName = entity.Park.Name,
-                        Rating = entity.Rating,
-                        Difficulty = entity.Difficulty,
-                        Description = entity.Description,
-                        Distance = entity.Distance,
-                        TypeOfTerrain = entity.TypeOfTerrain,
-                        Tags = entity.Tags,
-                        Elevation = entity.Elevation,
-                        RouteType = entity.RouteType,
-                    };
-                    else return new TrailDetail
+                        var foundTrail = new TrailDetail
+                        {
+                            Name = trail.Name,
+                            CityID = trail.CityID,
+                            CityName = trail.City.Name,
+                            ParkID = trail.ParkID,
+                            ParkName = trail.Park.Name,
+                            Rating = trail.Rating,
+                            Difficulty = trail.Difficulty,
+                            Description = trail.Description,
+                            Distance = trail.Distance,
+                            TypeOfTerrain = trail.TypeOfTerrain,
+                            Tags = trail.Tags,
+                            Elevation = trail.Elevation,
+                            RouteType = trail.RouteType,
+                        };
+                        searchResults.Add(foundTrail);
+                    }
+                    else
                     {
-                        Name = entity.Name,
-                        CityID = entity.CityID,
-                        CityName = entity.City.Name,
-                        Rating = entity.Rating,
-                        Difficulty = entity.Difficulty,
-                        Description = entity.Description,
-                        Distance = entity.Distance,
-                        TypeOfTerrain = entity.TypeOfTerrain,
-                        Tags = entity.Tags,
-                        Elevation = entity.Elevation,
-                        RouteType = entity.RouteType,
-                    };
+                        var foundTrail = new TrailDetail
+                        {
+                            Name = trail.Name,
+                            CityID = trail.CityID,
+                            CityName = trail.City.Name,
+                            Rating = trail.Rating,
+                            Difficulty = trail.Difficulty,
+                            Description = trail.Description,
+                            Distance = trail.Distance,
+                            TypeOfTerrain = trail.TypeOfTerrain,
+                            Tags = trail.Tags,
+                            Elevation = trail.Elevation,
+                            RouteType = trail.RouteType,
+                        };
+                        searchResults.Add(foundTrail);
+                    }
                 }
+                return searchResults;
             }
         }
-        public TrailDetail GetTrailByCityName(string cityName)
+        public List<TrailDetail> GetTrailByCityName(string cityName)
         {
             using (var ctx = new ApplicationDbContext())
             {
-                var entity = ctx.Trails.Single(e => e.City.Name == cityName);
+                var trails = ctx.Trails.Where(e => e.City.Name == cityName).ToList();
+                foreach (var trail in trails)
                 {
-                    if (entity.ParkID != null) return new TrailDetail
+                    if (trail.ParkID != null)
                     {
-                        Name = entity.Name,
-                        CityID = entity.CityID,
-                        CityName = entity.City.Name,
-                        ParkID = entity.ParkID,
-                        ParkName = entity.Park.Name,
-                        Rating = entity.Rating,
-                        Difficulty = entity.Difficulty,
-                        Description = entity.Description,
-                        Distance = entity.Distance,
-                        TypeOfTerrain = entity.TypeOfTerrain,
-                        Tags = entity.Tags,
-                        Elevation = entity.Elevation,
-                        RouteType = entity.RouteType,
-                    };
-                    else return new TrailDetail
+                        var foundTrail = new TrailDetail
+                        {
+                            Name = trail.Name,
+                            CityID = trail.CityID,
+                            CityName = trail.City.Name,
+                            ParkID = trail.ParkID,
+                            ParkName = trail.Park.Name,
+                            Rating = trail.Rating,
+                            Difficulty = trail.Difficulty,
+                            Description = trail.Description,
+                            Distance = trail.Distance,
+                            TypeOfTerrain = trail.TypeOfTerrain,
+                            Tags = trail.Tags,
+                            Elevation = trail.Elevation,
+                            RouteType = trail.RouteType,
+                        };
+                        searchResults.Add(foundTrail);
+                    }
+                    else
                     {
-                        Name = entity.Name,
-                        CityID = entity.CityID,
-                        CityName = entity.City.Name,
-                        Rating = entity.Rating,
-                        Difficulty = entity.Difficulty,
-                        Description = entity.Description,
-                        Distance = entity.Distance,
-                        TypeOfTerrain = entity.TypeOfTerrain,
-                        Tags = entity.Tags,
-                        Elevation = entity.Elevation,
-                        RouteType = entity.RouteType,
-                    };
+                        var foundTrail = new TrailDetail
+                        {
+                            Name = trail.Name,
+                            CityID = trail.CityID,
+                            CityName = trail.City.Name,
+                            Rating = trail.Rating,
+                            Difficulty = trail.Difficulty,
+                            Description = trail.Description,
+                            Distance = trail.Distance,
+                            TypeOfTerrain = trail.TypeOfTerrain,
+                            Tags = trail.Tags,
+                            Elevation = trail.Elevation,
+                            RouteType = trail.RouteType,
+                        };
+                        searchResults.Add(foundTrail);
+                    }
                 }
+                return searchResults;
             }
         }
-        public TrailDetail GetTrailByParkName(string parkName)
+        public List<TrailDetail> GetTrailByParkName(string parkName)
         {
             using (var ctx = new ApplicationDbContext())
             {
-                var entity = ctx.Trails.Single(e => e.Park.Name == parkName);
+                var trails = ctx.Trails.Where(e => e.Park.Name == parkName).ToList();
+                foreach (var trail in trails)
                 {
-                    if (entity.ParkID != null) return new TrailDetail
+                    if (trail.ParkID != null)
                     {
-                        Name = entity.Name,
-                        CityID = entity.CityID,
-                        CityName = entity.City.Name,
-                        ParkID = entity.ParkID,
-                        ParkName = entity.Park.Name,
-                        Rating = entity.Rating,
-                        Difficulty = entity.Difficulty,
-                        Description = entity.Description,
-                        Distance = entity.Distance,
-                        TypeOfTerrain = entity.TypeOfTerrain,
-                        Tags = entity.Tags,
-                        Elevation = entity.Elevation,
-                        RouteType = entity.RouteType,
-                    };
-                    else return new TrailDetail
+                        var foundTrail = new TrailDetail
+                        {
+                            Name = trail.Name,
+                            CityID = trail.CityID,
+                            CityName = trail.City.Name,
+                            ParkID = trail.ParkID,
+                            ParkName = trail.Park.Name,
+                            Rating = trail.Rating,
+                            Difficulty = trail.Difficulty,
+                            Description = trail.Description,
+                            Distance = trail.Distance,
+                            TypeOfTerrain = trail.TypeOfTerrain,
+                            Tags = trail.Tags,
+                            Elevation = trail.Elevation,
+                            RouteType = trail.RouteType,
+                        };
+                        searchResults.Add(foundTrail);
+                    }
+                    else
                     {
-                        Name = entity.Name,
-                        CityID = entity.CityID,
-                        CityName = entity.City.Name,
-                        Rating = entity.Rating,
-                        Difficulty = entity.Difficulty,
-                        Description = entity.Description,
-                        Distance = entity.Distance,
-                        TypeOfTerrain = entity.TypeOfTerrain,
-                        Tags = entity.Tags,
-                        Elevation = entity.Elevation,
-                        RouteType = entity.RouteType,
-                    };
+                        var foundTrail = new TrailDetail
+                        {
+                            Name = trail.Name,
+                            CityID = trail.CityID,
+                            CityName = trail.City.Name,
+                            Rating = trail.Rating,
+                            Difficulty = trail.Difficulty,
+                            Description = trail.Description,
+                            Distance = trail.Distance,
+                            TypeOfTerrain = trail.TypeOfTerrain,
+                            Tags = trail.Tags,
+                            Elevation = trail.Elevation,
+                            RouteType = trail.RouteType,
+                        };
+                        searchResults.Add(foundTrail);
+                    }
                 }
+                return searchResults;
             }
         }
-        public TrailDetail GetTrailByRating(int rating)
+        public List<TrailDetail> GetTrailByRating(int rating)
         {
             using (var ctx = new ApplicationDbContext())
             {
-                var entity = ctx.Trails.Single(e => e.Rating == rating);
+                var trails = ctx.Trails.Where(e => e.Rating == rating).ToList();
+                foreach (var trail in trails)
                 {
-                    if (entity.ParkID != null) return new TrailDetail
+                    if (trail.ParkID != null)
                     {
-                        Name = entity.Name,
-                        CityID = entity.CityID,
-                        CityName = entity.City.Name,
-                        ParkID = entity.ParkID,
-                        ParkName = entity.Park.Name,
-                        Rating = entity.Rating,
-                        Difficulty = entity.Difficulty,
-                        Description = entity.Description,
-                        Distance = entity.Distance,
-                        TypeOfTerrain = entity.TypeOfTerrain,
-                        Tags = entity.Tags,
-                        Elevation = entity.Elevation,
-                        RouteType = entity.RouteType,
-                    };
-                    else return new TrailDetail
+                        var foundTrail = new TrailDetail
+                        {
+                            Name = trail.Name,
+                            CityID = trail.CityID,
+                            CityName = trail.City.Name,
+                            ParkID = trail.ParkID,
+                            ParkName = trail.Park.Name,
+                            Rating = trail.Rating,
+                            Difficulty = trail.Difficulty,
+                            Description = trail.Description,
+                            Distance = trail.Distance,
+                            TypeOfTerrain = trail.TypeOfTerrain,
+                            Tags = trail.Tags,
+                            Elevation = trail.Elevation,
+                            RouteType = trail.RouteType,
+                        };
+                        searchResults.Add(foundTrail);
+                    }
+                    else
                     {
-                        Name = entity.Name,
-                        CityID = entity.CityID,
-                        CityName = entity.City.Name,
-                        Rating = entity.Rating,
-                        Difficulty = entity.Difficulty,
-                        Description = entity.Description,
-                        Distance = entity.Distance,
-                        TypeOfTerrain = entity.TypeOfTerrain,
-                        Tags = entity.Tags,
-                        Elevation = entity.Elevation,
-                        RouteType = entity.RouteType,
-                    };
+                        var foundTrail = new TrailDetail
+                        {
+                            Name = trail.Name,
+                            CityID = trail.CityID,
+                            CityName = trail.City.Name,
+                            Rating = trail.Rating,
+                            Difficulty = trail.Difficulty,
+                            Description = trail.Description,
+                            Distance = trail.Distance,
+                            TypeOfTerrain = trail.TypeOfTerrain,
+                            Tags = trail.Tags,
+                            Elevation = trail.Elevation,
+                            RouteType = trail.RouteType,
+                        };
+                        searchResults.Add(foundTrail);
+                    }
                 }
+                return searchResults;
             }
         }
-        public TrailDetail GetTrailByDifficulty(string difficulty)
+        public List<TrailDetail> GetTrailByDifficulty(string difficulty)
         {
             using (var ctx = new ApplicationDbContext())
             {
-                var entity = ctx.Trails.Single(e => e.Difficulty == difficulty);
+                var trails = ctx.Trails.Where(e => e.Difficulty == difficulty).ToList();
+                foreach (var trail in trails)
                 {
-                    if (entity.ParkID != null) return new TrailDetail
+                    if (trail.ParkID != null)
                     {
-                        Name = entity.Name,
-                        CityID = entity.CityID,
-                        CityName = entity.City.Name,
-                        ParkID = entity.ParkID,
-                        ParkName = entity.Park.Name,
-                        Rating = entity.Rating,
-                        Difficulty = entity.Difficulty,
-                        Description = entity.Description,
-                        Distance = entity.Distance,
-                        TypeOfTerrain = entity.TypeOfTerrain,
-                        Tags = entity.Tags,
-                        Elevation = entity.Elevation,
-                        RouteType = entity.RouteType,
-                    };
-                    else return new TrailDetail
+                        var foundTrail = new TrailDetail
+                        {
+                            Name = trail.Name,
+                            CityID = trail.CityID,
+                            CityName = trail.City.Name,
+                            ParkID = trail.ParkID,
+                            ParkName = trail.Park.Name,
+                            Rating = trail.Rating,
+                            Difficulty = trail.Difficulty,
+                            Description = trail.Description,
+                            Distance = trail.Distance,
+                            TypeOfTerrain = trail.TypeOfTerrain,
+                            Tags = trail.Tags,
+                            Elevation = trail.Elevation,
+                            RouteType = trail.RouteType,
+                        };
+                        searchResults.Add(foundTrail);
+                    }
+                    else
                     {
-                        Name = entity.Name,
-                        CityID = entity.CityID,
-                        CityName = entity.City.Name,
-                        Rating = entity.Rating,
-                        Difficulty = entity.Difficulty,
-                        Description = entity.Description,
-                        Distance = entity.Distance,
-                        TypeOfTerrain = entity.TypeOfTerrain,
-                        Tags = entity.Tags,
-                        Elevation = entity.Elevation,
-                        RouteType = entity.RouteType,
-                    };
+                        var foundTrail = new TrailDetail
+                        {
+                            Name = trail.Name,
+                            CityID = trail.CityID,
+                            CityName = trail.City.Name,
+                            Rating = trail.Rating,
+                            Difficulty = trail.Difficulty,
+                            Description = trail.Description,
+                            Distance = trail.Distance,
+                            TypeOfTerrain = trail.TypeOfTerrain,
+                            Tags = trail.Tags,
+                            Elevation = trail.Elevation,
+                            RouteType = trail.RouteType,
+                        };
+                        searchResults.Add(foundTrail);
+                    }
                 }
+                return searchResults;
             }
         }
-        public TrailDetail GetTrailByDescription(string description)
+        public List<TrailDetail> GetTrailByDescription(string description)
         {
             using (var ctx = new ApplicationDbContext())
             {
-                var entity = ctx.Trails.Single(e => e.Description == description);
+                var trails = ctx.Trails.Where(e => e.Description == description).ToList();
+                foreach (var trail in trails)
                 {
-                    if (entity.ParkID != null) return new TrailDetail
+                    if (trail.ParkID != null)
                     {
-                        Name = entity.Name,
-                        CityID = entity.CityID,
-                        CityName = entity.City.Name,
-                        ParkID = entity.ParkID,
-                        ParkName = entity.Park.Name,
-                        Rating = entity.Rating,
-                        Difficulty = entity.Difficulty,
-                        Description = entity.Description,
-                        Distance = entity.Distance,
-                        TypeOfTerrain = entity.TypeOfTerrain,
-                        Tags = entity.Tags,
-                        Elevation = entity.Elevation,
-                        RouteType = entity.RouteType,
-                    };
-                    else return new TrailDetail
+                        var foundTrail = new TrailDetail
+                        {
+                            Name = trail.Name,
+                            CityID = trail.CityID,
+                            CityName = trail.City.Name,
+                            ParkID = trail.ParkID,
+                            ParkName = trail.Park.Name,
+                            Rating = trail.Rating,
+                            Difficulty = trail.Difficulty,
+                            Description = trail.Description,
+                            Distance = trail.Distance,
+                            TypeOfTerrain = trail.TypeOfTerrain,
+                            Tags = trail.Tags,
+                            Elevation = trail.Elevation,
+                            RouteType = trail.RouteType,
+                        };
+                        searchResults.Add(foundTrail);
+                    }
+                    else
                     {
-                        Name = entity.Name,
-                        CityID = entity.CityID,
-                        CityName = entity.City.Name,
-                        Rating = entity.Rating,
-                        Difficulty = entity.Difficulty,
-                        Description = entity.Description,
-                        Distance = entity.Distance,
-                        TypeOfTerrain = entity.TypeOfTerrain,
-                        Tags = entity.Tags,
-                        Elevation = entity.Elevation,
-                        RouteType = entity.RouteType,
-                    };
+                        var foundTrail = new TrailDetail
+                        {
+                            Name = trail.Name,
+                            CityID = trail.CityID,
+                            CityName = trail.City.Name,
+                            Rating = trail.Rating,
+                            Difficulty = trail.Difficulty,
+                            Description = trail.Description,
+                            Distance = trail.Distance,
+                            TypeOfTerrain = trail.TypeOfTerrain,
+                            Tags = trail.Tags,
+                            Elevation = trail.Elevation,
+                            RouteType = trail.RouteType,
+                        };
+                        searchResults.Add(foundTrail);
+                    }
                 }
+                return searchResults;
             }
         }
-        public TrailDetail GetTrailByDistance(int distance)
+        public List<TrailDetail> GetTrailByDistance(int distance)
         {
             using (var ctx = new ApplicationDbContext())
             {
-                var entity = ctx.Trails.Single(e => e.Distance == distance);
+                var trails = ctx.Trails.Where(e => e.Distance == distance).ToList();
+                foreach (var trail in trails)
                 {
-                    if (entity.ParkID != null) return new TrailDetail
+                    if (trail.ParkID != null)
                     {
-                        Name = entity.Name,
-                        CityID = entity.CityID,
-                        CityName = entity.City.Name,
-                        ParkID = entity.ParkID,
-                        ParkName = entity.Park.Name,
-                        Rating = entity.Rating,
-                        Difficulty = entity.Difficulty,
-                        Description = entity.Description,
-                        Distance = entity.Distance,
-                        TypeOfTerrain = entity.TypeOfTerrain,
-                        Tags = entity.Tags,
-                        Elevation = entity.Elevation,
-                        RouteType = entity.RouteType,
-                    };
-                    else return new TrailDetail
+                        var foundTrail = new TrailDetail
+                        {
+                            Name = trail.Name,
+                            CityID = trail.CityID,
+                            CityName = trail.City.Name,
+                            ParkID = trail.ParkID,
+                            ParkName = trail.Park.Name,
+                            Rating = trail.Rating,
+                            Difficulty = trail.Difficulty,
+                            Description = trail.Description,
+                            Distance = trail.Distance,
+                            TypeOfTerrain = trail.TypeOfTerrain,
+                            Tags = trail.Tags,
+                            Elevation = trail.Elevation,
+                            RouteType = trail.RouteType,
+                        };
+                        searchResults.Add(foundTrail);
+                    }
+                    else
                     {
-                        Name = entity.Name,
-                        CityID = entity.CityID,
-                        CityName = entity.City.Name,
-                        Rating = entity.Rating,
-                        Difficulty = entity.Difficulty,
-                        Description = entity.Description,
-                        Distance = entity.Distance,
-                        TypeOfTerrain = entity.TypeOfTerrain,
-                        Tags = entity.Tags,
-                        Elevation = entity.Elevation,
-                        RouteType = entity.RouteType,
-                    };
+                        var foundTrail = new TrailDetail
+                        {
+                            Name = trail.Name,
+                            CityID = trail.CityID,
+                            CityName = trail.City.Name,
+                            Rating = trail.Rating,
+                            Difficulty = trail.Difficulty,
+                            Description = trail.Description,
+                            Distance = trail.Distance,
+                            TypeOfTerrain = trail.TypeOfTerrain,
+                            Tags = trail.Tags,
+                            Elevation = trail.Elevation,
+                            RouteType = trail.RouteType,
+                        };
+                        searchResults.Add(foundTrail);
+                    }
                 }
+                return searchResults;
             }
         }
-        public TrailDetail GetTrailByTypeOfTerrain(string typeOfTerrain)
+        public List<TrailDetail> GetTrailByTypeOfTerrain(string typeOfTerrain)
         {
             using (var ctx = new ApplicationDbContext())
             {
-                var entity = ctx.Trails.Single(e => e.TypeOfTerrain == typeOfTerrain);
+                var trails = ctx.Trails.Where(e => e.TypeOfTerrain == typeOfTerrain).ToList();
+                foreach (var trail in trails)
                 {
-                    if (entity.ParkID != null) return new TrailDetail
+                    if (trail.ParkID != null)
                     {
-                        Name = entity.Name,
-                        CityID = entity.CityID,
-                        CityName = entity.City.Name,
-                        ParkID = entity.ParkID,
-                        ParkName = entity.Park.Name,
-                        Rating = entity.Rating,
-                        Difficulty = entity.Difficulty,
-                        Description = entity.Description,
-                        Distance = entity.Distance,
-                        TypeOfTerrain = entity.TypeOfTerrain,
-                        Tags = entity.Tags,
-                        Elevation = entity.Elevation,
-                        RouteType = entity.RouteType,
-                    };
-                    else return new TrailDetail
+                        var foundTrail = new TrailDetail
+                        {
+                            Name = trail.Name,
+                            CityID = trail.CityID,
+                            CityName = trail.City.Name,
+                            ParkID = trail.ParkID,
+                            ParkName = trail.Park.Name,
+                            Rating = trail.Rating,
+                            Difficulty = trail.Difficulty,
+                            Description = trail.Description,
+                            Distance = trail.Distance,
+                            TypeOfTerrain = trail.TypeOfTerrain,
+                            Tags = trail.Tags,
+                            Elevation = trail.Elevation,
+                            RouteType = trail.RouteType,
+                        };
+                        searchResults.Add(foundTrail);
+                    }
+                    else
                     {
-                        Name = entity.Name,
-                        CityID = entity.CityID,
-                        CityName = entity.City.Name,
-                        Rating = entity.Rating,
-                        Difficulty = entity.Difficulty,
-                        Description = entity.Description,
-                        Distance = entity.Distance,
-                        TypeOfTerrain = entity.TypeOfTerrain,
-                        Tags = entity.Tags,
-                        Elevation = entity.Elevation,
-                        RouteType = entity.RouteType,
-                    };
+                        var foundTrail = new TrailDetail
+                        {
+                            Name = trail.Name,
+                            CityID = trail.CityID,
+                            CityName = trail.City.Name,
+                            Rating = trail.Rating,
+                            Difficulty = trail.Difficulty,
+                            Description = trail.Description,
+                            Distance = trail.Distance,
+                            TypeOfTerrain = trail.TypeOfTerrain,
+                            Tags = trail.Tags,
+                            Elevation = trail.Elevation,
+                            RouteType = trail.RouteType,
+                        };
+                        searchResults.Add(foundTrail);
+                    }
                 }
+                return searchResults;
             }
         }
-        public TrailDetail GetTrailByElevation(int elevation)
+        public List<TrailDetail> GetTrailByElevation(int elevation)
         {
             using (var ctx = new ApplicationDbContext())
             {
-                var entity = ctx.Trails.Single(e => e.Elevation == elevation);
+                var trails = ctx.Trails.Where(e => e.Elevation == elevation).ToList();
+                foreach (var trail in trails)
                 {
-                    if (entity.ParkID != null) return new TrailDetail
+                    if (trail.ParkID != null)
                     {
-                        Name = entity.Name,
-                        CityID = entity.CityID,
-                        CityName = entity.City.Name,
-                        ParkID = entity.ParkID,
-                        ParkName = entity.Park.Name,
-                        Rating = entity.Rating,
-                        Difficulty = entity.Difficulty,
-                        Description = entity.Description,
-                        Distance = entity.Distance,
-                        TypeOfTerrain = entity.TypeOfTerrain,
-                        Tags = entity.Tags,
-                        Elevation = entity.Elevation,
-                        RouteType = entity.RouteType,
-                    };
-                    else return new TrailDetail
+                        var foundTrail = new TrailDetail
+                        {
+                            Name = trail.Name,
+                            CityID = trail.CityID,
+                            CityName = trail.City.Name,
+                            ParkID = trail.ParkID,
+                            ParkName = trail.Park.Name,
+                            Rating = trail.Rating,
+                            Difficulty = trail.Difficulty,
+                            Description = trail.Description,
+                            Distance = trail.Distance,
+                            TypeOfTerrain = trail.TypeOfTerrain,
+                            Tags = trail.Tags,
+                            Elevation = trail.Elevation,
+                            RouteType = trail.RouteType,
+                        };
+                        searchResults.Add(foundTrail);
+                    }
+                    else
                     {
-                        Name = entity.Name,
-                        CityID = entity.CityID,
-                        CityName = entity.City.Name,
-                        Rating = entity.Rating,
-                        Difficulty = entity.Difficulty,
-                        Description = entity.Description,
-                        Distance = entity.Distance,
-                        TypeOfTerrain = entity.TypeOfTerrain,
-                        Tags = entity.Tags,
-                        Elevation = entity.Elevation,
-                        RouteType = entity.RouteType,
-                    };
+                        var foundTrail = new TrailDetail
+                        {
+                            Name = trail.Name,
+                            CityID = trail.CityID,
+                            CityName = trail.City.Name,
+                            Rating = trail.Rating,
+                            Difficulty = trail.Difficulty,
+                            Description = trail.Description,
+                            Distance = trail.Distance,
+                            TypeOfTerrain = trail.TypeOfTerrain,
+                            Tags = trail.Tags,
+                            Elevation = trail.Elevation,
+                            RouteType = trail.RouteType,
+                        };
+                        searchResults.Add(foundTrail);
+                    }
                 }
+                return searchResults;
             }
         }
-        public TrailDetail GetTrailByRouteType(string routeType)
+        public List<TrailDetail> GetTrailByRouteType(string routeType)
         {
             using (var ctx = new ApplicationDbContext())
             {
-                var entity = ctx.Trails.Single(e => e.RouteType == routeType);
+                var trails = ctx.Trails.Where(e => e.RouteType == routeType).ToList();
+                foreach (var trail in trails)
                 {
-                    if (entity.ParkID != null) return new TrailDetail
+                    if (trail.ParkID != null)
                     {
-                        Name = entity.Name,
-                        CityID = entity.CityID,
-                        CityName = entity.City.Name,
-                        ParkID = entity.ParkID,
-                        ParkName = entity.Park.Name,
-                        Rating = entity.Rating,
-                        Difficulty = entity.Difficulty,
-                        Description = entity.Description,
-                        Distance = entity.Distance,
-                        TypeOfTerrain = entity.TypeOfTerrain,
-                        Tags = entity.Tags,
-                        Elevation = entity.Elevation,
-                        RouteType = entity.RouteType,
-                    };
-                    else return new TrailDetail
+                        var foundTrail = new TrailDetail
+                        {
+                            Name = trail.Name,
+                            CityID = trail.CityID,
+                            CityName = trail.City.Name,
+                            ParkID = trail.ParkID,
+                            ParkName = trail.Park.Name,
+                            Rating = trail.Rating,
+                            Difficulty = trail.Difficulty,
+                            Description = trail.Description,
+                            Distance = trail.Distance,
+                            TypeOfTerrain = trail.TypeOfTerrain,
+                            Tags = trail.Tags,
+                            Elevation = trail.Elevation,
+                            RouteType = trail.RouteType,
+                        };
+                        searchResults.Add(foundTrail);
+                    }
+                    else
                     {
-                        Name = entity.Name,
-                        CityID = entity.CityID,
-                        CityName = entity.City.Name,
-                        Rating = entity.Rating,
-                        Difficulty = entity.Difficulty,
-                        Description = entity.Description,
-                        Distance = entity.Distance,
-                        TypeOfTerrain = entity.TypeOfTerrain,
-                        Tags = entity.Tags,
-                        Elevation = entity.Elevation,
-                        RouteType = entity.RouteType,
-                    };
+                        var foundTrail = new TrailDetail
+                        {
+                            Name = trail.Name,
+                            CityID = trail.CityID,
+                            CityName = trail.City.Name,
+                            Rating = trail.Rating,
+                            Difficulty = trail.Difficulty,
+                            Description = trail.Description,
+                            Distance = trail.Distance,
+                            TypeOfTerrain = trail.TypeOfTerrain,
+                            Tags = trail.Tags,
+                            Elevation = trail.Elevation,
+                            RouteType = trail.RouteType,
+                        };
+                        searchResults.Add(foundTrail);
+                    }
                 }
+                return searchResults;
             }
         }
         public string UpdateTrail(TrailEdit model, int id)

@@ -79,7 +79,6 @@ namespace TrailAid.Services
                 {
                     Name = entity.Name,
                     CityName = entity.City.Name,
-                    AverageTrailRating = entity.AverageTrailRating,
                     Acreage = entity.Acreage,
                     Hours = entity.Hours,
                     PhoneNumber = entity.PhoneNumber,
@@ -105,7 +104,6 @@ namespace TrailAid.Services
                     };
                     searchResults.Add(foundPark);
                 }
-
                 return searchResults;
             }
         }
@@ -113,7 +111,7 @@ namespace TrailAid.Services
         {
             using (var ctx = new ApplicationDbContext())
             {
-                var parks = ctx.Parks.Where(s => s.City.Name == cityName).ToList();
+                var parks = ctx.Parks.Where(e => e.City.Name == cityName).ToList();
                 foreach (var park in parks)
                 {
                     var foundPark = new ParkDetail
