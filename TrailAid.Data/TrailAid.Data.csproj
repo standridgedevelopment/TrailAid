@@ -87,15 +87,6 @@
     <Compile Include="AllTags.cs" />
     <Compile Include="City.cs" />
     <Compile Include="IdentityModels.cs" />
-    <Compile Include="Migrations\202010281405028_InitialCreate.cs" />
-    <Compile Include="Migrations\202010281405028_InitialCreate.Designer.cs">
-      <DependentUpon>202010281405028_InitialCreate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202010281420519_1.cs" />
-    <Compile Include="Migrations\202010281420519_1.Designer.cs">
-      <DependentUpon>202010281420519_1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Park.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Trail.cs" />
@@ -105,14 +96,6 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\202010281405028_InitialCreate.resx">
-      <DependentUpon>202010281405028_InitialCreate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202010281420519_1.resx">
-      <DependentUpon>202010281420519_1.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
