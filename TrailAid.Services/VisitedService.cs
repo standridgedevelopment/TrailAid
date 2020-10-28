@@ -23,8 +23,9 @@ namespace TrailAid.Services
                 UserID = _userId,
                 TrailID = model.TrailID,
                 Rating = model.Rating,
-                Review = model.Review
-            };
+                Review = model.Review,
+                AddToFavorites = model.AddToFavorites
+        };
 
             using (var ctx = new ApplicationDbContext())
             {
@@ -76,6 +77,7 @@ namespace TrailAid.Services
                     CityName = entity.Trail.City.Name,
                     Rating = entity.Rating,
                     Review = entity.Review,
+                    AddToFavorites = entity.AddToFavorites
                 };
                 else return new VisitedDetail
                 {
@@ -85,6 +87,7 @@ namespace TrailAid.Services
                     CityName = entity.Trail.City.Name,
                     Rating = entity.Rating,
                     Review = entity.Review,
+                    AddToFavorites = entity.AddToFavorites
                 };
             }
         }
@@ -96,9 +99,9 @@ namespace TrailAid.Services
                 entity.TrailID = model.TrailID;
                 entity.Rating = model.Rating;
                 entity.Review = model.Review;
+                entity.AddToFavorites = model.AddToFavorites;
                 try
                 {
-                    ctx.Visits.Add(entity);
                     ctx.SaveChanges();
                     return "Okay";
                 }

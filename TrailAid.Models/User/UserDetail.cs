@@ -12,5 +12,6 @@ namespace TrailAid.Models.User
         public string LastName { get; set; }
         public string City { get; set; }
         public string State { get; set; }
+        public List<Object> Favorites { get; set; }
     }
 }
