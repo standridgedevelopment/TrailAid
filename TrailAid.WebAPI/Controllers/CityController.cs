@@ -12,12 +12,21 @@ namespace TrailAid.WebAPI.Controllers
 {
     public class CityController : ApiController
     {
+        /// <summary>  
+        /// Get all Cities  
+        /// </summary>  
+        /// <returns>List of Cities</returns>
         public IHttpActionResult Get()
         {
             CityService cityService = CreateCityService();
             var user = cityService.GetCities();
             return Ok(user);
         }
+        /// <summary>  
+        /// Get City By ID  
+        /// </summary>  
+        /// <param name="id"> city id</param>  
+        /// <returns>city object by id </returns>
         public IHttpActionResult Get(int id)
         {
             CityService CityService = CreateCityService();
