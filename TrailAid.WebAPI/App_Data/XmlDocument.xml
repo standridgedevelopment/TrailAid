@@ -482,17 +482,32 @@
             <param name="documentPath">The physical path to XML document.</param>
         </member>
         <member name="M:TrailAid.WebAPI.Controllers.CityController.Get">
-            <summary>  
-            Get all Cities  
-            </summary>  
-            <returns>List of Cities</returns>
+            <summary>
+            Get All Cities
+            </summary>
+            <returns>Returns a list of all cities</returns>
         </member>
         <member name="M:TrailAid.WebAPI.Controllers.CityController.Get(System.Int32)">
-            <summary>  
-            Get City By ID  
-            </summary>  
-            <param name="id"> city id</param>  
-            <returns>city object by id </returns>
+            <summary>
+            Get City By ID
+            </summary>
+            <param name="id"> City ID</param>
+            <returns>Returns city object by ID</returns>
+            <returns>Returns city object by ID</returns>
+        </member>
+        <member name="M:TrailAid.WebAPI.Controllers.CityController.Post(TrailAid.Models.City.CityCreate)">
+            <summary>
+            Create a new City
+            </summary>
+            <remarks>
+            Longer comments can be associated with a type or member through
+            the remarks tag.
+            </remarks>
+            <value>
+            A value tag is used to describe the property value.
+            </value>
+            <param name="city"> City Name</param>
+            <returns>Returns A New City</returns>
         </member>
     </members>
 </doc>

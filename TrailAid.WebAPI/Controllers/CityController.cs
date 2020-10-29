@@ -12,21 +12,22 @@ namespace TrailAid.WebAPI.Controllers
 {
     public class CityController : ApiController
     {
-        /// <summary>  
-        /// Get all Cities  
-        /// </summary>  
-        /// <returns>List of Cities</returns>
+        /// <summary>
+        /// Get All Cities
+        /// </summary>
+        /// <returns>Returns a list of all cities</returns>
         public IHttpActionResult Get()
         {
             CityService cityService = CreateCityService();
             var city = cityService.GetCities();
             return Ok(city);
         }
-        /// <summary>  
-        /// Get City By ID  
-        /// </summary>  
-        /// <param name="id"> city id</param>  
-        /// <returns>city object by id </returns>
+        /// <summary>
+        /// Get City By ID
+        /// </summary>
+        /// <param name="id"> City ID</param>
+        /// <returns>Returns city object by ID</returns>
+        /// <returns>Returns city object by ID</returns>
         public IHttpActionResult Get(int id)
         {
             CityService CityService = CreateCityService();
@@ -34,6 +35,11 @@ namespace TrailAid.WebAPI.Controllers
             if (city.Name == null) return BadRequest("City ID not found");
             return Ok(city);
         }
+        /// <summary>
+        /// Create a new City
+        /// </summary>
+        /// <param name="city"> City Name</param>
+        /// <returns>Returns A New City</returns>
         public IHttpActionResult Post(CityCreate city)
         {
             if (!ModelState.IsValid)
