@@ -18,12 +18,6 @@ namespace TrailAid.WebAPI.Controllers
             var user = userService.GetUsers();
             return Ok(user);
         }
-        public IHttpActionResult Get(string id)
-        {
-            UserService userService = CreateUserService();
-            var user = userService.GetUserByLastName(id);
-            return Ok(user);
-        }
         public IHttpActionResult Post(UserCreate user)
         {
             if (!ModelState.IsValid)

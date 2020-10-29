@@ -21,8 +21,9 @@ namespace TrailAid.WebAPI.Controllers
         public IHttpActionResult Get(int id)
         {
             CityService CityService = CreateCityService();
-            var user = CityService.GetCityByID(id);
-            return Ok(user);
+            var city = CityService.GetCityByID(id);
+            if (city.Name == null) return BadRequest("ID not found");
+            return Ok(city);
         }
         public IHttpActionResult Post(CityCreate user)
         {

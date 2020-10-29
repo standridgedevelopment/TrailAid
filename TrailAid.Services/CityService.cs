@@ -43,11 +43,16 @@ namespace TrailAid.Services
         {
             using (var ctx = new ApplicationDbContext())
             {
-                var entity = ctx.Cities.Single(e => e.ID == id);
-                return new CityDetail
+                try
                 {
-                    Name = entity.Name
-                };
+                    var entity = ctx.Cities.Single(e => e.ID == id);
+                    return new CityDetail
+                    {
+                        Name = entity.Name
+                    };
+                }
+                catch {}
+                return new CityDetail();
             }
         }
         public bool UpdateCity(CityEdit model, int id)

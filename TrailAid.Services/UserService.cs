@@ -33,40 +33,29 @@ namespace TrailAid.Services
                 return ctx.SaveChanges() == 1;
             }
         }
-        public IEnumerable<UserListItem> GetUsers()
+        public IEnumerable<UserDetail> GetUsers()
         {
             using (var ctx = new ApplicationDbContext())
             {
                 var query = ctx.Users.Where(e => e.ID == _userId).Select
-                    (e => new UserListItem
+                    (e => new UserDetail
                     {
                         FirstName = e.FirstName,
                         LastName = e.LastName,
+                        City = e.City,
+                        State = e.State,
+                        Favorites = e.Favorites
                     }
                     );
                 return query.ToArray();
             }
 
         }
-        public UserDetail GetUserByLastName(string lastName)
-        {
-            using (var ctx = new ApplicationDbContext())
-            {
-                var entity = ctx.Users.Single(e => e.LastName == lastName);
-                return new UserDetail
-                {
-                    FirstName = entity.FirstName,
-                    LastName = entity.LastName,
-                    City = entity.City,
-                    State = entity.State,
-                    Favorites = entity.Favorites
-                };
-            }
-        }
         public bool UpdateUser(UserEdit model)
         {
             using (var ctx = new ApplicationDbContext())
             {
+              
                 var entity = ctx.Users.Single(e => e.ID == _userId);
 
                 entity.FirstName = model.FirstName;
