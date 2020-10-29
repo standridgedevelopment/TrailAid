@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using TrailAid.Data;
 using TrailAid.Models.AllTags;
+using static TrailAid.Data.ApplicationUser;
 
 namespace TrailAid.Services
 {

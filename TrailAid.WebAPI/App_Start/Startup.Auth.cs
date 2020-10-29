@@ -11,6 +11,7 @@ using Owin;
 using TrailAid.WebAPI.Providers;
 using TrailAid.WebAPI.Models;
 using TrailAid.Data;
+using static TrailAid.Data.ApplicationUser;
 
 namespace TrailAid.WebAPI
 {

@@ -127,7 +127,7 @@ namespace TrailAid.WebAPI.Controllers
         private TrailService CreateTrailService()
         {
             var userID = Guid.Parse(User.Identity.GetUserId());
-            var trailService = new TrailService(userID);
+            var trailService = new TrailService();
             return trailService;
         }
     }

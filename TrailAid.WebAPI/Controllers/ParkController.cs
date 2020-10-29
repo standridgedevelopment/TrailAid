@@ -77,7 +77,7 @@ namespace TrailAid.WebAPI.Controllers
         private ParkService CreateParkService()
         {
             var userID = Guid.Parse(User.Identity.GetUserId());
-            var parkService = new ParkService(userID);
+            var parkService = new ParkService();
             return parkService;
         }
     }

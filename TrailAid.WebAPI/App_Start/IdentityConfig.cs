@@ -6,6 +6,7 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using TrailAid.Data;
 using TrailAid.WebAPI.Models;
+using static TrailAid.Data.ApplicationUser;
 
 namespace TrailAid.WebAPI
 {

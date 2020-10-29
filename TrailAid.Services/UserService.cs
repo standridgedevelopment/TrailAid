@@ -4,7 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TrailAid.Data;
+using TrailAid.Models.Park;
 using TrailAid.Models.User;
+using static TrailAid.Data.ApplicationUser;
 
 namespace TrailAid.Services
 {
@@ -33,23 +35,21 @@ namespace TrailAid.Services
                 return ctx.SaveChanges() == 1;
             }
         }
-        public IEnumerable<UserDetail> GetUsers()
+    
+        public UserDetail GetUsers()
         {
             using (var ctx = new ApplicationDbContext())
             {
-                var query = ctx.Users.Where(e => e.ID == _userId).Select
-                    (e => new UserDetail
-                    {
-                        FirstName = e.FirstName,
-                        LastName = e.LastName,
-                        City = e.City,
-                        State = e.State,
-                        Favorites = e.Favorites
-                    }
-                    );
-                return query.ToArray();
+                var entity = ctx.Users.Single(e => e.ID == _userId);
+                return new UserDetail
+                {
+                    FirstName = entity.FirstName,
+                    LastName = entity.LastName,
+                    City = entity.City,
+                    State = entity.State,
+                    Favorites = entity.Favorites,
+                };
             }
-
         }
         public bool UpdateUser(UserEdit model)
         {

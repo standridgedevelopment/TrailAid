@@ -19,51 +19,53 @@ namespace TrailAid.Data
             // Add custom user claims here
             return userIdentity;
         }
-    }
 
-    public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
-    {
-        public ApplicationDbContext()
-            : base("DefaultConnection", throwIfV1Schema: false)
+        public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
         {
-        }
-        
-        public static ApplicationDbContext Create()
-        {
-            return new ApplicationDbContext();
-        }
+            public ApplicationDbContext()
+                : base("DefaultConnection", throwIfV1Schema: false)
+            {
+            }
+
+            public static ApplicationDbContext Create()
+            {
+                return new ApplicationDbContext();
+            }
 #pragma warning disable CS0114 // Member hides inherited member; missing override keyword
-        public DbSet<User> Users { get; set; }
+            public DbSet<User> Users { get; set; }
 #pragma warning restore CS0114 // Member hides inherited member; missing override keyword
-        public DbSet<City> Cities { get; set; }
-        public DbSet<Park> Parks { get; set; }
-        public DbSet<Trail> Trails { get; set; }
-        public DbSet<AllTags> AllTags { get; set; }
-        public DbSet<Visited> Visits { get; set; }
-        protected override void OnModelCreating(DbModelBuilder modelBuilder)
-        {
-            modelBuilder
-            .Conventions
-            .Remove<PluralizingTableNameConvention>();
+            public DbSet<City> Cities { get; set; }
+            public DbSet<Park> Parks { get; set; }
+            public DbSet<Trail> Trails { get; set; }
+            public DbSet<AllTags> AllTags { get; set; }
+            public DbSet<Visited> Visits { get; set; }
+            protected override void OnModelCreating(DbModelBuilder modelBuilder)
+            {
+                modelBuilder
+                .Conventions
+                .Remove<PluralizingTableNameConvention>();
 
-            modelBuilder
-                .Configurations
-                .Add(new IdentityUserLoginConfiguration())
-                .Add(new IdentityUserRoleConfiguration());
+                modelBuilder
+                    .Configurations
+                    .Add(new IdentityUserLoginConfiguration())
+                    .Add(new IdentityUserRoleConfiguration());
+            }
         }
-    }
-    public class IdentityUserLoginConfiguration : EntityTypeConfiguration<IdentityUserLogin>
-    {
-        public IdentityUserLoginConfiguration()
+
+
+        public class IdentityUserLoginConfiguration : EntityTypeConfiguration<IdentityUserLogin>
         {
-            HasKey(iul => iul.UserId);
+            public IdentityUserLoginConfiguration()
+            {
+                HasKey(iul => iul.UserId);
+            }
         }
-    }
-    public class IdentityUserRoleConfiguration : EntityTypeConfiguration<IdentityUserRole>
-    {
-        public IdentityUserRoleConfiguration()
+        public class IdentityUserRoleConfiguration : EntityTypeConfiguration<IdentityUserRole>
         {
-            HasKey(iur => iur.UserId);
+            public IdentityUserRoleConfiguration()
+            {
+                HasKey(iur => iur.UserId);
+            }
         }
     }
 }
