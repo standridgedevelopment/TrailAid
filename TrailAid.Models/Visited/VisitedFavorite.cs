@@ -9,8 +9,8 @@ namespace TrailAid.Models.Visited
 {
     public class VisitedFavorite
     {
+        
         [Key]
-        public int VisitID { get; set; }
         public int? TrailID { get; set; }
         public string TrailName { get; set; }
     }

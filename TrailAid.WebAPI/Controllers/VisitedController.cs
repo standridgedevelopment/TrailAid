@@ -22,7 +22,7 @@ namespace TrailAid.WebAPI.Controllers
         public IHttpActionResult Get(int id)
         {
             VisitedService VisitedService = CreateVisitService();
-            var user = VisitedService.GetVisitByID(id);
+            var user = VisitedService.GetVisitByTrailID(id);
             return Ok(user);
         }
         public IHttpActionResult Post(VisitedCreate visited)

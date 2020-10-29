@@ -50,10 +50,9 @@ namespace TrailAid.Services
         {
             using (var ctx = new ApplicationDbContext())
             {
-                var query = ctx.Visits.Select
-                    (e => new VisitedListItem
+               var query = ctx.Visits.Where(e => e.UserID == _userId).Select
+                   (e => new VisitedListItem
                     {
-                        ID = e.ID,
                         TrailID =e.TrailID,
                         TrailName = e.Trail.Name,
                         Rating = e.Rating
@@ -63,11 +62,11 @@ namespace TrailAid.Services
             }
 
         }
-        public VisitedDetail GetVisitByID(int id)
+        public VisitedDetail GetVisitByTrailID(int id)
         {
             using (var ctx = new ApplicationDbContext())
             {
-                var entity = ctx.Visits.Single(e => e.ID == id);
+                var entity = ctx.Visits.Single(e => e.TrailID == id && e.UserID == _userId);
                 if (entity.Trail.ParkID != null) return new VisitedDetail
                 {
                     TrailID = entity.TrailID,

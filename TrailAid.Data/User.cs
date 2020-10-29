@@ -31,7 +31,6 @@ namespace TrailAid.Data
                     {
                         var visitdetails = new VisitedFavorite
                         {
-                            VisitID = visit.ID,
                             TrailID = visit.TrailID,
                             TrailName = visit.Trail.Name
                         };
