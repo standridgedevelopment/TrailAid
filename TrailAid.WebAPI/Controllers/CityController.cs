@@ -15,35 +15,35 @@ namespace TrailAid.WebAPI.Controllers
         public IHttpActionResult Get()
         {
             CityService cityService = CreateCityService();
-            var user = cityService.GetCities();
-            return Ok(user);
+            var city = cityService.GetCities();
+            return Ok(city);
         }
         public IHttpActionResult Get(int id)
         {
-            CityService CityService = CreateCityService();
-            var city = CityService.GetCityByID(id);
+            CityService cityService = CreateCityService();
+            var city = cityService.GetCityByID(id);
             if (city.Name == null) return BadRequest("ID not found");
             return Ok(city);
         }
-        public IHttpActionResult Post(CityCreate user)
+        public IHttpActionResult Post(CityCreate city)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
             var service = CreateCityService();
 
-            if (!service.CreateCities(user))
+            if (!service.CreateCities(city))
                 return InternalServerError();
 
             return Ok();
         }
-        public IHttpActionResult Put(CityEdit user, int id)
+        public IHttpActionResult Put(CityEdit city, int id)
         {
             if (!ModelState.IsValid) return BadRequest(ModelState);
 
             var service = CreateCityService();
 
-            if (!service.UpdateCity(user, id)) return InternalServerError();
+            if (!service.UpdateCity(city, id)) return InternalServerError();
 
             return Ok();
         }

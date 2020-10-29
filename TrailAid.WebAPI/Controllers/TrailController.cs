@@ -15,84 +15,84 @@ namespace TrailAid.WebAPI.Controllers
         public string result = "";
         public IHttpActionResult Get()
         {
-            TrailService TrailService = CreateTrailService();
-            var user = TrailService.GetTrails();
-            return Ok(user);
+            TrailService trailService = CreateTrailService();
+            var trail = trailService.GetTrails();
+            return Ok(trail);
         }
         public IHttpActionResult GetById(int id)
         {
-            TrailService TrailService = CreateTrailService();
-            var user = TrailService.GetTrailByID(id);
-            return Ok(user);
+            TrailService trailService = CreateTrailService();
+            var trail = trailService.GetTrailByID(id);
+            return Ok(trail);
         }
         public IHttpActionResult GetByName(string name)
         {
-            TrailService TrailService = CreateTrailService();
-            var user = TrailService.GetTrailByName(name);
-            return Ok(user);
+            TrailService trailService = CreateTrailService();
+            var trail = trailService.GetTrailByName(name);
+            return Ok(trail);
         }
         public IHttpActionResult GetByCityName(string cityName)
         {
-            TrailService TrailService = CreateTrailService();
-            var user = TrailService.GetTrailByCityName(cityName);
-            return Ok(user);
+            TrailService trailService = CreateTrailService();
+            var trail = trailService.GetTrailByCityName(cityName);
+            return Ok(trail);
         }
         public IHttpActionResult GetByParkName(string parkName)
         {
-            TrailService TrailService = CreateTrailService();
-            var user = TrailService.GetTrailByParkName(parkName);
-            return Ok(user);
+            TrailService trailService = CreateTrailService();
+            var trail = trailService.GetTrailByParkName(parkName);
+            return Ok(trail);
         }
         public IHttpActionResult GetByRating(int rating)
         {
-            TrailService TrailService = CreateTrailService();
-            var user = TrailService.GetTrailByRating(rating);
-            return Ok(user);
+            TrailService trailService = CreateTrailService();
+            var trail = trailService.GetTrailByRating(rating);
+            return Ok(trail);
         }
         public IHttpActionResult GetByDifficulty(string difficulty)
         {
-            TrailService TrailService = CreateTrailService();
-            var user = TrailService.GetTrailByDifficulty(difficulty);
-            return Ok(user);
+            TrailService trailService = CreateTrailService();
+            var trail = trailService.GetTrailByDifficulty(difficulty);
+            return Ok(trail);
         }
         public IHttpActionResult GetByDescription(string description)
         {
-            TrailService TrailService = CreateTrailService();
-            var user = TrailService.GetTrailByDescription(description);
-            return Ok(user);
+            TrailService trailService = CreateTrailService();
+            var trail = trailService.GetTrailByDescription(description);
+            return Ok(trail);
         }
         public IHttpActionResult GetByDistance(int distance)
         {
-            TrailService TrailService = CreateTrailService();
-            var user = TrailService.GetTrailByDistance(distance);
-            return Ok(user);
+            TrailService trailService = CreateTrailService();
+            var trail = trailService.GetTrailByDistance(distance);
+            return Ok(trail);
         }
         public IHttpActionResult GetByTypeOfTerrain(string typeOfTerrain)
         {
-            TrailService TrailService = CreateTrailService();
-            var user = TrailService.GetTrailByTypeOfTerrain(typeOfTerrain);
-            return Ok(user);
+            TrailService trailService = CreateTrailService();
+            var trail = trailService.GetTrailByTypeOfTerrain(typeOfTerrain);
+            return Ok(trail);
         }
         public IHttpActionResult GetByElevation(int elevation)
         {
-            TrailService TrailService = CreateTrailService();
-            var user = TrailService.GetTrailByElevation(elevation);
-            return Ok(user);
+            TrailService trailService = CreateTrailService();
+            var trail = trailService.GetTrailByElevation(elevation);
+            return Ok(trail);
         }
         public IHttpActionResult GetByRouteType(string routeType)
         {
-            TrailService TrailService = CreateTrailService();
-            var user = TrailService.GetTrailByRouteType(routeType);
-            return Ok(user);
+            TrailService trailService = CreateTrailService();
+            var trail = trailService.GetTrailByRouteType(routeType);
+            return Ok(trail);
         }
-        public IHttpActionResult Post(TrailCreate user)
+        public IHttpActionResult Post(TrailCreate trail)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
-            var service = CreateTrailService();
+            var trailService = CreateTrailService();
 
-            result = service.CreateTrail(user);
+            result = trailService.CreateTrail(trail);
             if (result == "Tag Error") return BadRequest("Tag Not Found.");
             if (result == "Invalid City ID & Park ID") return BadRequest("Invalid City ID & Park ID.");
             if (result == "Invalid City ID") return BadRequest("Invalid City ID.");
@@ -104,8 +104,8 @@ namespace TrailAid.WebAPI.Controllers
         {
             if (!ModelState.IsValid) return BadRequest(ModelState);
 
-            var service = CreateTrailService();
-            result = service.UpdateTrail(trail, id);
+            var trailService = CreateTrailService();
+            result = trailService.UpdateTrail(trail, id);
             if (result == "Tag Error") return BadRequest("Tag Not Found.");
             if (result == "Tag Already Exists") return BadRequest("Tag Already Exists.");
             if (result == "Tag not found") return BadRequest("Tag Not Found.");
@@ -117,9 +117,9 @@ namespace TrailAid.WebAPI.Controllers
         }
         public IHttpActionResult Delete(int id)
         {
-            var service = CreateTrailService();
+            var trailService = CreateTrailService();
 
-            if (!service.DeleteTrail(id)) return InternalServerError();
+            if (!trailService.DeleteTrail(id)) return InternalServerError();
 
             return Ok();
         }

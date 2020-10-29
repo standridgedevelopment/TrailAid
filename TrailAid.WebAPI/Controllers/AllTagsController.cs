@@ -15,8 +15,8 @@ namespace TrailAid.WebAPI.Controllers
         public string result = "";
         public IHttpActionResult Get()
         {
-            AllTagsService tagsService = CreateAllTagsService();
-            var tags = tagsService.GetAllTags();
+            AllTagsService allTagsService = CreateAllTagsService();
+            var tags = allTagsService.GetAllTags();
             return Ok(tags);
         }
         public IHttpActionResult Post()
@@ -24,9 +24,9 @@ namespace TrailAid.WebAPI.Controllers
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
-            var service = CreateAllTagsService();
+            var allTagsService = CreateAllTagsService();
 
-            if (!service.CreateAllTags())
+            if (!allTagsService.CreateAllTags())
                 return BadRequest("List of tags already exists");
 
             return Ok();
@@ -35,9 +35,9 @@ namespace TrailAid.WebAPI.Controllers
         {
             if (!ModelState.IsValid) return BadRequest(ModelState);
 
-            var service = CreateAllTagsService();
+            var allTagsService = CreateAllTagsService();
 
-            result = service.UpdateAllTags(tags);
+            result = allTagsService.UpdateAllTags(tags);
             if (result == "Tag Already Exists") return BadRequest("Tag Already Exists.");
             if (result == "Tag not found") return BadRequest("Tag Not Found.");
 

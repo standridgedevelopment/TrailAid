@@ -23,9 +23,9 @@ namespace TrailAid.WebAPI.Controllers
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
-            var service = CreateUserService();
+            var userService = CreateUserService();
 
-            if (!service.CreateUser(user))
+            if (!userService.CreateUser(user))
                 return InternalServerError();
 
             return Ok();
@@ -34,17 +34,17 @@ namespace TrailAid.WebAPI.Controllers
         {
             if (!ModelState.IsValid) return BadRequest(ModelState);
 
-            var service = CreateUserService();
+            var userService = CreateUserService();
 
-            if (!service.UpdateUser(user)) return InternalServerError();
+            if (!userService.UpdateUser(user)) return InternalServerError();
 
             return Ok();
         }
         public IHttpActionResult Delete(string id)
         {
-            var service = CreateUserService();
+            var userService = CreateUserService();
 
-            if (!service.DeleteUser(id)) return InternalServerError();
+            if (!userService.DeleteUser(id)) return InternalServerError();
 
             return Ok();
         }

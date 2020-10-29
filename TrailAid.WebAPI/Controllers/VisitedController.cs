@@ -15,21 +15,21 @@ namespace TrailAid.WebAPI.Controllers
         public string result = "";
         public IHttpActionResult Get()
         {
-            VisitedService VisitedService = CreateVisitService();
-            var user = VisitedService.GetVisits();
-            return Ok(user);
+            VisitedService visitedService = CreateVisitService();
+            var visit = visitedService.GetVisits();
+            return Ok(visit);
         }
         public IHttpActionResult Get(int id)
         {
-            VisitedService VisitedService = CreateVisitService();
-            var user = VisitedService.GetVisitByTrailID(id);
-            return Ok(user);
+            VisitedService visitedService = CreateVisitService();
+            var visit = visitedService.GetVisitByTrailID(id);
+            return Ok(visit);
         }
         public IHttpActionResult Post(VisitedCreate visited)
         {
             if (!ModelState.IsValid) return BadRequest(ModelState);
-            var service = CreateVisitService();
-            result = service.CreateVisit(visited);
+            var visitedService = CreateVisitService();
+            result = visitedService.CreateVisit(visited);
             if (result == "Invalid Trail ID") return BadRequest("Invalid Trail ID.");
             if (result == "User Revisit") return BadRequest("User has already Visited this Trail.");
             return Ok();
@@ -37,22 +37,22 @@ namespace TrailAid.WebAPI.Controllers
         public IHttpActionResult Put(VisitedEdit visited, int id)
         {
             if (!ModelState.IsValid) return BadRequest(ModelState);
-            var service = CreateVisitService();
-            result = service.UpdateVisit(visited, id);
+            var visitedService = CreateVisitService();
+            result = visitedService.UpdateVisit(visited, id);
             if (result == "Invalid Trial ID") return BadRequest("Invalid Trail ID.");
             return Ok();
         }
         public IHttpActionResult Delete(int id)
         {
-            var service = CreateVisitService();
-            if (!service.DeleteVisit(id)) return InternalServerError();
+            var visitedService = CreateVisitService();
+            if (!visitedService.DeleteVisit(id)) return InternalServerError();
             return Ok();
         }
         private VisitedService CreateVisitService()
         {
             var userID = Guid.Parse(User.Identity.GetUserId());
-            var visitService = new VisitedService(userID);
-            return visitService;
+            var visitedService = new VisitedService(userID);
+            return visitedService;
         }
     }
 }
