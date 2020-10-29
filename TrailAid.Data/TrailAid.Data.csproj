@@ -95,6 +95,18 @@
     <Compile Include="Migrations\202010282014410_update.Designer.cs">
       <DependentUpon>202010282014410_update.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202010291316379_favorites.cs" />
+    <Compile Include="Migrations\202010291316379_favorites.Designer.cs">
+      <DependentUpon>202010291316379_favorites.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202010291345362_fav.cs" />
+    <Compile Include="Migrations\202010291345362_fav.Designer.cs">
+      <DependentUpon>202010291345362_fav.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202010291350283_update1.cs" />
+    <Compile Include="Migrations\202010291350283_update1.Designer.cs">
+      <DependentUpon>202010291350283_update1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Park.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -118,6 +130,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202010282014410_update.resx">
       <DependentUpon>202010282014410_update.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202010291316379_favorites.resx">
+      <DependentUpon>202010291316379_favorites.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202010291345362_fav.resx">
+      <DependentUpon>202010291345362_fav.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202010291350283_update1.resx">
+      <DependentUpon>202010291350283_update1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

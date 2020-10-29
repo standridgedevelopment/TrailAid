@@ -20,41 +20,20 @@ namespace TrailAid.Data
         public string City { get; set; }
         [Required]
         public string State { get; set; }
-        public virtual List<VisitedDetail> Favorites
+        public virtual List<VisitedFavorite> Favorites
         {
             get
             {
-                List<VisitedDetail> favorites = new List<VisitedDetail>();
+                List<VisitedFavorite> favorites = new List<VisitedFavorite>();
                 foreach (var visit in AllVisits)
                 {
                     if (visit.AddToFavorites == true)
                     {
-                        if (visit.Trail.ParkID != null)
-                        {
-                            var visitdetails = new VisitedDetail();
+                            var visitdetails = new VisitedFavorite();
+                            visitdetails.VisitID = visit.ID;
                             visitdetails.TrailID = visit.TrailID;
                             visitdetails.TrailName = visit.Trail.Name;
-                            visitdetails.CityID = visit.Trail.CityID;
-                            visitdetails.CityName = visit.Trail.City.Name;
-                            visitdetails.ParkID = visit.Trail.ParkID;
-                            visitdetails.ParkName = visit.Trail.Park.Name;
-                            visitdetails.Rating = visit.Rating;
-                            visitdetails.Review = visit.Review;
-                            visitdetails.AddToFavorites = visit.AddToFavorites;
                             favorites.Add(visitdetails);
-                        }
-                        else
-                        {
-                            var visitdetails = new VisitedDetail();
-                            visitdetails.TrailID = visit.TrailID;
-                            visitdetails.TrailName = visit.Trail.Name;
-                            visitdetails.CityID = visit.Trail.CityID;
-                            visitdetails.CityName = visit.Trail.City.Name;
-                            visitdetails.Rating = visit.Rating;
-                            visitdetails.Review = visit.Review;
-                            visitdetails.AddToFavorites = visit.AddToFavorites;
-                            favorites.Add(visitdetails);
-                        }
                     }
                 }
 

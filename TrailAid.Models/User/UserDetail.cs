@@ -13,6 +13,6 @@ namespace TrailAid.Models.User
         public string LastName { get; set; }
         public string City { get; set; }
         public string State { get; set; }
-        public List<VisitedDetail> Favorites { get; set; }
+        public List<VisitedFavorite> Favorites { get; set; }
     }
 }

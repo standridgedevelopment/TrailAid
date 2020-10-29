@@ -55,7 +55,7 @@ namespace TrailAid.Services
                         ID = e.ID,
                         TrailID =e.TrailID,
                         TrailName = e.Trail.Name,
-                        Rating = e.Rating,
+                        Rating = e.Rating
                     }
                     );
                 return query.ToArray();
