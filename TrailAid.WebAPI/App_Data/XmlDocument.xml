@@ -489,10 +489,10 @@
         </member>
         <member name="M:TrailAid.WebAPI.Controllers.CityController.Get(System.Int32)">
             <summary>  
-            Get City By ID  
+            Get cIty By ID  
             </summary>  
-            <param name="id"> city id</param>  
-            <returns>city object by id </returns>
+            <param name="id"> cIty iD</param>  
+            <returns>City Object by ID </returns>
         </member>
     </members>
 </doc>

@@ -25,8 +25,8 @@ namespace TrailAid.WebAPI.Controllers
         /// <summary>  
         /// Get City By ID  
         /// </summary>  
-        /// <param name="id"> city id</param>  
-        /// <returns>city object by id </returns>
+        /// <param name="id"> City ID</param>  
+        /// <returns>City Object by ID </returns>
         public IHttpActionResult Get(int id)
         {
             CityService CityService = CreateCityService();
