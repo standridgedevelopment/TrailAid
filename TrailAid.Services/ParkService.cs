@@ -166,7 +166,6 @@ namespace TrailAid.Services
 
                 try
                 {
-                    ctx.Parks.Add(entity);
                     ctx.SaveChanges();
                     return "Okay";
                 }
