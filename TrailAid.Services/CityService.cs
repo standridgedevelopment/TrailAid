@@ -60,10 +60,13 @@ namespace TrailAid.Services
         {
             using (var ctx = new ApplicationDbContext())
             {
+                try
+                {
                 var entity = ctx.Cities.Single(e => e.ID == id);
 
                 entity.Name = model.Name;
-
+                }
+                catch { return false; }
                 return ctx.SaveChanges() == 1;
             }
         }
@@ -71,10 +74,13 @@ namespace TrailAid.Services
         {
             using (var ctx = new ApplicationDbContext())
             {
+                try
+                {
                 var entity = ctx.Cities.Single(e => e.ID == id);
 
                 ctx.Cities.Remove(entity);
-
+                }
+                catch { return false; }
                 return ctx.SaveChanges() == 1;
             }
         }

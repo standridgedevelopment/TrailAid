@@ -26,38 +26,39 @@ namespace TrailAid.Services
                 Rating = model.Rating,
                 Review = model.Review,
                 AddToFavorites = model.AddToFavorites
-        };
+            };
 
             using (var ctx = new ApplicationDbContext())
             {
-                int result = 0;
-                int visitResult = 0;
+                try { var trail = ctx.Trails.Single(e => e.ID == model.TrailID); }
+                catch { return "Invalid Trail ID"; }
 
-                try{var trail = ctx.Trails.Single(e => e.ID == model.TrailID);}
-                catch{result += 1;}
-                if (result == 1) return "Invalid Trail ID";
+                try { var user = ctx.Users.Single(e => e.ID == _userId); }
+                catch { return "Invalid User ID"; }
 
                 try { var visited = ctx.Visits.Single(e => e.TrailID == model.TrailID && e.UserID == _userId); }
-                catch { visitResult += 1; }
-                if (visitResult != 1) return "User Revisit";
+                catch
+                {
+                    ctx.Visits.Add(entity);
+                    ctx.SaveChanges();
+                    return "Okay";
+                }
 
-                ctx.Visits.Add(entity);
-                ctx.SaveChanges();
-                return "Okay";
+                return "User Revisit";
             }
         }
         public IEnumerable<VisitedListItem> GetVisits()
         {
             using (var ctx = new ApplicationDbContext())
             {
-               var query = ctx.Visits.Where(e => e.UserID == _userId).Select
-                   (e => new VisitedListItem
+                var query = ctx.Visits.Where(e => e.UserID == _userId).Select
+                    (e => new VisitedListItem
                     {
-                        TrailID =e.TrailID,
+                        TrailID = e.TrailID,
                         TrailName = e.Trail.Name,
                         Rating = e.Rating
                     }
-                    );
+                     );
                 return query.ToArray();
             }
 
@@ -66,29 +67,34 @@ namespace TrailAid.Services
         {
             using (var ctx = new ApplicationDbContext())
             {
-                var entity = ctx.Visits.Single(e => e.TrailID == id && e.UserID == _userId);
-                if (entity.Trail.ParkID != null) return new VisitedDetail
+                try
                 {
-                    TrailID = entity.TrailID,
-                    TrailName = entity.Trail.Name,
-                    ParkID = entity.Trail.Park.ID,
-                    ParkName = entity.Trail.Park.Name,
-                    CityID = entity.Trail.City.ID,
-                    CityName = entity.Trail.City.Name,
-                    Rating = entity.Rating,
-                    Review = entity.Review,
-                    AddToFavorites = entity.AddToFavorites
-                };
-                else return new VisitedDetail
-                {
-                    TrailID = entity.TrailID,
-                    TrailName = entity.Trail.Name,
-                    CityID = entity.Trail.City.ID,
-                    CityName = entity.Trail.City.Name,
-                    Rating = entity.Rating,
-                    Review = entity.Review,
-                    AddToFavorites = entity.AddToFavorites
-                };
+                    var entity = ctx.Visits.Single(e => e.TrailID == id && e.UserID == _userId);
+                    if (entity.Trail.ParkID != null) return new VisitedDetail
+                    {
+                        TrailID = entity.TrailID,
+                        TrailName = entity.Trail.Name,
+                        ParkID = entity.Trail.Park.ID,
+                        ParkName = entity.Trail.Park.Name,
+                        CityID = entity.Trail.City.ID,
+                        CityName = entity.Trail.City.Name,
+                        Rating = entity.Rating,
+                        Review = entity.Review,
+                        AddToFavorites = entity.AddToFavorites
+                    };
+                    else return new VisitedDetail
+                    {
+                        TrailID = entity.TrailID,
+                        TrailName = entity.Trail.Name,
+                        CityID = entity.Trail.City.ID,
+                        CityName = entity.Trail.City.Name,
+                        Rating = entity.Rating,
+                        Review = entity.Review,
+                        AddToFavorites = entity.AddToFavorites
+                    };
+                }
+                catch { }
+                return new VisitedDetail();
             }
         }
         public string UpdateVisit(VisitedEdit model, int id)
@@ -117,10 +123,13 @@ namespace TrailAid.Services
         {
             using (var ctx = new ApplicationDbContext())
             {
-                var entity = ctx.Visits.Single(e => e.ID == id);
+                try
+                {
+                    var entity = ctx.Visits.Single(e => e.ID == id);
 
-                ctx.Visits.Remove(entity);
-
+                    ctx.Visits.Remove(entity);
+                }
+                catch { return false; }
                 return ctx.SaveChanges() == 1;
             }
         }

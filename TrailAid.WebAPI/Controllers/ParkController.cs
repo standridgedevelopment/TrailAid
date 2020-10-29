@@ -22,26 +22,30 @@ namespace TrailAid.WebAPI.Controllers
         public IHttpActionResult GetByID(int id)
         {
             ParkService ParkService = CreateParkService();
-            var user = ParkService.GetParkByID(id);
-            return Ok(user);
+            var park = ParkService.GetParkByID(id);
+            if (park.Name == null) return BadRequest("Park ID not found");
+            return Ok(park);
         }
         public IHttpActionResult GetByName(string name)
         {
             ParkService ParkService = CreateParkService();
-            var user = ParkService.GetParkByName(name);
-            return Ok(user);
+            var park = ParkService.GetParkByName(name);
+            if (park.Count == 0) return BadRequest("Park Name not found");
+            return Ok(park);
         }
         public IHttpActionResult GetByCityName(string cityName)
         {
             ParkService ParkService = CreateParkService();
-            var user = ParkService.GetParkByCityName(cityName);
-            return Ok(user);
+            var park = ParkService.GetParkByCityName(cityName);
+            if (park.Count == 0) return BadRequest("City Name not found");
+            return Ok(park);
         }
-        public IHttpActionResult GetByAcreage(int acreage)
+        public IHttpActionResult GetByAcreage(int minacreage, int maxacreage)
         {
             ParkService ParkService = CreateParkService();
-            var user = ParkService.GetParkByAcreage(acreage);
-            return Ok(user);
+            var park = ParkService.GetParkByAcreage(minacreage, maxacreage);
+            if (park.Count == 0) return BadRequest("Acreage not found");
+            return Ok(park);
         }
         public IHttpActionResult Post(ParkCreate park)
         {
@@ -70,7 +74,7 @@ namespace TrailAid.WebAPI.Controllers
         {
             var service = CreateParkService();
 
-            if (!service.DeletePark(id)) return InternalServerError();
+            if (!service.DeletePark(id)) return BadRequest("Park ID not found");
 
             return Ok();
         }
