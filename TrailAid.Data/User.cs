@@ -29,11 +29,13 @@ namespace TrailAid.Data
                 {
                     if (visit.AddToFavorites == true)
                     {
-                            var visitdetails = new VisitedFavorite();
-                            visitdetails.VisitID = visit.ID;
-                            visitdetails.TrailID = visit.TrailID;
-                            visitdetails.TrailName = visit.Trail.Name;
-                            favorites.Add(visitdetails);
+                        var visitdetails = new VisitedFavorite
+                        {
+                            VisitID = visit.ID,
+                            TrailID = visit.TrailID,
+                            TrailName = visit.Trail.Name
+                        };
+                        favorites.Add(visitdetails);
                     }
                 }
 

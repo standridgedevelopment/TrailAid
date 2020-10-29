@@ -10,12 +10,6 @@ namespace TrailAid.Services
 {
     public class CityService
     {
-        private readonly Guid _userId;
-
-        public CityService(Guid userId)
-        {
-            _userId = userId;
-        }
         public bool CreateCities(CityCreate model)
         {
             var entity = new City()

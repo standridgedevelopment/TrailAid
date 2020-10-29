@@ -10,13 +10,7 @@ namespace TrailAid.Services
 {
     public class ParkService
     {
-        List<ParkDetail> searchResults = new List<ParkDetail>();
-        private readonly Guid _userId;
-
-        public ParkService(Guid userId)
-        {
-            _userId = userId;
-        }
+        readonly List<ParkDetail> searchResults = new List<ParkDetail>();
         public string CreatePark(ParkCreate model)
         {
             var entity = new Park()

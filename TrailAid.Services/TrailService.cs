@@ -11,13 +11,8 @@ namespace TrailAid.Services
 {
     public class TrailService
     {
-        List<TrailDetail> searchResults = new List<TrailDetail>();
-        private readonly Guid _userId;
+        readonly List<TrailDetail> searchResults = new List<TrailDetail>();
 
-        public TrailService(Guid userId)
-        {
-            _userId = userId;
-        }
         public string CreateTrail(TrailCreate model)
         {
             var entity = new Trail()
