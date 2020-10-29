@@ -85,37 +85,42 @@ namespace TrailAid.Services
         {
             using (var ctx = new ApplicationDbContext())
             {
-                var entity = ctx.Trails.Single(e => e.ID == id);
-                if (entity.ParkID != null) return new TrailDetail
+                try
                 {
-                    Name = entity.Name,
-                    CityID = entity.CityID,
-                    CityName = entity.City.Name,
-                    ParkID = entity.ParkID,
-                    ParkName = entity.Park.Name,
-                    Rating = entity.Rating,
-                    Difficulty = entity.Difficulty,
-                    Description = entity.Description,
-                    Distance = entity.Distance,
-                    TypeOfTerrain = entity.TypeOfTerrain,
-                    Tags = entity.Tags,
-                    Elevation = entity.Elevation,
-                    RouteType = entity.RouteType,
-                };
-                else return new TrailDetail
-                {
-                    Name = entity.Name,
-                    CityID = entity.CityID,
-                    CityName = entity.City.Name,
-                    Rating = entity.Rating,
-                    Difficulty = entity.Difficulty,
-                    Description = entity.Description,
-                    Distance = entity.Distance,
-                    TypeOfTerrain = entity.TypeOfTerrain,
-                    Tags = entity.Tags,
-                    Elevation = entity.Elevation,
-                    RouteType = entity.RouteType,
-                };
+                    var entity = ctx.Trails.Single(e => e.ID == id);
+                    if (entity.ParkID != null) return new TrailDetail
+                    {
+                        Name = entity.Name,
+                        CityID = entity.CityID,
+                        CityName = entity.City.Name,
+                        ParkID = entity.ParkID,
+                        ParkName = entity.Park.Name,
+                        Rating = entity.Rating,
+                        Difficulty = entity.Difficulty,
+                        Description = entity.Description,
+                        Distance = entity.Distance,
+                        TypeOfTerrain = entity.TypeOfTerrain,
+                        Tags = entity.Tags,
+                        Elevation = entity.Elevation,
+                        RouteType = entity.RouteType,
+                    };
+                    else return new TrailDetail
+                    {
+                        Name = entity.Name,
+                        CityID = entity.CityID,
+                        CityName = entity.City.Name,
+                        Rating = entity.Rating,
+                        Difficulty = entity.Difficulty,
+                        Description = entity.Description,
+                        Distance = entity.Distance,
+                        TypeOfTerrain = entity.TypeOfTerrain,
+                        Tags = entity.Tags,
+                        Elevation = entity.Elevation,
+                        RouteType = entity.RouteType,
+                    };
+                }
+                catch { }
+                return new TrailDetail();
             }
         }
         public List<TrailDetail> GetTrailByCity(int id)
@@ -722,10 +727,13 @@ namespace TrailAid.Services
         {
             using (var ctx = new ApplicationDbContext())
             {
-                var entity = ctx.Trails.Single(e => e.ID == id);
+                try
+                {
+                    var entity = ctx.Trails.Single(e => e.ID == id);
 
-                ctx.Trails.Remove(entity);
-
+                    ctx.Trails.Remove(entity);
+                }
+                catch { return false; }
                 return ctx.SaveChanges() == 1;
             }
         }

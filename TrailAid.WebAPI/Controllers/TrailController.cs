@@ -23,66 +23,88 @@ namespace TrailAid.WebAPI.Controllers
         {
             TrailService trailService = CreateTrailService();
             var trail = trailService.GetTrailByID(id);
+
+            if (trail.Name == null) return BadRequest("Trail ID not found");
             return Ok(trail);
         }
         public IHttpActionResult GetByName(string name)
         {
             TrailService trailService = CreateTrailService();
             var trail = trailService.GetTrailByName(name);
+
+            if (trail.Count == 0) return BadRequest("Trail name not found");
             return Ok(trail);
         }
         public IHttpActionResult GetByCityName(string cityName)
         {
             TrailService trailService = CreateTrailService();
             var trail = trailService.GetTrailByCityName(cityName);
+
+            if (trail.Count == 0) return BadRequest("City name not found");
             return Ok(trail);
         }
         public IHttpActionResult GetByParkName(string parkName)
         {
             TrailService trailService = CreateTrailService();
             var trail = trailService.GetTrailByParkName(parkName);
+
+            if (trail.Count == 0) return BadRequest("Park name not found");
             return Ok(trail);
         }
         public IHttpActionResult GetByRating(int rating)
         {
             TrailService trailService = CreateTrailService();
             var trail = trailService.GetTrailByRating(rating);
+
+            if (trail.Count == 0) return BadRequest("Rating not found");
             return Ok(trail);
         }
         public IHttpActionResult GetByDifficulty(string difficulty)
         {
             TrailService trailService = CreateTrailService();
             var trail = trailService.GetTrailByDifficulty(difficulty);
+
+            if (trail.Count == 0) return BadRequest("Difficulty not found");
             return Ok(trail);
         }
         public IHttpActionResult GetByDescription(string description)
         {
             TrailService trailService = CreateTrailService();
             var trail = trailService.GetTrailByDescription(description);
+
+            if (trail.Count == 0) return BadRequest("Description not found");
             return Ok(trail);
         }
         public IHttpActionResult GetByDistance(int distance)
         {
             TrailService trailService = CreateTrailService();
             var trail = trailService.GetTrailByDistance(distance);
+
+            if (trail.Count == 0) return BadRequest("Distance not found");
             return Ok(trail);
         }
         public IHttpActionResult GetByTypeOfTerrain(string typeOfTerrain)
         {
             TrailService trailService = CreateTrailService();
             var trail = trailService.GetTrailByTypeOfTerrain(typeOfTerrain);
+
+            if (trail.Count == 0) return BadRequest("Terrain Type not found");
             return Ok(trail);
         }
         public IHttpActionResult GetByElevation(int elevation)
         {
             TrailService trailService = CreateTrailService();
             var trail = trailService.GetTrailByElevation(elevation);
+
+            if (trail.Count == 0) return BadRequest("Elevation not found");
             return Ok(trail);
         }
         public IHttpActionResult GetByRouteType(string routeType)
         {
             TrailService trailService = CreateTrailService();
             var trail = trailService.GetTrailByRouteType(routeType);
+
+            if (trail.Count == 0) return BadRequest("Route Type not found");
             return Ok(trail);
         }
         public IHttpActionResult Post(TrailCreate trail)
@@ -119,8 +141,7 @@ namespace TrailAid.WebAPI.Controllers
         {
             var trailService = CreateTrailService();
 
-            if (!trailService.DeleteTrail(id)) return InternalServerError();
-
+            if (!trailService.DeleteTrail(id)) return BadRequest("Trail ID not found");
             return Ok();
         }
 

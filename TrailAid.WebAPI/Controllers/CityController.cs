@@ -20,9 +20,9 @@ namespace TrailAid.WebAPI.Controllers
         }
         public IHttpActionResult Get(int id)
         {
-            CityService cityService = CreateCityService();
-            var city = cityService.GetCityByID(id);
-            if (city.Name == null) return BadRequest("ID not found");
+            CityService CityService = CreateCityService();
+            var city = CityService.GetCityByID(id);
+            if (city.Name == null) return BadRequest("City ID not found");
             return Ok(city);
         }
         public IHttpActionResult Post(CityCreate city)
@@ -30,10 +30,9 @@ namespace TrailAid.WebAPI.Controllers
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
-            var service = CreateCityService();
+            var cityService = CreateCityService();
 
-            if (!service.CreateCities(city))
-                return InternalServerError();
+            if (!cityService.CreateCities(city)) return InternalServerError();
 
             return Ok();
         }
@@ -43,15 +42,14 @@ namespace TrailAid.WebAPI.Controllers
 
             var service = CreateCityService();
 
-            if (!service.UpdateCity(city, id)) return InternalServerError();
-
+            if (!service.UpdateCity(city, id)) return BadRequest("City ID not found.");
             return Ok();
         }
         public IHttpActionResult Delete(int id)
         {
             var service = CreateCityService();
 
-            if (!service.DeleteCity(id)) return InternalServerError();
+            if (!service.DeleteCity(id)) return BadRequest("City ID not found.");
 
             return Ok();
         }

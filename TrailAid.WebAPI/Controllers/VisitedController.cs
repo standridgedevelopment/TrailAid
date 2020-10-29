@@ -23,6 +23,8 @@ namespace TrailAid.WebAPI.Controllers
         {
             VisitedService visitedService = CreateVisitService();
             var visit = visitedService.GetVisitByTrailID(id);
+
+            if (visit.TrailID == null) return BadRequest("Trail ID not found");
             return Ok(visit);
         }
         public IHttpActionResult Post(VisitedCreate visited)
@@ -31,6 +33,7 @@ namespace TrailAid.WebAPI.Controllers
             var visitedService = CreateVisitService();
             result = visitedService.CreateVisit(visited);
             if (result == "Invalid Trail ID") return BadRequest("Invalid Trail ID.");
+            if (result == "Invalid User ID") return BadRequest("Invalid User ID.");
             if (result == "User Revisit") return BadRequest("User has already Visited this Trail.");
             return Ok();
         }
@@ -45,7 +48,8 @@ namespace TrailAid.WebAPI.Controllers
         public IHttpActionResult Delete(int id)
         {
             var visitedService = CreateVisitService();
-            if (!visitedService.DeleteVisit(id)) return InternalServerError();
+
+            if (!visitedService.DeleteVisit(id)) return BadRequest("Trail ID not found");
             return Ok();
         }
         private VisitedService CreateVisitService()

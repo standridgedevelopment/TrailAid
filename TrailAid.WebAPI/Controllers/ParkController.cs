@@ -23,30 +23,38 @@ namespace TrailAid.WebAPI.Controllers
         {
             ParkService parkService = CreateParkService();
             var park = parkService.GetParkByID(id);
+
+            if (park.Name == null) return BadRequest("Park ID not found");
             return Ok(park);
         }
         public IHttpActionResult GetByName(string name)
         {
             ParkService parkService = CreateParkService();
             var park = parkService.GetParkByName(name);
+
+            if (park.Count == 0) return BadRequest("Park Name not found");
             return Ok(park);
         }
         public IHttpActionResult GetByCityName(string cityName)
         {
             ParkService parkService = CreateParkService();
             var park = parkService.GetParkByCityName(cityName);
+
+            if (park.Count == 0) return BadRequest("City Name not found");
             return Ok(park);
         }
-        public IHttpActionResult GetByAcreage(int acreage)
+        public IHttpActionResult GetByAcreage(int minacreage, int maxacreage)
         {
+
             ParkService parkService = CreateParkService();
-            var park = parkService.GetParkByAcreage(acreage);
+            var park = parkService.GetParkByAcreage(minacreage, maxacreage);
+
+            if (park.Count == 0) return BadRequest("Acreage not found");
             return Ok(park);
         }
         public IHttpActionResult Post(ParkCreate park)
         {
-            if (!ModelState.IsValid)
-                return BadRequest(ModelState);
+            if (!ModelState.IsValid) return BadRequest(ModelState);
 
             var parkService = CreateParkService();
 
@@ -70,8 +78,7 @@ namespace TrailAid.WebAPI.Controllers
         {
             var parkService = CreateParkService();
 
-            if (!parkService.DeletePark(id)) return InternalServerError();
-
+            if (!parkService.DeletePark(id)) return BadRequest("Park ID not found");
             return Ok();
         }
         private ParkService CreateParkService()
