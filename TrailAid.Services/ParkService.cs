@@ -58,7 +58,8 @@ namespace TrailAid.Services
                     {
                         Name = e.Name,
                         CityName = e.City.Name,
-                        ID = e.ID
+                        ID = e.ID,
+                        AverageTrailRating = e.AverageTrailRating
                     }
                     );
                 return query.ToArray();
@@ -79,7 +80,8 @@ namespace TrailAid.Services
                         Acreage = entity.Acreage,
                         Hours = entity.Hours,
                         PhoneNumber = entity.PhoneNumber,
-                        Website = entity.Website
+                        Website = entity.Website,
+                        AverageTrailRating = entity.AverageTrailRating
                     };
                 }
                 catch { }
