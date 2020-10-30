@@ -10,14 +10,24 @@ using TrailAid.Services;
 
 namespace TrailAid.WebAPI.Controllers
 {
+#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
     public class UserController : ApiController
+#pragma warning restore CS1591 // Missing XML comment for publicly visible type or member
     {
+        /// <summary>
+        /// Get All Users
+        /// </summary>
+        /// <returns>Returns a List of All Users</returns>
         public IHttpActionResult Get()
         {
             UserService userService = CreateUserService();
             var user = userService.GetUsers();
             return Ok(user);
         }
+        /// <summary>
+        /// Create a New User
+        /// </summary>
+        /// <returns>Returns A New User</returns>
         public IHttpActionResult Post(UserCreate user)
         {
             if (!ModelState.IsValid)
@@ -30,6 +40,11 @@ namespace TrailAid.WebAPI.Controllers
 
             return Ok();
         }
+        /// <summary>
+        /// Update User
+        /// </summary>
+        /// <param name="user"> User Name</param>
+        /// <returns>Updates User Object</returns>
         public IHttpActionResult Put(UserEdit user)
         {
             if (!ModelState.IsValid) return BadRequest(ModelState);
@@ -40,6 +55,11 @@ namespace TrailAid.WebAPI.Controllers
 
             return Ok();
         }
+        /// <summary>
+        /// Delete User
+        /// </summary>
+        /// <param name="id"> user id</param>
+        /// <returns>Deletes User Object</returns>
         public IHttpActionResult Delete(string id)
         {
             var userService = CreateUserService();

@@ -485,29 +485,62 @@
             <summary>
             Get All Cities
             </summary>
-            <returns>Returns a list of all cities</returns>
+            <returns>Returns a List of All Cities</returns>
         </member>
         <member name="M:TrailAid.WebAPI.Controllers.CityController.Get(System.Int32)">
             <summary>
             Get City By ID
             </summary>
-            <param name="id"> City ID</param>
-            <returns>Returns city object by ID</returns>
-            <returns>Returns city object by ID</returns>
+            <param name="id"> city id</param>
+            <returns>Returns City Object by ID</returns>
         </member>
         <member name="M:TrailAid.WebAPI.Controllers.CityController.Post(TrailAid.Models.City.CityCreate)">
             <summary>
-            Create a new City
+            Create a New City
             </summary>
-            <remarks>
-            Longer comments can be associated with a type or member through
-            the remarks tag.
-            </remarks>
-            <value>
-            A value tag is used to describe the property value.
-            </value>
             <param name="city"> City Name</param>
             <returns>Returns A New City</returns>
+        </member>
+        <member name="M:TrailAid.WebAPI.Controllers.CityController.Put(TrailAid.Models.City.CityEdit,System.Int32)">
+            <summary>
+            Update City
+            </summary>
+            <param name="city"> City Name</param>
+            <param name="id"> city id</param>
+            <returns>Updates City Object</returns>
+        </member>
+        <member name="M:TrailAid.WebAPI.Controllers.CityController.Delete(System.Int32)">
+            <summary>
+            Delete City
+            </summary>
+            <param name="id"> city id</param>
+            <returns>Deletes City Object</returns>
+        </member>
+        <member name="M:TrailAid.WebAPI.Controllers.UserController.Get">
+            <summary>
+            Get All Users
+            </summary>
+            <returns>Returns a List of All Users</returns>
+        </member>
+        <member name="M:TrailAid.WebAPI.Controllers.UserController.Post(TrailAid.Models.User.UserCreate)">
+            <summary>
+            Create a New User
+            </summary>
+            <returns>Returns A New User</returns>
+        </member>
+        <member name="M:TrailAid.WebAPI.Controllers.UserController.Put(TrailAid.Models.User.UserEdit)">
+            <summary>
+            Update User
+            </summary>
+            <param name="user"> User Name</param>
+            <returns>Updates User Object</returns>
+        </member>
+        <member name="M:TrailAid.WebAPI.Controllers.UserController.Delete(System.String)">
+            <summary>
+            Delete User
+            </summary>
+            <param name="id"> user id</param>
+            <returns>Deletes User Object</returns>
         </member>
     </members>
 </doc>

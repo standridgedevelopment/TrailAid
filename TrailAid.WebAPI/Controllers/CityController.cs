@@ -15,7 +15,7 @@ namespace TrailAid.WebAPI.Controllers
         /// <summary>
         /// Get All Cities
         /// </summary>
-        /// <returns>Returns a list of all cities</returns>
+        /// <returns>Returns a List of All Cities</returns>
         public IHttpActionResult Get()
         {
             CityService cityService = CreateCityService();
@@ -25,9 +25,8 @@ namespace TrailAid.WebAPI.Controllers
         /// <summary>
         /// Get City By ID
         /// </summary>
-        /// <param name="id"> City ID</param>
-        /// <returns>Returns city object by ID</returns>
-        /// <returns>Returns city object by ID</returns>
+        /// <param name="id"> city id</param>
+        /// <returns>Returns City Object by ID</returns>
         public IHttpActionResult Get(int id)
         {
             CityService CityService = CreateCityService();
@@ -36,7 +35,7 @@ namespace TrailAid.WebAPI.Controllers
             return Ok(city);
         }
         /// <summary>
-        /// Create a new City
+        /// Create a New City
         /// </summary>
         /// <param name="city"> City Name</param>
         /// <returns>Returns A New City</returns>
@@ -51,6 +50,12 @@ namespace TrailAid.WebAPI.Controllers
 
             return Ok();
         }
+        /// <summary>
+        /// Update City
+        /// </summary>
+        /// <param name="city"> City Name</param>
+        /// <param name="id"> city id</param>
+        /// <returns>Updates City Object</returns>
         public IHttpActionResult Put(CityEdit city, int id)
         {
             if (!ModelState.IsValid) return BadRequest(ModelState);
@@ -60,6 +65,11 @@ namespace TrailAid.WebAPI.Controllers
             if (!service.UpdateCity(city, id)) return BadRequest("City ID not found.");
             return Ok();
         }
+        /// <summary>
+        /// Delete City
+        /// </summary>
+        /// <param name="id"> city id</param>
+        /// <returns>Deletes City Object</returns>
         public IHttpActionResult Delete(int id)
         {
             var service = CreateCityService();
