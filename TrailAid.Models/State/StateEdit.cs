@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace TrailAid.Models.State
 {
-    class StateEdit
+    public class StateEdit
     {
+        public string Name { get; set; }
     }
 }

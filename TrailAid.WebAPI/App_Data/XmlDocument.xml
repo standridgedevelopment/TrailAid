@@ -494,5 +494,18 @@
             <param name="id"> City ID</param>  
             <returns>City Object by ID </returns>
         </member>
+        <member name="M:TrailAid.WebAPI.Controllers.StateController.Get">
+            <summary>  
+            Get all States  
+            </summary>  
+            <returns>List of States</returns>
+        </member>
+        <member name="M:TrailAid.WebAPI.Controllers.StateController.Get(System.Int32)">
+            <summary>  
+            Get State By ID  
+            </summary>  
+            <param name="id"> State ID</param>  
+            <returns>State Object by ID </returns>
+        </member>
     </members>
 </doc>

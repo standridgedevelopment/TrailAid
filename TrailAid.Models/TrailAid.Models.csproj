@@ -66,6 +66,10 @@
     <Compile Include="Park\ParkEdit.cs" />
     <Compile Include="Park\ParkListItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="State\StateCreate.cs" />
+    <Compile Include="State\StateDetail.cs" />
+    <Compile Include="State\StateEdit.cs" />
+    <Compile Include="State\StateListItem.cs" />
     <Compile Include="Visited\VisitedCreate.cs" />
     <Compile Include="Visited\VisitedDetail.cs" />
     <Compile Include="Visited\VisitedEdit.cs" />
