@@ -95,6 +95,26 @@
     <Compile Include="Migrations\202011022000336_first.Designer.cs">
       <DependentUpon>202011022000336_first.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202011022048151_next.cs" />
+    <Compile Include="Migrations\202011022048151_next.Designer.cs">
+      <DependentUpon>202011022048151_next.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202011022111020_next2.cs" />
+    <Compile Include="Migrations\202011022111020_next2.Designer.cs">
+      <DependentUpon>202011022111020_next2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202011022136144_next3.cs" />
+    <Compile Include="Migrations\202011022136144_next3.Designer.cs">
+      <DependentUpon>202011022136144_next3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202011022159356_next4.cs" />
+    <Compile Include="Migrations\202011022159356_next4.Designer.cs">
+      <DependentUpon>202011022159356_next4.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202011022202173_next5.cs" />
+    <Compile Include="Migrations\202011022202173_next5.Designer.cs">
+      <DependentUpon>202011022202173_next5.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Park.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -119,6 +139,21 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202011022000336_first.resx">
       <DependentUpon>202011022000336_first.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202011022048151_next.resx">
+      <DependentUpon>202011022048151_next.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202011022111020_next2.resx">
+      <DependentUpon>202011022111020_next2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202011022136144_next3.resx">
+      <DependentUpon>202011022136144_next3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202011022159356_next4.resx">
+      <DependentUpon>202011022159356_next4.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202011022202173_next5.resx">
+      <DependentUpon>202011022202173_next5.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -13,6 +13,8 @@ namespace TrailAid.Models.Park
         public string Name { get; set; }
         public int CityID { get; set; }
         public string CityName { get; set; }
+        public int? StateID { get; set; }
+        public string StateName { get; set; }
         public int Acreage { get; set; }
         public string Hours { get; set; }
         public string PhoneNumber { get; set; }
