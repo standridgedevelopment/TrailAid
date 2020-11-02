@@ -7,12 +7,14 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
+using System.IO;
 using System.Linq;
 using System.Net.Http.Headers;
 using System.Reflection;
 using System.Web;
 using System.Web.Http;
 using System.Xml;
+using static System.Net.Mime.MediaTypeNames;
 #if Handle_PageResultOfT
 using System.Web.Http.OData;
 #endif
@@ -40,7 +42,10 @@ namespace TrailAid.WebAPI.Areas.HelpPage
             XmlDocument apiDoc = new XmlDocument();
             apiDoc.Load(HttpContext.Current.Server.MapPath("~/App_Data/XmlDocument.xml"));
              XmlDocument modelDoc = new XmlDocument();
-            modelDoc.Load("C:/ElevenFiftyProjects/Blue Badge/Team Projects/TrailAid/TrailAid.Models/Model_Data/XmlDocument.xml");
+            //var AssemblyPath = AppDomain.CurrentDomain.DynamicDirectory;
+            string currentDirectory = AppDomain.CurrentDomain.BaseDirectory;
+            string newPath = Path.GetFullPath(Path.Combine(currentDirectory, @"..\"));
+            modelDoc.Load($"{newPath}/TrailAid.Models/Model_Data/XmlDocument.xml");
 
             if (modelDoc.DocumentElement != null && apiDoc.DocumentElement != null)
             {
