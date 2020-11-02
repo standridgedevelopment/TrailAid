@@ -62,6 +62,7 @@
     <Compile Include="City\CityEdit.cs" />
     <Compile Include="City\CityListItem.cs" />
     <Compile Include="City\CityCreate.cs" />
+    <Compile Include="ModelData\ModelDirectory.cs" />
     <Compile Include="Park\ParkCreate.cs" />
     <Compile Include="Park\ParkDetail.cs" />
     <Compile Include="Park\ParkEdit.cs" />
@@ -87,7 +88,7 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <Content Include="Model_Data\XmlDocument.xml" />
+    <Content Include="ModelData\XmlDocument.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
