@@ -12,6 +12,7 @@ using System.Net.Http.Headers;
 using System.Reflection;
 using System.Web;
 using System.Web.Http;
+using System.Xml;
 #if Handle_PageResultOfT
 using System.Web.Http.OData;
 #endif
@@ -31,8 +32,27 @@ namespace TrailAid.WebAPI.Areas.HelpPage
         [SuppressMessage("Microsoft.Naming", "CA2204:Literals should be spelled correctly",
             MessageId = "bsonspec",
             Justification = "Part of a URI.")]
+#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
         public static void Register(HttpConfiguration config)
+#pragma warning restore CS1591 // Missing XML comment for publicly visible type or member
         {
+
+            XmlDocument apiDoc = new XmlDocument();
+            apiDoc.Load(HttpContext.Current.Server.MapPath("~/App_Data/XmlDocument.xml"));
+             XmlDocument modelDoc = new XmlDocument();
+            modelDoc.Load("C:/ElevenFiftyProjects/Blue Badge/Team Projects/TrailAid/TrailAid.Models/Model_Data/XmlDocument.xml");
+
+            if (modelDoc.DocumentElement != null && apiDoc.DocumentElement != null)
+            {
+                XmlNodeList nodes = modelDoc.DocumentElement.ChildNodes;
+                foreach (XmlNode node in nodes)
+                {
+                    XmlNode copiedNode = apiDoc.ImportNode(node, true);
+                    apiDoc.DocumentElement.AppendChild(copiedNode);
+                }
+                apiDoc.Save(HttpContext.Current.Server.MapPath("~/App_Data/XmlDocument.xml"));
+            }
+
             //// Uncomment the following to use the documentation from XML documentation file.
             config.SetDocumentationProvider(new XmlDocumentationProvider(HttpContext.Current.Server.MapPath("~/App_Data/XmlDocument.xml")));
 

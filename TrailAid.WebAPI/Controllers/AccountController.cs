@@ -22,6 +22,7 @@ namespace TrailAid.WebAPI.Controllers
 {
     [Authorize]
     [RoutePrefix("api/Account")]
+#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
     public class AccountController : ApiController
     {
         private const string LocalLoginProvider = "Local";
@@ -51,8 +52,13 @@ namespace TrailAid.WebAPI.Controllers
         }
 
         public ISecureDataFormat<AuthenticationTicket> AccessTokenFormat { get; private set; }
+#pragma warning restore CS1591 // Missing XML comment for publicly visible type or member
 
         // GET api/Account/UserInfo
+        /// <summary>
+        /// Get User Info
+        /// </summary>
+        /// <returns>Returns User Info</returns>
         [HostAuthentication(DefaultAuthenticationTypes.ExternalBearer)]
         [Route("UserInfo")]
         public UserInfoViewModel GetUserInfo()
@@ -68,6 +74,9 @@ namespace TrailAid.WebAPI.Controllers
         }
 
         // POST api/Account/Logout
+        /// <summary>
+        /// Logout
+        /// </summary>
         [Route("Logout")]
         public IHttpActionResult Logout()
         {
@@ -76,6 +85,10 @@ namespace TrailAid.WebAPI.Controllers
         }
 
         // GET api/Account/ManageInfo?returnUrl=%2F&generateState=true
+        /// <summary>
+        /// Get Manage Info
+        /// </summary>
+        /// <returns>Returns Manage Info</returns>
         [Route("ManageInfo")]
         public async Task<ManageInfoViewModel> GetManageInfo(string returnUrl, bool generateState = false)
         {
@@ -116,6 +129,9 @@ namespace TrailAid.WebAPI.Controllers
         }
 
         // POST api/Account/ChangePassword
+        /// <summary>
+        /// Change Password
+        /// </summary>
         [Route("ChangePassword")]
         public async Task<IHttpActionResult> ChangePassword(ChangePasswordBindingModel model)
         {
@@ -136,6 +152,9 @@ namespace TrailAid.WebAPI.Controllers
         }
 
         // POST api/Account/SetPassword
+        /// <summary>
+        /// Set Password
+        /// </summary>
         [Route("SetPassword")]
         public async Task<IHttpActionResult> SetPassword(SetPasswordBindingModel model)
         {
@@ -155,6 +174,9 @@ namespace TrailAid.WebAPI.Controllers
         }
 
         // POST api/Account/AddExternalLogin
+        /// <summary>
+        /// Add External Login
+        /// </summary>
         [Route("AddExternalLogin")]
         public async Task<IHttpActionResult> AddExternalLogin(AddExternalLoginBindingModel model)
         {
@@ -193,6 +215,9 @@ namespace TrailAid.WebAPI.Controllers
         }
 
         // POST api/Account/RemoveLogin
+        /// <summary>
+        /// Remove Login
+        /// </summary>
         [Route("RemoveLogin")]
         public async Task<IHttpActionResult> RemoveLogin(RemoveLoginBindingModel model)
         {
@@ -222,6 +247,9 @@ namespace TrailAid.WebAPI.Controllers
         }
 
         // GET api/Account/ExternalLogin
+        /// <summary>
+        /// Get External Login
+        /// </summary>
         [OverrideAuthentication]
         [HostAuthentication(DefaultAuthenticationTypes.ExternalCookie)]
         [AllowAnonymous]
@@ -279,6 +307,9 @@ namespace TrailAid.WebAPI.Controllers
         }
 
         // GET api/Account/ExternalLogins?returnUrl=%2F&generateState=true
+        /// <summary>
+        /// Get External Login True / False
+        /// </summary>
         [AllowAnonymous]
         [Route("ExternalLogins")]
         public IEnumerable<ExternalLoginViewModel> GetExternalLogins(string returnUrl, bool generateState = false)
@@ -320,6 +351,9 @@ namespace TrailAid.WebAPI.Controllers
         }
 
         // POST api/Account/Register
+        /// <summary>
+        /// Register
+        /// </summary>
         [AllowAnonymous]
         [Route("Register")]
         public async Task<IHttpActionResult> Register(RegisterBindingModel model)
@@ -342,6 +376,9 @@ namespace TrailAid.WebAPI.Controllers
         }
 
         // POST api/Account/RegisterExternal
+        /// <summary>
+        /// Register External
+        /// </summary>
         [OverrideAuthentication]
         [HostAuthentication(DefaultAuthenticationTypes.ExternalBearer)]
         [Route("RegisterExternal")]
@@ -374,7 +411,9 @@ namespace TrailAid.WebAPI.Controllers
             return Ok();
         }
 
+#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
         protected override void Dispose(bool disposing)
+#pragma warning restore CS1591 // Missing XML comment for publicly visible type or member
         {
             if (disposing && _userManager != null)
             {

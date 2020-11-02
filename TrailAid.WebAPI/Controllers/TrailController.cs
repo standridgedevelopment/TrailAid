@@ -10,15 +10,26 @@ using TrailAid.Services;
 
 namespace TrailAid.WebAPI.Controllers
 {
+#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
     public class TrailController : ApiController
     {
         public string result = "";
+#pragma warning restore CS1591 // Missing XML comment for publicly visible type or member
+        /// <summary>
+        /// Get All Trails
+        /// </summary>
+        /// <returns>Returns a List of All Trails</returns>
         public IHttpActionResult Get()
         {
             TrailService trailService = CreateTrailService();
             var trail = trailService.GetTrails();
             return Ok(trail);
         }
+        /// <summary>
+        /// Get Trail By ID
+        /// </summary>
+        /// <param name="id"> trail id</param>
+        /// <returns>Returns Trail Object by ID</returns>
         public IHttpActionResult GetById(int id)
         {
             TrailService trailService = CreateTrailService();
@@ -27,6 +38,11 @@ namespace TrailAid.WebAPI.Controllers
             if (trail.Name == null) return BadRequest("Trail ID not found");
             return Ok(trail);
         }
+        /// <summary>
+        /// Get Trail By Name
+        /// </summary>
+        /// <param name="name"> trail name</param>
+        /// <returns>Returns trail Object by Name</returns>
         public IHttpActionResult GetByName(string name)
         {
             TrailService trailService = CreateTrailService();
@@ -35,6 +51,11 @@ namespace TrailAid.WebAPI.Controllers
             if (trail.Count == 0) return BadRequest("Trail name not found");
             return Ok(trail);
         }
+        /// <summary>
+        /// Get Trail By City Name
+        /// </summary>
+        /// <param name="cityName"> city name</param>
+        /// <returns>Returns trail Object by City Name</returns>
         public IHttpActionResult GetByCityName(string cityName)
         {
             TrailService trailService = CreateTrailService();
@@ -43,6 +64,11 @@ namespace TrailAid.WebAPI.Controllers
             if (trail.Count == 0) return BadRequest("City name not found");
             return Ok(trail);
         }
+        /// <summary>
+        /// Get Trail By Park Name
+        /// </summary>
+        /// <param name="parkName"> park name</param>
+        /// <returns>Returns trail Object by Park Name</returns>
         public IHttpActionResult GetByParkName(string parkName)
         {
             TrailService trailService = CreateTrailService();
@@ -51,6 +77,11 @@ namespace TrailAid.WebAPI.Controllers
             if (trail.Count == 0) return BadRequest("Park name not found");
             return Ok(trail);
         }
+        /// <summary>
+        /// Get Trail By Rating
+        /// </summary>
+        /// <param name="rating"> trail rating</param>
+        /// <returns>Returns trail Object by Rating</returns>
         public IHttpActionResult GetByRating(int rating)
         {
             TrailService trailService = CreateTrailService();
@@ -59,6 +90,11 @@ namespace TrailAid.WebAPI.Controllers
             if (trail.Count == 0) return BadRequest("Rating not found");
             return Ok(trail);
         }
+        /// <summary>
+        /// Get Trail By Difficulty
+        /// </summary>
+        /// <param name="difficulty"> trail difficulty</param>
+        /// <returns>Returns trail Object by Difficulty</returns>
         public IHttpActionResult GetByDifficulty(string difficulty)
         {
             TrailService trailService = CreateTrailService();
@@ -67,6 +103,11 @@ namespace TrailAid.WebAPI.Controllers
             if (trail.Count == 0) return BadRequest("Difficulty not found");
             return Ok(trail);
         }
+        /// <summary>
+        /// Get Trail By Description
+        /// </summary>
+        /// <param name="description"> trail description</param>
+        /// <returns>Returns trail Object by Description</returns>
         public IHttpActionResult GetByDescription(string description)
         {
             TrailService trailService = CreateTrailService();
@@ -75,6 +116,11 @@ namespace TrailAid.WebAPI.Controllers
             if (trail.Count == 0) return BadRequest("Description not found");
             return Ok(trail);
         }
+        /// <summary>
+        /// Get Trail By Distance
+        /// </summary>
+        /// <param name="distance"> trail distance</param>
+        /// <returns>Returns trail Object by Distance</returns>
         public IHttpActionResult GetByDistance(int distance)
         {
             TrailService trailService = CreateTrailService();
@@ -83,6 +129,11 @@ namespace TrailAid.WebAPI.Controllers
             if (trail.Count == 0) return BadRequest("Distance not found");
             return Ok(trail);
         }
+        /// <summary>
+        /// Get Trail By Type Of Terrain
+        /// </summary>
+        /// <param name="typeOfTerrain"> terrain type</param>
+        /// <returns>Returns trail Object by Type Of Terrain</returns>
         public IHttpActionResult GetByTypeOfTerrain(string typeOfTerrain)
         {
             TrailService trailService = CreateTrailService();
@@ -91,6 +142,11 @@ namespace TrailAid.WebAPI.Controllers
             if (trail.Count == 0) return BadRequest("Terrain Type not found");
             return Ok(trail);
         }
+        /// <summary>
+        /// Get Trail By Elevation
+        /// </summary>
+        /// <param name="elevation"> trail elevation</param>
+        /// <returns>Returns trail Object by Elevation</returns>
         public IHttpActionResult GetByElevation(int elevation)
         {
             TrailService trailService = CreateTrailService();
@@ -99,6 +155,11 @@ namespace TrailAid.WebAPI.Controllers
             if (trail.Count == 0) return BadRequest("Elevation not found");
             return Ok(trail);
         }
+        /// <summary>
+        /// Get Trail By Route Type
+        /// </summary>
+        /// <param name="routeType"> route type</param>
+        /// <returns>Returns trail Object by Route Type</returns>
         public IHttpActionResult GetByRouteType(string routeType)
         {
             TrailService trailService = CreateTrailService();
@@ -107,6 +168,10 @@ namespace TrailAid.WebAPI.Controllers
             if (trail.Count == 0) return BadRequest("Route Type not found");
             return Ok(trail);
         }
+        /// <summary>
+        /// Create a New Trail
+        /// </summary>
+        /// <returns>Returns A New Trail</returns>
         public IHttpActionResult Post(TrailCreate trail)
         {
             if (!ModelState.IsValid)
@@ -122,6 +187,10 @@ namespace TrailAid.WebAPI.Controllers
 
             return Ok();
         }
+        /// <summary> Update Trail </summary>
+        /// <param name="id"> park id </param>
+        /// <param name="trail"></param>
+        /// <returns> Updates Trail Object </returns>
         public IHttpActionResult Put(TrailEdit trail, int id)
         {
             if (!ModelState.IsValid) return BadRequest(ModelState);
@@ -137,6 +206,11 @@ namespace TrailAid.WebAPI.Controllers
 
             return Ok();
         }
+        /// <summary>
+        /// Delete Trail
+        /// </summary>
+        /// <param name="id"> trail id</param>
+        /// <returns>Deletes Trail Object</returns>
         public IHttpActionResult Delete(int id)
         {
             var trailService = CreateTrailService();

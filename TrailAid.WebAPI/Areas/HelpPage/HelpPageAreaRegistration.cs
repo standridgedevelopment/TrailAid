@@ -3,6 +3,7 @@ using System.Web.Mvc;
 
 namespace TrailAid.WebAPI.Areas.HelpPage
 {
+#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
     public class HelpPageAreaRegistration : AreaRegistration
     {
         public override string AreaName
@@ -24,3 +25,4 @@ namespace TrailAid.WebAPI.Areas.HelpPage
         }
     }
 }
+#pragma warning restore CS1591 // Missing XML comment for publicly visible type or member

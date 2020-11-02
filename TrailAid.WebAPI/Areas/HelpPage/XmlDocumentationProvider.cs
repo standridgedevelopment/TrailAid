@@ -35,19 +35,25 @@ namespace TrailAid.WebAPI.Areas.HelpPage
             _documentNavigator = xpath.CreateNavigator();
         }
 
+#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
         public string GetDocumentation(HttpControllerDescriptor controllerDescriptor)
+#pragma warning restore CS1591 // Missing XML comment for publicly visible type or member
         {
             XPathNavigator typeNode = GetTypeNode(controllerDescriptor.ControllerType);
             return GetTagValue(typeNode, "summary");
         }
 
+#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
         public virtual string GetDocumentation(HttpActionDescriptor actionDescriptor)
+#pragma warning restore CS1591 // Missing XML comment for publicly visible type or member
         {
             XPathNavigator methodNode = GetMethodNode(actionDescriptor);
             return GetTagValue(methodNode, "summary");
         }
 
+#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
         public virtual string GetDocumentation(HttpParameterDescriptor parameterDescriptor)
+#pragma warning restore CS1591 // Missing XML comment for publicly visible type or member
         {
             ReflectedHttpParameterDescriptor reflectedParameterDescriptor = parameterDescriptor as ReflectedHttpParameterDescriptor;
             if (reflectedParameterDescriptor != null)
@@ -67,13 +73,17 @@ namespace TrailAid.WebAPI.Areas.HelpPage
             return null;
         }
 
+#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
         public string GetResponseDocumentation(HttpActionDescriptor actionDescriptor)
+#pragma warning restore CS1591 // Missing XML comment for publicly visible type or member
         {
             XPathNavigator methodNode = GetMethodNode(actionDescriptor);
             return GetTagValue(methodNode, "returns");
         }
 
+#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
         public string GetDocumentation(MemberInfo member)
+#pragma warning restore CS1591 // Missing XML comment for publicly visible type or member
         {
             string memberName = String.Format(CultureInfo.InvariantCulture, "{0}.{1}", GetTypeName(member.DeclaringType), member.Name);
             string expression = member.MemberType == MemberTypes.Field ? FieldExpression : PropertyExpression;
@@ -82,7 +92,9 @@ namespace TrailAid.WebAPI.Areas.HelpPage
             return GetTagValue(propertyNode, "summary");
         }
 
+#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
         public string GetDocumentation(Type type)
+#pragma warning restore CS1591 // Missing XML comment for publicly visible type or member
         {
             XPathNavigator typeNode = GetTypeNode(type);
             return GetTagValue(typeNode, "summary");

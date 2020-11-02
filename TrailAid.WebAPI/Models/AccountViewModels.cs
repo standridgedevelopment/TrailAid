@@ -5,6 +5,7 @@ namespace TrailAid.WebAPI.Models
 {
     // Models returned by AccountController actions.
 
+#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
     public class ExternalLoginViewModel
     {
         public string Name { get; set; }
@@ -41,3 +42,4 @@ namespace TrailAid.WebAPI.Models
         public string ProviderKey { get; set; }
     }
 }
+#pragma warning restore CS1591 // Missing XML comment for publicly visible type or member
