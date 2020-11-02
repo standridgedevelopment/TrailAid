@@ -15,7 +15,8 @@ namespace TrailAid.Services
         {
             var entity = new City()
             {
-                Name = model.Name
+                Name = model.Name,
+                StateID = model.StateID
             };
 
             using (var ctx = new ApplicationDbContext())
@@ -33,7 +34,9 @@ namespace TrailAid.Services
                     (e => new CityListItem
                     {
                         Name = e.Name,
-                        ID = e.ID
+                        ID = e.ID,
+                        StateID = e.StateID,
+                        StateName = e.State.Name
                     }
                     );
                 return query.ToArray();
@@ -50,7 +53,9 @@ namespace TrailAid.Services
                     return new CityDetail
                     {
                         ID = entity.ID,
-                        Name = entity.Name
+                        Name = entity.Name,
+                        StateID = entity.StateID,
+                        StateName = entity.State.Name
                     };
                 }
                 catch {}
@@ -66,6 +71,7 @@ namespace TrailAid.Services
                 var entity = ctx.Cities.Single(e => e.ID == id);
 
                 entity.Name = model.Name;
+                entity.StateID = model.StateID;
                 }
                 catch { return false; }
                 return ctx.SaveChanges() == 1;
