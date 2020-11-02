@@ -5,6 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TrailAid.Models.Trail;
 
 namespace TrailAid.Data
 {
@@ -18,6 +19,25 @@ namespace TrailAid.Data
         public virtual City City { get; set; }
         public string CityName { get; set; }
         public virtual List<Trail> Trails { get; set; } = new List<Trail>();
+        public List<TrailDetail> TrailsInPark
+        {
+            get
+            {
+                List<TrailDetail> newList = new List<TrailDetail>();
+                foreach (var trail in Trails)
+                {
+                    var trailInPark = new TrailDetail()
+                    {
+                        ID = trail.ID,
+                        Name = trail.Name,
+                        Rating = trail.Rating
+                    };
+                    newList.Add(trailInPark);
+                }
+                return newList;
+            }
+            set { }
+        }
         public int Acreage { get; set; }
         public string Hours { get; set; }
         public string PhoneNumber { get; set; }

@@ -16,6 +16,7 @@ namespace TrailAid.WebAPI.Controllers
         {
             UserService userService = CreateUserService();
             var user = userService.GetUsers();
+            if (user.FirstName == null) return BadRequest("City ID not found");
             return Ok(user);
         }
         public IHttpActionResult Post(UserCreate user)

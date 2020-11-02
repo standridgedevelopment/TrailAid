@@ -9,6 +9,7 @@ namespace TrailAid.Models.Trail
     public class TrailDetail
     {
         public string Name { get; set; }
+        public int ID { get; set; }
         public int? CityID { get; set; }
         public string CityName { get; set; }
         public int? ParkID { get; set; }

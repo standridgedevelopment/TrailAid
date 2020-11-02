@@ -49,6 +49,7 @@ namespace TrailAid.Services
                     var entity = ctx.Cities.Single(e => e.ID == id);
                     return new CityDetail
                     {
+                        ID = entity.ID,
                         Name = entity.Name
                     };
                 }
