@@ -180,7 +180,7 @@ namespace TrailAid.Services
         {
             using (var ctx = new ApplicationDbContext())
             {
-                var trails = ctx.Trails.Where(e => e.Name == name).ToList();
+                var trails = ctx.Trails.Where(e => e.Name.Contains(name)).ToList();
                 foreach (var trail in trails)
                 {
                     if (trail.ParkID != null)
@@ -231,7 +231,7 @@ namespace TrailAid.Services
         {
             using (var ctx = new ApplicationDbContext())
             {
-                var trails = ctx.Trails.Where(e => e.City.Name == cityName).ToList();
+                var trails = ctx.Trails.Where(e => e.City.Name.Contains(cityName)).ToList();
                 foreach (var trail in trails)
                 {
                     if (trail.ParkID != null)
