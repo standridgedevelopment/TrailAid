@@ -11,5 +11,6 @@ namespace TrailAid.Models.City
     {
         [Required]
         public string Name { get; set; }
+        public int? StateID { get; set; }
     }
 }

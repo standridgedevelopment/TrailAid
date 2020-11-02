@@ -9,5 +9,6 @@ namespace TrailAid.Models.City
     public class CityEdit
     {
         public string Name { get; set; }
+        public int? StateID { get; set; }
     }
 }
