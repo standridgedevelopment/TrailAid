@@ -12,6 +12,7 @@ namespace TrailAid.WebAPI
 {
     // Configure the application user manager used in this application. UserManager is defined in ASP.NET Identity and is used by the application.
 
+#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
     public class ApplicationUserManager : UserManager<ApplicationUser>
     {
         public ApplicationUserManager(IUserStore<ApplicationUser> store)
@@ -47,3 +48,4 @@ namespace TrailAid.WebAPI
     }
     
 }
+#pragma warning restore CS1591 // Missing XML comment for publicly visible type or member

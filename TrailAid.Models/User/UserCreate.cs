@@ -8,14 +8,28 @@ using System.Threading.Tasks;
 
 namespace TrailAid.Models.User
 {
+#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
     public class UserCreate
+#pragma warning restore CS1591 // Missing XML comment for publicly visible type or member
     {
+        /// <summary>
+        /// user first name
+        /// </summary>
         [Required]
         public string FirstName { get; set; }
+        /// <summary>
+        /// user last name
+        /// </summary>
         [Required]
         public string LastName { get; set; }
+        /// <summary>
+        /// user city
+        /// </summary>
         [Required]
         public string City { get; set; }
+        /// <summary>
+        /// user state
+        /// </summary>
         [Required]
         public string State { get; set; }
     }

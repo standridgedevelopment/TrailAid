@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace TrailAid.Models.Park
 {
+#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
     public class ParkDetail
     {
         public string Name { get; set; }
@@ -17,3 +18,4 @@ namespace TrailAid.Models.Park
         public double AverageTrailRating { get; set; }
     }
 }
+#pragma warning restore CS1591 // Missing XML comment for publicly visible type or member

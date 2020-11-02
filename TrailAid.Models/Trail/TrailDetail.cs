@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace TrailAid.Models.Trail
 {
+#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
     public class TrailDetail
     {
         public string Name { get; set; }
@@ -23,3 +24,4 @@ namespace TrailAid.Models.Trail
         public string RouteType { get; set; }
     }
 }
+#pragma warning restore CS1591 // Missing XML comment for publicly visible type or member

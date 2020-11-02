@@ -10,15 +10,25 @@ using TrailAid.Services;
 
 namespace TrailAid.WebAPI.Controllers
 {
+#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
     public class AllTagsController : ApiController
     {
         public string result = "";
+#pragma warning restore CS1591 // Missing XML comment for publicly visible type or member
+        /// <summary>
+        /// Get All Tags
+        /// </summary>
+        /// <returns>Returns a List of All Tags</returns>
         public IHttpActionResult Get()
         {
             AllTagsService allTagsService = CreateAllTagsService();
             var tags = allTagsService.GetAllTags();
             return Ok(tags);
         }
+        /// <summary>
+        /// Create a New List of Tags
+        /// </summary>
+        /// <returns>Returns A New List of Tags</returns>
         public IHttpActionResult Post()
         {
             if (!ModelState.IsValid)
@@ -31,6 +41,9 @@ namespace TrailAid.WebAPI.Controllers
 
             return Ok();
         }
+        /// <summary> Update Tags </summary>
+        /// <param name="tags"></param>
+        /// <returns> Returns a List of Updated Tags </returns>
         public IHttpActionResult Put(AllTagsEdit tags)
         {
             if (!ModelState.IsValid) return BadRequest(ModelState);

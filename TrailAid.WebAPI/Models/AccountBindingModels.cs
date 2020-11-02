@@ -6,6 +6,7 @@ namespace TrailAid.WebAPI.Models
 {
     // Models used as parameters to AccountController actions.
 
+#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
     public class AddExternalLoginBindingModel
     {
         [Required]
@@ -82,3 +83,4 @@ namespace TrailAid.WebAPI.Models
         public string ConfirmPassword { get; set; }
     }
 }
+#pragma warning restore CS1591 // Missing XML comment for publicly visible type or member

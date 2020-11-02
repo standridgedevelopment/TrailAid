@@ -9,6 +9,7 @@ using System.Web.Http;
 
 namespace TrailAid.WebAPI.Results
 {
+#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
     public class ChallengeResult : IHttpActionResult
     {
         public ChallengeResult(string loginProvider, ApiController controller)
@@ -30,3 +31,4 @@ namespace TrailAid.WebAPI.Results
         }
     }
 }
+#pragma warning restore CS1591 // Missing XML comment for publicly visible type or member

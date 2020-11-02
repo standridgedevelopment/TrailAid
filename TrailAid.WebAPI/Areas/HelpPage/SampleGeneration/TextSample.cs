@@ -7,6 +7,7 @@ namespace TrailAid.WebAPI.Areas.HelpPage
     /// </summary>
     public class TextSample
     {
+#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
         public TextSample(string text)
         {
             if (text == null)
@@ -35,3 +36,4 @@ namespace TrailAid.WebAPI.Areas.HelpPage
         }
     }
 }
+#pragma warning restore CS1591 // Missing XML comment for publicly visible type or member

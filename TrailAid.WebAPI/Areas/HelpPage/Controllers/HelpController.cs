@@ -13,6 +13,7 @@ namespace TrailAid.WebAPI.Areas.HelpPage.Controllers
     {
         private const string ErrorViewName = "Error";
 
+#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
         public HelpController()
             : this(GlobalConfiguration.Configuration)
         {
@@ -61,3 +62,4 @@ namespace TrailAid.WebAPI.Areas.HelpPage.Controllers
         }
     }
 }
+#pragma warning restore CS1591 // Missing XML comment for publicly visible type or member

@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace TrailAid.Models.Visited
 {
+#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
     public class VisitedDetail
     {
         public int? TrailID { get; set; }
@@ -19,3 +20,4 @@ namespace TrailAid.Models.Visited
         public bool AddToFavorites { get; set; }
     }
 }
+#pragma warning restore CS1591 // Missing XML comment for publicly visible type or member

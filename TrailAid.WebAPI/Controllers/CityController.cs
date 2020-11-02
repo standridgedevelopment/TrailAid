@@ -5,12 +5,15 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web.Http.Description;
 using TrailAid.Models.City;
 using TrailAid.Services;
 
 namespace TrailAid.WebAPI.Controllers
 {
+#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
     public class CityController : ApiController
+#pragma warning restore CS1591 // Missing XML comment for publicly visible type or member
     {
         /// <summary>
         /// Get All Cities
@@ -37,7 +40,6 @@ namespace TrailAid.WebAPI.Controllers
         /// <summary>
         /// Create a New City
         /// </summary>
-        /// <param name="city"> City Name</param>
         /// <returns>Returns A New City</returns>
         public IHttpActionResult Post(CityCreate city)
         {
@@ -50,12 +52,10 @@ namespace TrailAid.WebAPI.Controllers
 
             return Ok();
         }
-        /// <summary>
-        /// Update City
-        /// </summary>
-        /// <param name="city"> City Name</param>
-        /// <param name="id"> city id</param>
-        /// <returns>Updates City Object</returns>
+        /// <summary> Update City </summary>
+        /// <param name="id"> city id </param>
+        /// <param name="city"></param>
+        /// <returns> Updates City Object </returns>
         public IHttpActionResult Put(CityEdit city, int id)
         {
             if (!ModelState.IsValid) return BadRequest(ModelState);

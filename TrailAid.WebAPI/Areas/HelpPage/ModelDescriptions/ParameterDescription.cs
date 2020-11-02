@@ -3,6 +3,7 @@ using System.Collections.ObjectModel;
 
 namespace TrailAid.WebAPI.Areas.HelpPage.ModelDescriptions
 {
+#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
     public class ParameterDescription
     {
         public ParameterDescription()
@@ -19,3 +20,4 @@ namespace TrailAid.WebAPI.Areas.HelpPage.ModelDescriptions
         public ModelDescription TypeDescription { get; set; }
     }
 }
+#pragma warning restore CS1591 // Missing XML comment for publicly visible type or member
