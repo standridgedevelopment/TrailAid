@@ -7,13 +7,10 @@ namespace TrailAid.WebAPI.Areas.HelpPage
     /// </summary>
     public class InvalidSample
     {
+#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
         public InvalidSample(string errorMessage)
         {
-            if (errorMessage == null)
-            {
-                throw new ArgumentNullException("errorMessage");
-            }
-            ErrorMessage = errorMessage;
+            ErrorMessage = errorMessage ?? throw new ArgumentNullException("errorMessage");
         }
 
         public string ErrorMessage { get; private set; }
@@ -35,3 +32,4 @@ namespace TrailAid.WebAPI.Areas.HelpPage
         }
     }
 }
+#pragma warning restore CS1591 // Missing XML comment for publicly visible type or member

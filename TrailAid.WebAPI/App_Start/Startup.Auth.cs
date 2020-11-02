@@ -15,14 +15,22 @@ using static TrailAid.Data.ApplicationUser;
 
 namespace TrailAid.WebAPI
 {
+#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
     public partial class Startup
+#pragma warning restore CS1591 // Missing XML comment for publicly visible type or member
     {
+#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
         public static OAuthAuthorizationServerOptions OAuthOptions { get; private set; }
+#pragma warning restore CS1591 // Missing XML comment for publicly visible type or member
 
+#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
         public static string PublicClientId { get; private set; }
+#pragma warning restore CS1591 // Missing XML comment for publicly visible type or member
 
         // For more information on configuring authentication, please visit https://go.microsoft.com/fwlink/?LinkId=301864
+#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
         public void ConfigureAuth(IAppBuilder app)
+#pragma warning restore CS1591 // Missing XML comment for publicly visible type or member
         {
             // Configure the db context and user manager to use a single instance per request
             app.CreatePerOwinContext(ApplicationDbContext.Create);

@@ -84,9 +84,11 @@ namespace TrailAid.WebAPI.Areas.HelpPage.ModelDescriptions
             { typeof(Boolean), "boolean" },
         };
 
-        private Lazy<IModelDocumentationProvider> _documentationProvider;
+        private readonly Lazy<IModelDocumentationProvider> _documentationProvider;
 
+#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
         public ModelDescriptionGenerator(HttpConfiguration config)
+#pragma warning restore CS1591 // Missing XML comment for publicly visible type or member
         {
             if (config == null)
             {
@@ -97,7 +99,9 @@ namespace TrailAid.WebAPI.Areas.HelpPage.ModelDescriptions
             GeneratedModels = new Dictionary<string, ModelDescription>(StringComparer.OrdinalIgnoreCase);
         }
 
+#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
         public Dictionary<string, ModelDescription> GeneratedModels { get; private set; }
+#pragma warning restore CS1591 // Missing XML comment for publicly visible type or member
 
         private IModelDocumentationProvider DocumentationProvider
         {
@@ -107,7 +111,9 @@ namespace TrailAid.WebAPI.Areas.HelpPage.ModelDescriptions
             }
         }
 
+#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
         public ModelDescription GetOrCreateModelDescription(Type modelType)
+#pragma warning restore CS1591 // Missing XML comment for publicly visible type or member
         {
             if (modelType == null)
             {
@@ -120,9 +126,8 @@ namespace TrailAid.WebAPI.Areas.HelpPage.ModelDescriptions
                 modelType = underlyingType;
             }
 
-            ModelDescription modelDescription;
             string modelName = ModelNameHelper.GetModelName(modelType);
-            if (GeneratedModels.TryGetValue(modelName, out modelDescription))
+            if (GeneratedModels.TryGetValue(modelName, out ModelDescription modelDescription))
             {
                 if (modelType != modelDescription.ModelType)
                 {
@@ -251,8 +256,7 @@ namespace TrailAid.WebAPI.Areas.HelpPage.ModelDescriptions
 
         private string CreateDefaultDocumentation(Type type)
         {
-            string documentation;
-            if (DefaultTypeDocumentation.TryGetValue(type, out documentation))
+            if (DefaultTypeDocumentation.TryGetValue(type, out string documentation))
             {
                 return documentation;
             }
@@ -271,8 +275,7 @@ namespace TrailAid.WebAPI.Areas.HelpPage.ModelDescriptions
             IEnumerable<Attribute> attributes = property.GetCustomAttributes();
             foreach (Attribute attribute in attributes)
             {
-                Func<object, string> textGenerator;
-                if (AnnotationTextGenerator.TryGetValue(attribute.GetType(), out textGenerator))
+                if (AnnotationTextGenerator.TryGetValue(attribute.GetType(), out Func<object, string> textGenerator))
                 {
                     annotations.Add(
                         new ParameterAnnotation

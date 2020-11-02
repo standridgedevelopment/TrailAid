@@ -7,6 +7,7 @@ namespace TrailAid.WebAPI.Areas.HelpPage.ModelDescriptions
     /// </summary>
     public abstract class ModelDescription
     {
+#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
         public string Documentation { get; set; }
 
         public Type ModelType { get; set; }
@@ -14,3 +15,4 @@ namespace TrailAid.WebAPI.Areas.HelpPage.ModelDescriptions
         public string Name { get; set; }
     }
 }
+#pragma warning restore CS1591 // Missing XML comment for publicly visible type or member\
