@@ -90,6 +90,7 @@ namespace TrailAid.Services
                     var entity = ctx.Trails.Single(e => e.ID == id);
                     if (entity.ParkID != null) return new TrailDetail
                     {
+                        ID = entity.ID,
                         Name = entity.Name,
                         CityID = entity.CityID,
                         CityName = entity.City.Name,
@@ -106,6 +107,7 @@ namespace TrailAid.Services
                     };
                     else return new TrailDetail
                     {
+                        ID = entity.ID,
                         Name = entity.Name,
                         CityID = entity.CityID,
                         CityName = entity.City.Name,
@@ -134,6 +136,7 @@ namespace TrailAid.Services
                     {
                         var foundTrail = new TrailDetail
                         {
+                            ID = trail.ID,
                             Name = trail.Name,
                             CityID = trail.CityID,
                             CityName = trail.City.Name,
@@ -154,6 +157,7 @@ namespace TrailAid.Services
                     {
                         var foundTrail = new TrailDetail
                         {
+                            ID = trail.ID,
                             Name = trail.Name,
                             CityID = trail.CityID,
                             CityName = trail.City.Name,
@@ -183,6 +187,7 @@ namespace TrailAid.Services
                     {
                         var foundTrail = new TrailDetail
                         {
+                            ID = trail.ID,
                             Name = trail.Name,
                             CityID = trail.CityID,
                             CityName = trail.City.Name,
@@ -203,6 +208,7 @@ namespace TrailAid.Services
                     {
                         var foundTrail = new TrailDetail
                         {
+                            ID = trail.ID,
                             Name = trail.Name,
                             CityID = trail.CityID,
                             CityName = trail.City.Name,
@@ -232,6 +238,7 @@ namespace TrailAid.Services
                     {
                         var foundTrail = new TrailDetail
                         {
+                            ID = trail.ID,
                             Name = trail.Name,
                             CityID = trail.CityID,
                             CityName = trail.City.Name,
@@ -252,6 +259,7 @@ namespace TrailAid.Services
                     {
                         var foundTrail = new TrailDetail
                         {
+                            ID = trail.ID,
                             Name = trail.Name,
                             CityID = trail.CityID,
                             CityName = trail.City.Name,
@@ -281,6 +289,7 @@ namespace TrailAid.Services
                     {
                         var foundTrail = new TrailDetail
                         {
+                            ID = trail.ID,
                             Name = trail.Name,
                             CityID = trail.CityID,
                             CityName = trail.City.Name,
@@ -301,6 +310,7 @@ namespace TrailAid.Services
                     {
                         var foundTrail = new TrailDetail
                         {
+                            ID = trail.ID,
                             Name = trail.Name,
                             CityID = trail.CityID,
                             CityName = trail.City.Name,
@@ -330,6 +340,7 @@ namespace TrailAid.Services
                     {
                         var foundTrail = new TrailDetail
                         {
+                            ID = trail.ID,
                             Name = trail.Name,
                             CityID = trail.CityID,
                             CityName = trail.City.Name,
@@ -350,6 +361,7 @@ namespace TrailAid.Services
                     {
                         var foundTrail = new TrailDetail
                         {
+                            ID = trail.ID,
                             Name = trail.Name,
                             CityID = trail.CityID,
                             CityName = trail.City.Name,
@@ -379,6 +391,7 @@ namespace TrailAid.Services
                     {
                         var foundTrail = new TrailDetail
                         {
+                            ID = trail.ID,
                             Name = trail.Name,
                             CityID = trail.CityID,
                             CityName = trail.City.Name,
@@ -399,6 +412,7 @@ namespace TrailAid.Services
                     {
                         var foundTrail = new TrailDetail
                         {
+                            ID = trail.ID,
                             Name = trail.Name,
                             CityID = trail.CityID,
                             CityName = trail.City.Name,
@@ -428,6 +442,7 @@ namespace TrailAid.Services
                     {
                         var foundTrail = new TrailDetail
                         {
+                            ID = trail.ID,
                             Name = trail.Name,
                             CityID = trail.CityID,
                             CityName = trail.City.Name,
@@ -448,6 +463,7 @@ namespace TrailAid.Services
                     {
                         var foundTrail = new TrailDetail
                         {
+                            ID = trail.ID,
                             Name = trail.Name,
                             CityID = trail.CityID,
                             CityName = trail.City.Name,
@@ -477,6 +493,7 @@ namespace TrailAid.Services
                     {
                         var foundTrail = new TrailDetail
                         {
+                            ID = trail.ID,
                             Name = trail.Name,
                             CityID = trail.CityID,
                             CityName = trail.City.Name,
@@ -497,6 +514,7 @@ namespace TrailAid.Services
                     {
                         var foundTrail = new TrailDetail
                         {
+                            ID = trail.ID,
                             Name = trail.Name,
                             CityID = trail.CityID,
                             CityName = trail.City.Name,
@@ -526,6 +544,7 @@ namespace TrailAid.Services
                     {
                         var foundTrail = new TrailDetail
                         {
+                            ID = trail.ID,
                             Name = trail.Name,
                             CityID = trail.CityID,
                             CityName = trail.City.Name,
@@ -546,6 +565,7 @@ namespace TrailAid.Services
                     {
                         var foundTrail = new TrailDetail
                         {
+                            ID = trail.ID,
                             Name = trail.Name,
                             CityID = trail.CityID,
                             CityName = trail.City.Name,
@@ -575,6 +595,7 @@ namespace TrailAid.Services
                     {
                         var foundTrail = new TrailDetail
                         {
+                            ID = trail.ID,
                             Name = trail.Name,
                             CityID = trail.CityID,
                             CityName = trail.City.Name,
@@ -595,6 +616,7 @@ namespace TrailAid.Services
                     {
                         var foundTrail = new TrailDetail
                         {
+                            ID = trail.ID,
                             Name = trail.Name,
                             CityID = trail.CityID,
                             CityName = trail.City.Name,
@@ -624,6 +646,7 @@ namespace TrailAid.Services
                     {
                         var foundTrail = new TrailDetail
                         {
+                            ID = trail.ID,
                             Name = trail.Name,
                             CityID = trail.CityID,
                             CityName = trail.City.Name,
@@ -644,6 +667,7 @@ namespace TrailAid.Services
                     {
                         var foundTrail = new TrailDetail
                         {
+                            ID = trail.ID,
                             Name = trail.Name,
                             CityID = trail.CityID,
                             CityName = trail.City.Name,

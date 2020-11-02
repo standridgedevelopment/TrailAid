@@ -74,12 +74,16 @@ namespace TrailAid.Services
                     var entity = ctx.Parks.Single(e => e.ID == id);
                     return new ParkDetail
                     {
+                        ID = entity.ID,
                         Name = entity.Name,
+                        CityID = entity.CityID,
                         CityName = entity.City.Name,
                         Acreage = entity.Acreage,
                         Hours = entity.Hours,
                         PhoneNumber = entity.PhoneNumber,
-                        Website = entity.Website
+                        Website = entity.Website,
+                        AverageTrailRating = entity.AverageTrailRating,
+                        TrailsInPark = entity.TrailsInPark
                     };
                 }
                 catch { }
@@ -90,17 +94,20 @@ namespace TrailAid.Services
         {
             using (var ctx = new ApplicationDbContext())
             {
-                var parks = ctx.Parks.Where(e => e.Name == name).ToList();
+                var parks = ctx.Parks.Where(e => e.Name.Contains(name)).ToList();
                 foreach (var park in parks)
                 {
                     var foundPark = new ParkDetail
                     {
+                        ID = park.ID,
                         Name = park.Name,
+                        CityID = park.CityID,
                         CityName = park.City.Name,
                         Acreage = park.Acreage,
                         Hours = park.Hours,
                         PhoneNumber = park.PhoneNumber,
-                        Website = park.Website
+                        Website = park.Website,
+                        AverageTrailRating = park.AverageTrailRating
                     };
                     searchResults.Add(foundPark);
                 }
@@ -116,12 +123,15 @@ namespace TrailAid.Services
                     {
                         var foundPark = new ParkDetail
                         {
+                            ID = park.ID,
                             Name = park.Name,
+                            CityID = park.CityID,
                             CityName = park.City.Name,
                             Acreage = park.Acreage,
                             Hours = park.Hours,
                             PhoneNumber = park.PhoneNumber,
-                            Website = park.Website
+                            Website = park.Website,
+                            AverageTrailRating = park.AverageTrailRating
                         };
                         searchResults.Add(foundPark);
                     }
@@ -138,18 +148,21 @@ namespace TrailAid.Services
                     {
                         var foundPark = new ParkDetail
                         {
+                            ID = park.ID,
                             Name = park.Name,
+                            CityID = park.CityID,
                             CityName = park.City.Name,
                             Acreage = park.Acreage,
                             Hours = park.Hours,
                             PhoneNumber = park.PhoneNumber,
-                            Website = park.Website
+                            Website = park.Website,
+                            AverageTrailRating = park.AverageTrailRating
                         };
                         searchResults.Add(foundPark);
                     }
+            }
 
                 return searchResults;
-            }
         }
         public string UpdatePark(ParkEdit model, int id)
         {

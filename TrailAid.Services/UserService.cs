@@ -40,15 +40,22 @@ namespace TrailAid.Services
         {
             using (var ctx = new ApplicationDbContext())
             {
-                var entity = ctx.Users.Single(e => e.ID == _userId);
-                return new UserDetail
+                
+                try
                 {
-                    FirstName = entity.FirstName,
-                    LastName = entity.LastName,
-                    City = entity.City,
-                    State = entity.State,
-                    Favorites = entity.Favorites,
-                };
+                    var entity = ctx.Users.Single(e => e.ID == _userId);
+                    return new UserDetail
+                    {
+                        FirstName = entity.FirstName,
+                        LastName = entity.LastName,
+                        City = entity.City,
+                        State = entity.State,
+                        Favorites = entity.Favorites,
+                    };
+                }
+                catch { }
+                return new UserDetail();
+                
             }
         }
         public bool UpdateUser(UserEdit model)
@@ -70,7 +77,7 @@ namespace TrailAid.Services
         {
             using (var ctx = new ApplicationDbContext())
             {
-                var entity = ctx.Users.Single(e => e.LastName == lastName && e.ID == _userId);
+                var entity = ctx.Users.Single(e => e.ID == _userId);
 
                 ctx.Users.Remove(entity);
 
