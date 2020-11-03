@@ -7,6 +7,7 @@ using TrailAid.Models.Visited;
 
 namespace TrailAid.Models.User
 {
+#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
     public class UserDetail
     {
         public string FirstName { get; set; }
@@ -16,3 +17,4 @@ namespace TrailAid.Models.User
         public List<VisitedFavorite> Favorites { get; set; }
     }
 }
+#pragma warning restore CS1591 // Missing XML comment for publicly visible type or member

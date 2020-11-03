@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
@@ -13,6 +14,7 @@ namespace TrailAid.Data
         [Key]
         public Guid ID { get; set; }
         [Required]
+        [Description("Description goes here")]
         public string FirstName { get; set; }
         [Required]
         public string LastName { get; set; }

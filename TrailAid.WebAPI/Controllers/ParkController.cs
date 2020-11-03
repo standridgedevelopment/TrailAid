@@ -10,15 +10,26 @@ using TrailAid.Services;
 
 namespace TrailAid.WebAPI.Controllers
 {
+#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
     public class ParkController : ApiController
     {
         public string result = "";
+#pragma warning restore CS1591 // Missing XML comment for publicly visible type or member
+        /// <summary>
+        /// Get All Parks
+        /// </summary>
+        /// <returns>Returns a List of All Parks</returns>
         public IHttpActionResult Get()
         {
             ParkService parkService = CreateParkService();
             var park = parkService.GetParks();
             return Ok(park);
         }
+        /// <summary>
+        /// Get Park By ID
+        /// </summary>
+        /// <param name="id"> park id</param>
+        /// <returns>Returns Park Object by ID</returns>
         public IHttpActionResult GetByID(int id)
         {
             ParkService parkService = CreateParkService();
@@ -27,6 +38,11 @@ namespace TrailAid.WebAPI.Controllers
             if (park.Name == null) return BadRequest("Park ID not found");
             return Ok(park);
         }
+        /// <summary>
+        /// Get Park By Name
+        /// </summary>
+        /// <param name="name"> park name</param>
+        /// <returns>Returns Park Object by Name</returns>
         public IHttpActionResult GetByName(string name)
         {
             ParkService parkService = CreateParkService();
@@ -35,6 +51,11 @@ namespace TrailAid.WebAPI.Controllers
             if (park.Count == 0) return BadRequest("Park Name not found");
             return Ok(park);
         }
+        /// <summary>
+        /// Get Park By City Name
+        /// </summary>
+        /// <param name="cityName"> city name</param>
+        /// <returns>Returns Park Object by City Name</returns>
         public IHttpActionResult GetByCityName(string cityName)
         {
             ParkService parkService = CreateParkService();
@@ -43,6 +64,12 @@ namespace TrailAid.WebAPI.Controllers
             if (park.Count == 0) return BadRequest("City Name not found");
             return Ok(park);
         }
+        /// <summary>
+        /// Get Park By Acreage
+        /// </summary>
+        /// <param name="minacreage"> minimum acreage</param>
+        /// <param name="maxacreage"> maximum acreage</param>
+        /// <returns>Returns Park Object by Acreage</returns>
         public IHttpActionResult GetByAcreage(int minacreage, int maxacreage)
         {
 
@@ -52,6 +79,10 @@ namespace TrailAid.WebAPI.Controllers
             if (park.Count == 0) return BadRequest("Acreage not found");
             return Ok(park);
         }
+        /// <summary>
+        /// Create a New Park
+        /// </summary>
+        /// <returns>Returns A New Park</returns>
         public IHttpActionResult Post(ParkCreate park)
         {
             if (!ModelState.IsValid) return BadRequest(ModelState);
@@ -63,6 +94,10 @@ namespace TrailAid.WebAPI.Controllers
 
             return Ok();
         }
+        /// <summary> Update Park </summary>
+        /// <param name="id"> park id </param>
+        /// <param name="park"></param>
+        /// <returns> Updates Park Object </returns>
         public IHttpActionResult Put(ParkEdit park, int id)
         {
             if (!ModelState.IsValid) return BadRequest(ModelState);
@@ -74,6 +109,11 @@ namespace TrailAid.WebAPI.Controllers
 
             return Ok();
         }
+        /// <summary>
+        /// Delete Park
+        /// </summary>
+        /// <param name="id"> park id</param>
+        /// <returns>Deletes Park Object</returns>
         public IHttpActionResult Delete(int id)
         {
             var parkService = CreateParkService();

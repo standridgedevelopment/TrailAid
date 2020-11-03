@@ -5,28 +5,31 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web.Http.Description;
 using TrailAid.Models.City;
 using TrailAid.Services;
 
 namespace TrailAid.WebAPI.Controllers
 {
+#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
     public class CityController : ApiController
+#pragma warning restore CS1591 // Missing XML comment for publicly visible type or member
     {
-        /// <summary>  
-        /// Get all Cities  
-        /// </summary>  
-        /// <returns>List of Cities</returns>
+        /// <summary>
+        /// Get All Cities
+        /// </summary>
+        /// <returns>Returns a List of All Cities</returns>
         public IHttpActionResult Get()
         {
             CityService cityService = CreateCityService();
             var city = cityService.GetCities();
             return Ok(city);
         }
-        /// <summary>  
-        /// Get City By ID  
-        /// </summary>  
-        /// <param name="id"> City ID</param>  
-        /// <returns>City Object by ID </returns>
+        /// <summary>
+        /// Get City By ID
+        /// </summary>
+        /// <param name="id"> city id</param>
+        /// <returns>Returns City Object by ID</returns>
         public IHttpActionResult Get(int id)
         {
             CityService CityService = CreateCityService();
@@ -34,6 +37,10 @@ namespace TrailAid.WebAPI.Controllers
             if (city.Name == null) return BadRequest("City ID not found");
             return Ok(city);
         }
+        /// <summary>
+        /// Create a New City
+        /// </summary>
+        /// <returns>Returns A New City</returns>
         public IHttpActionResult Post(CityCreate city)
         {
             if (!ModelState.IsValid)
@@ -45,6 +52,10 @@ namespace TrailAid.WebAPI.Controllers
 
             return Ok();
         }
+        /// <summary> Update City </summary>
+        /// <param name="id"> city id </param>
+        /// <param name="city"></param>
+        /// <returns> Updates City Object </returns>
         public IHttpActionResult Put(CityEdit city, int id)
         {
             if (!ModelState.IsValid) return BadRequest(ModelState);
@@ -54,6 +65,11 @@ namespace TrailAid.WebAPI.Controllers
             if (!service.UpdateCity(city, id)) return BadRequest("City ID not found.");
             return Ok();
         }
+        /// <summary>
+        /// Delete City
+        /// </summary>
+        /// <param name="id"> city id</param>
+        /// <returns>Deletes City Object</returns>
         public IHttpActionResult Delete(int id)
         {
             var service = CreateCityService();

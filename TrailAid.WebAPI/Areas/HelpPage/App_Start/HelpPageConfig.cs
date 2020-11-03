@@ -7,11 +7,14 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
+using System.IO;
 using System.Linq;
 using System.Net.Http.Headers;
 using System.Reflection;
 using System.Web;
 using System.Web.Http;
+using System.Xml;
+using static System.Net.Mime.MediaTypeNames;
 #if Handle_PageResultOfT
 using System.Web.Http.OData;
 #endif
@@ -31,8 +34,30 @@ namespace TrailAid.WebAPI.Areas.HelpPage
         [SuppressMessage("Microsoft.Naming", "CA2204:Literals should be spelled correctly",
             MessageId = "bsonspec",
             Justification = "Part of a URI.")]
+#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
         public static void Register(HttpConfiguration config)
+#pragma warning restore CS1591 // Missing XML comment for publicly visible type or member
         {
+
+            XmlDocument apiDoc = new XmlDocument();
+            apiDoc.Load(HttpContext.Current.Server.MapPath("~/App_Data/XmlDocument.xml"));
+             XmlDocument modelDoc = new XmlDocument();
+            //var AssemblyPath = AppDomain.CurrentDomain.DynamicDirectory;
+            string currentDirectory = AppDomain.CurrentDomain.BaseDirectory;
+            string newPath = Path.GetFullPath(Path.Combine(currentDirectory, @"..\"));
+            modelDoc.Load($"{newPath}/TrailAid.Models/Model_Data/XmlDocument.xml");
+
+            if (modelDoc.DocumentElement != null && apiDoc.DocumentElement != null)
+            {
+                XmlNodeList nodes = modelDoc.DocumentElement.ChildNodes;
+                foreach (XmlNode node in nodes)
+                {
+                    XmlNode copiedNode = apiDoc.ImportNode(node, true);
+                    apiDoc.DocumentElement.AppendChild(copiedNode);
+                }
+                apiDoc.Save(HttpContext.Current.Server.MapPath("~/App_Data/XmlDocument.xml"));
+            }
+
             //// Uncomment the following to use the documentation from XML documentation file.
             config.SetDocumentationProvider(new XmlDocumentationProvider(HttpContext.Current.Server.MapPath("~/App_Data/XmlDocument.xml")));
 

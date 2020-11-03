@@ -14,6 +14,7 @@ using TrailAid.WebAPI.Models;
 
 namespace TrailAid.WebAPI.Providers
 {
+#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
     public class ApplicationOAuthProvider : OAuthAuthorizationServerProvider
     {
         private readonly string _publicClientId;
@@ -97,3 +98,4 @@ namespace TrailAid.WebAPI.Providers
         }
     }
 }
+#pragma warning restore CS1591 // Missing XML comment for publicly visible type or member

@@ -9,6 +9,7 @@ using System.Web.Routing;
 
 namespace TrailAid.WebAPI
 {
+#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
     public class WebApiApplication : System.Web.HttpApplication
     {
         protected void Application_Start()
@@ -21,3 +22,4 @@ namespace TrailAid.WebAPI
         }
     }
 }
+#pragma warning restore CS1591 // Missing XML comment for publicly visible type or member

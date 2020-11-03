@@ -3,6 +3,7 @@ using System.Web.Optimization;
 
 namespace TrailAid.WebAPI
 {
+#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
     public class BundleConfig
     {
         // For more information on bundling, visit https://go.microsoft.com/fwlink/?LinkId=301862
@@ -25,3 +26,4 @@ namespace TrailAid.WebAPI
         }
     }
 }
+#pragma warning restore CS1591 // Missing XML comment for publicly visible type or member
