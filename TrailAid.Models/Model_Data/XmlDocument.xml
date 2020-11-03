@@ -58,6 +58,16 @@
             park website
             </summary>
         </member>
+        <member name="P:TrailAid.Models.State.StateCreate.Name">
+            <summary>
+            state name
+            </summary>
+        </member>
+        <member name="P:TrailAid.Models.State.StateEdit.Name">
+            <summary>
+            state name
+            </summary>
+        </member>
         <member name="P:TrailAid.Models.Trail.TrailCreate.Name">
             <summary>
             trail name
