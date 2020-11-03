@@ -55,6 +55,14 @@ namespace TrailAid.Services
                 return new StateDetail();
             }
         }
+        public State GetStateByName(string name)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                State state = ctx.States.Single(e => e.Name.Contains(name));
+                return state;
+            }
+        }
         public bool UpdateState(StateEdit model, int id)
         {
             using (var ctx = new ApplicationDbContext())
