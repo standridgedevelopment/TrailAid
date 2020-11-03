@@ -38,6 +38,32 @@ namespace TrailAid.WebAPI.Controllers
             return Ok(city);
         }
         /// <summary>
+        /// Get City By Name
+        /// </summary>
+        /// <param name="cityName"> city name</param>
+        /// <returns>Returns City Object by City Name</returns>
+        public IHttpActionResult GetCityByName(string cityName)
+        {
+            CityService cityService = CreateCityService();
+            var city = cityService.GetCityByName(cityName);
+
+            if (city.Count == 0) return BadRequest("City Name Not Found.");
+            return Ok(city);
+        }
+        /// <summary>
+        /// Get City By State Name
+        /// </summary>
+        /// <param name="stateName"> state name</param>
+        /// <returns>Returns City Object by State Name</returns>
+        public IHttpActionResult GetCityByState(string stateName)
+        {
+            CityService cityService = CreateCityService();
+            var city = cityService.GetCityByState(stateName);
+
+            if (city.Count == 0) return BadRequest("City Name Not Found.");
+            return Ok(city);
+        }
+        /// <summary>
         /// Create a New City
         /// </summary>
         /// <returns>Returns A New City</returns>

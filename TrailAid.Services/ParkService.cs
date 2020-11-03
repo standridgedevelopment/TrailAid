@@ -17,6 +17,7 @@ namespace TrailAid.Services
             var entity = new Park()
             {
                 CityID = model.CityID,
+                CityName = model.CityName,
                 Name = model.Name,
                 Acreage = model.Acreage,
                 Hours = model.Hours,
@@ -58,6 +59,7 @@ namespace TrailAid.Services
                     {
                         Name = e.Name,
                         CityName = e.City.Name,
+                        StateName = e.City.State.Name,
                         ID = e.ID,
                         AverageTrailRating = e.AverageTrailRating
                     }
@@ -79,6 +81,8 @@ namespace TrailAid.Services
                         Name = entity.Name,
                         CityID = entity.CityID,
                         CityName = entity.City.Name,
+                        StateID = entity.City.StateID,
+                        StateName = entity.City.State.Name,
                         Acreage = entity.Acreage,
                         Hours = entity.Hours,
                         PhoneNumber = entity.PhoneNumber,
@@ -104,6 +108,8 @@ namespace TrailAid.Services
                         Name = park.Name,
                         CityID = park.CityID,
                         CityName = park.City.Name,
+                        StateID = park.City.StateID,
+                        StateName = park.City.State.Name,
                         Acreage = park.Acreage,
                         Hours = park.Hours,
                         PhoneNumber = park.PhoneNumber,
@@ -128,6 +134,8 @@ namespace TrailAid.Services
                             Name = park.Name,
                             CityID = park.CityID,
                             CityName = park.City.Name,
+                            StateID = park.City.StateID,
+                            StateName = park.City.State.Name,
                             Acreage = park.Acreage,
                             Hours = park.Hours,
                             PhoneNumber = park.PhoneNumber,
@@ -136,7 +144,32 @@ namespace TrailAid.Services
                         };
                         searchResults.Add(foundPark);
                     }
-
+                return searchResults;
+            }
+        }
+        public List<ParkDetail> GetParkByStateName(string stateName)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var parks = ctx.Parks.Where(e => e.City.State.Name == stateName).ToList();
+                foreach (var park in parks)
+                {
+                    var foundPark = new ParkDetail
+                    {
+                        ID = park.ID,
+                        Name = park.Name,
+                        CityID = park.CityID,
+                        CityName = park.City.Name,
+                        StateID = park.City.StateID,
+                        StateName = park.City.State.Name,
+                        Acreage = park.Acreage,
+                        Hours = park.Hours,
+                        PhoneNumber = park.PhoneNumber,
+                        Website = park.Website,
+                        AverageTrailRating = park.AverageTrailRating
+                    };
+                    searchResults.Add(foundPark);
+                }
                 return searchResults;
             }
         }
@@ -153,6 +186,8 @@ namespace TrailAid.Services
                             Name = park.Name,
                             CityID = park.CityID,
                             CityName = park.City.Name,
+                            StateID = park.City.StateID,
+                            StateName = park.City.State.Name,
                             Acreage = park.Acreage,
                             Hours = park.Hours,
                             PhoneNumber = park.PhoneNumber,

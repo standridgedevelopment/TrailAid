@@ -65,6 +65,19 @@ namespace TrailAid.WebAPI.Controllers
             return Ok(park);
         }
         /// <summary>
+        /// Get Park By State Name
+        /// </summary>
+        /// <param name="stateName"> city name</param>
+        /// <returns>Returns Park Object by State Name</returns>
+        public IHttpActionResult GetByStateName(string stateName)
+        {
+            ParkService parkService = CreateParkService();
+            var park = parkService.GetParkByStateName(stateName);
+
+            if (park.Count == 0) return BadRequest("State Name Not Found.");
+            return Ok(park);
+        }
+        /// <summary>
         /// Get Park By Acreage
         /// </summary>
         /// <param name="minacreage"> minimum acreage</param>

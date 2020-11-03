@@ -25,36 +25,6 @@
         <member name="P:TrailAid.Models.City.CityCreate.Name">
             <summary> city name </summary>
         </member>
-        <member name="P:TrailAid.Models.Park.ParkCreate.CityID">
-            <summary>
-            city id
-            </summary>
-        </member>
-        <member name="P:TrailAid.Models.Park.ParkCreate.Name">
-            <summary>
-            park name
-            </summary>
-        </member>
-        <member name="P:TrailAid.Models.Park.ParkCreate.Acreage">
-            <summary>
-            park acreage
-            </summary>
-        </member>
-        <member name="P:TrailAid.Models.Park.ParkCreate.Hours">
-            <summary>
-            park hours
-            </summary>
-        </member>
-        <member name="P:TrailAid.Models.Park.ParkCreate.PhoneNumber">
-            <summary>
-            park phone number
-            </summary>
-        </member>
-        <member name="P:TrailAid.Models.Park.ParkCreate.Website">
-            <summary>
-            park website
-            </summary>
-        </member>
         <member name="P:TrailAid.Models.Park.ParkEdit.CityID">
             <summary>
             city id

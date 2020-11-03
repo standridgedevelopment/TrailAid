@@ -11,11 +11,14 @@ namespace TrailAid.Services
 {
     public class CityService
     {
+        readonly List<CityDetail> searchResults = new List<CityDetail>();
+
         public bool CreateCities(CityCreate model)
         {
             var entity = new City()
             {
-                Name = model.Name
+                Name = model.Name,
+                StateID = model.StateID
             };
 
             using (var ctx = new ApplicationDbContext())
@@ -33,7 +36,9 @@ namespace TrailAid.Services
                     (e => new CityListItem
                     {
                         Name = e.Name,
-                        ID = e.ID
+                        ID = e.ID,
+                        StateID = e.StateID,
+                        StateName = e.State.Name
                     }
                     );
                 return query.ToArray();
@@ -50,11 +55,51 @@ namespace TrailAid.Services
                     return new CityDetail
                     {
                         ID = entity.ID,
-                        Name = entity.Name
+                        Name = entity.Name,
+                        StateID = entity.StateID,
+                        StateName = entity.State.Name
                     };
                 }
                 catch {}
                 return new CityDetail();
+            }
+        }
+        public List<CityDetail> GetCityByName(string name)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var cities = ctx.Cities.Where(e => e.Name.Contains(name)).ToList();
+                foreach (var city in cities)
+                {
+                    var foundCity = new CityDetail
+                    {
+                        ID = city.ID,
+                        Name = city.Name,
+                        StateID = city.StateID,
+                        StateName = city.State.Name
+                    };
+                    searchResults.Add(foundCity);
+                }
+                return searchResults;
+            }
+        }
+        public List<CityDetail> GetCityByState(string name)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var cities = ctx.Cities.Where(e => e.State.Name.Contains(name)).ToList();
+                foreach (var city in cities)
+                {
+                    var foundCity = new CityDetail
+                    {
+                        ID = city.ID,
+                        Name = city.Name,
+                        StateID = city.StateID,
+                        StateName = city.State.Name
+                    };
+                    searchResults.Add(foundCity);
+                }
+                return searchResults;
             }
         }
         public bool UpdateCity(CityEdit model, int id)
@@ -66,6 +111,7 @@ namespace TrailAid.Services
                 var entity = ctx.Cities.Single(e => e.ID == id);
 
                 entity.Name = model.Name;
+                if (model.StateID != 0) entity.StateID = model.StateID;
                 }
                 catch { return false; }
                 return ctx.SaveChanges() == 1;

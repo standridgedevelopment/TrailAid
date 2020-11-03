@@ -65,6 +65,19 @@ namespace TrailAid.WebAPI.Controllers
             return Ok(trail);
         }
         /// <summary>
+        /// Get Trail By State Name
+        /// </summary>
+        /// <param name="stateName"> state name</param>
+        /// <returns>Returns trail Object by City Name</returns>
+        public IHttpActionResult GetByStateName(string stateName)
+        {
+            TrailService trailService = CreateTrailService();
+            var trail = trailService.GetTrailByStateName(stateName);
+
+            if (trail.Count == 0) return BadRequest("State Name Not Found.");
+            return Ok(trail);
+        }
+        /// <summary>
         /// Get Trail By Park Name
         /// </summary>
         /// <param name="parkName"> park name</param>
