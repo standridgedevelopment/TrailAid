@@ -125,6 +125,10 @@
     <Compile Include="Migrations\202011031549168_next7.Designer.cs">
       <DependentUpon>202011031549168_next7.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202011031737270_state.cs" />
+    <Compile Include="Migrations\202011031737270_state.Designer.cs">
+      <DependentUpon>202011031737270_state.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Park.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -170,6 +174,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202011031549168_next7.resx">
       <DependentUpon>202011031549168_next7.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202011031737270_state.resx">
+      <DependentUpon>202011031737270_state.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

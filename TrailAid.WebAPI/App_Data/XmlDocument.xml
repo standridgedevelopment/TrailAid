@@ -666,17 +666,37 @@
       <returns> Returns a List of Updated Tags </returns>
     </member>
     <member name="M:TrailAid.WebAPI.Controllers.StateController.Get">
-      <summary>  
-            Get all States  
+      <summary>
+            Get All States
             </summary>
-      <returns>List of States</returns>
+      <returns>Returns a List of All States</returns>
     </member>
     <member name="M:TrailAid.WebAPI.Controllers.StateController.Get(System.Int32)">
-      <summary>  
-            Get State By ID  
+      <summary>
+            Get State By ID
             </summary>
-      <param name="id"> State ID</param>
-      <returns>State Object by ID </returns>
+      <param name="id"> state id</param>
+      <returns>Returns State Object by ID</returns>
+    </member>
+    <member name="M:TrailAid.WebAPI.Controllers.StateController.Post(TrailAid.Models.State.StateCreate)">
+      <summary>
+            Create a New State
+            </summary>
+      <returns>Returns A New State</returns>
+    </member>
+    <member name="M:TrailAid.WebAPI.Controllers.StateController.Put(TrailAid.Models.State.StateEdit,System.Int32)">
+      <summary> Update State </summary>
+      <param name="id"> state id </param>
+      <param name="state">
+      </param>
+      <returns> Updates State Object </returns>
+    </member>
+    <member name="M:TrailAid.WebAPI.Controllers.StateController.Delete(System.Int32)">
+      <summary>
+            Delete State
+            </summary>
+      <param name="id"> state id</param>
+      <returns>Deletes State Object</returns>
     </member>
     <member name="M:TrailAid.WebAPI.Controllers.VisitedController.Get">
       <summary>
@@ -935,6 +955,16 @@
     <member name="P:TrailAid.Models.Park.ParkEdit.Website">
       <summary>
             park website
+            </summary>
+    </member>
+    <member name="P:TrailAid.Models.State.StateCreate.Name">
+      <summary>
+            state name
+            </summary>
+    </member>
+    <member name="P:TrailAid.Models.State.StateEdit.Name">
+      <summary>
+            state name
             </summary>
     </member>
     <member name="P:TrailAid.Models.Trail.TrailCreate.Name">
