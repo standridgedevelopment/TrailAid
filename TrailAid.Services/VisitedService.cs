@@ -101,22 +101,27 @@ namespace TrailAid.Services
         {
             using (var ctx = new ApplicationDbContext())
             {
-                var entity = ctx.Visits.Single(e => e.ID == id);
-                entity.TrailID = model.TrailID;
-                entity.Rating = model.Rating;
-                entity.Review = model.Review;
-                entity.AddToFavorites = model.AddToFavorites;
                 try
                 {
-                    ctx.SaveChanges();
-                    return "Okay";
-                }
-                catch
-                {
-                    if (entity.Trail == null) return "Invalid Trail ID";
+                    var entity = ctx.Visits.Single(e => e.TrailID == id);
 
-                    return "True";
+                    if (model.TrailID != null) entity.TrailID = model.TrailID;
+                    if (model.Rating != 0) entity.Rating = model.Rating;
+                    if (model.Review != null) entity.Review = model.Review;
+                    entity.AddToFavorites = model.AddToFavorites;
+                    try
+                    {
+                        ctx.SaveChanges();
+                        return "Okay";
+                    }
+                    catch
+                    {
+                        if (entity.Trail == null) return "Invalid Trail ID";
+                    }
                 }
+                catch { }
+                
+                return "Update Error";
             }
         }
         public bool DeleteVisit(int id)

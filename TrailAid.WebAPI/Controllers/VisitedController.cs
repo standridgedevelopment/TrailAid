@@ -61,7 +61,8 @@ namespace TrailAid.WebAPI.Controllers
             if (!ModelState.IsValid) return BadRequest(ModelState);
             var visitedService = CreateVisitService();
             result = visitedService.UpdateVisit(visited, id);
-            if (result == "Invalid Trial ID") return BadRequest("Invalid Trail ID.");
+            if (result == "Invalid Trail ID") return BadRequest("Invalid Trail ID. Trail not found");
+            if (result == "Update Error") return BadRequest("Invalid Trail ID. You have not visited that Trail.");
             return Ok();
         }
         /// <summary>

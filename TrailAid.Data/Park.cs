@@ -19,14 +19,14 @@ namespace TrailAid.Data
         public virtual City City { get; set; }
         public string CityName { get; set; }
         public virtual List<Trail> Trails { get; set; } = new List<Trail>();
-        public List<TrailDetail> TrailsInPark
+        public List<TrailListInPark> TrailsInPark
         {
             get
             {
-                List<TrailDetail> newList = new List<TrailDetail>();
+                List<TrailListInPark> newList = new List<TrailListInPark>();
                 foreach (var trail in Trails)
                 {
-                    var trailInPark = new TrailDetail()
+                    var trailInPark = new TrailListInPark()
                     {
                         ID = trail.ID,
                         Name = trail.Name,

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity.Validation;
 using System.Diagnostics.Tracing;
 using System.Linq;
 using System.Text;
@@ -35,14 +36,18 @@ namespace TrailAid.Services
             {
                 if (model.AddTags != null)
                 {
-                    var AllTags = ctx.AllTags.Single(e => e.ID == 1);
-                    entity.Tags = $"{model.AddTags} ";
-                    foreach (var tag in entity.Tags.Split(' '))
+                    if (entity.Tags == null) entity.Tags = "";
+                    foreach (var tag in model.AddTags.Split(' '))
                     {
-                        if (!AllTags.ListOfAllTags.Contains(tag))
+                        if (entity.AllTags != null && !entity.AllTags.ListOfAllTags.Contains(tag))
                         {
                             return "Tag Error";
                         }
+                        else if (!entity.Tags.Contains(tag))
+                        {
+                            entity.Tags += $"{tag} ";
+                        }
+                        
                     }
                 }
                 int result = 0;
@@ -764,61 +769,61 @@ namespace TrailAid.Services
         {
             using (var ctx = new ApplicationDbContext())
             {
-                var entity = ctx.Trails.Single(e => e.ID == id);
-
-                entity.Name = model.Name;
-                entity.CityID = model.CityID;
-                entity.ParkID = model.ParkID;
-                entity.Difficulty = model.Difficulty;
-                entity.Description = model.Description;
-                entity.Distance = model.Distance;
-                entity.TypeOfTerrain = model.TypeOfTerrain;
-                entity.Elevation = model.Elevation;
-                entity.RouteType = model.RouteType;
-
-                if (model.AddTags != null)
-                {
-                    if (entity.Tags == null) entity.Tags = "";
-                    foreach (var tag in model.AddTags.Split(' '))
-                    {
-                        if (entity.AllTags != null && !entity.AllTags.ListOfAllTags.Contains(tag))
-                        {
-                            return "Tag Error";
-                        }
-                        else if (entity.Tags.Contains(tag))
-                        {
-                            entity.Tags = entity.Tags;
-                            return "Tag Already Exists";
-                        }
-                        entity.Tags += $"{tag} ";
-                    }
-                }
-
-                if (model.DeleteTags != null)
-                {
-                    foreach (var tag in model.DeleteTags.Split(' '))
-                    {
-                        int firstCount = entity.Tags.Count();
-                        string delete = entity.Tags.Replace($"{tag}", "");
-                        entity.Tags = delete.Replace("  ", " ");
-                        if (entity.Tags.Count() < firstCount) { }
-                        else return "Tag not found";
-                    }
-                }
-
                 try
                 {
-                    ctx.SaveChanges();
-                    return "Okay";
-                }
-                catch
-                {
-                    if (entity.City == null && entity.Park == null && entity.ParkID != null) return "Invalid City ID & Park ID";
-                    if (entity.City == null) return "Invalid City ID";
-                    if (entity.Park == null) return "Invalid Park ID";
+                    var entity = ctx.Trails.Single(e => e.ID == id);
 
-                    return "True";
+                    if (model.Name != null) entity.Name = model.Name;
+                    if (model.CityID != null) entity.CityID = model.CityID;
+                    if (model.ParkID != null) entity.ParkID = model.ParkID;
+                    if (model.Difficulty != null) entity.Difficulty = model.Difficulty;
+                    if (model.Description != null) entity.Description = model.Description;
+                    if (model.Distance != 0) entity.Distance = model.Distance;
+                    if (model.TypeOfTerrain != null) entity.TypeOfTerrain = model.TypeOfTerrain;
+                    if (model.Elevation != 0) entity.Elevation = model.Elevation;
+                    if (model.RouteType != null) entity.RouteType = model.RouteType;
+                    if (model.AddTags != null)
+                    {
+                        if (entity.Tags == null) entity.Tags = "";
+                        foreach (var tag in model.AddTags.Split(' '))
+                        {
+                            if (entity.AllTags != null && !entity.AllTags.ListOfAllTags.Contains(tag))
+                            {
+                                return "Tag Error";
+                            }
+                            else if (entity.Tags.Contains(tag))
+                            {
+                                entity.Tags = entity.Tags;
+                                return "Tag Already Exists";
+                            }
+                            entity.Tags += $"{tag} ";
+                        }
+                    }
+                    if (model.DeleteTags != null)
+                    {
+                        foreach (var tag in model.DeleteTags.Split(' '))
+                        {
+                            int firstCount = entity.Tags.Count();
+                            string delete = entity.Tags.Replace($"{tag}", "");
+                            entity.Tags = delete.Replace("  ", " ");
+                            if (entity.Tags.Count() < firstCount) { }
+                            else return "Tag not found";
+                        }
+                    }
+                    try
+                    {
+                        ctx.SaveChanges();
+                        return "Okay";
+                    }
+                    catch
+                    {
+                        if (entity.City == null && entity.Park == null && entity.ParkID != null) return "Invalid City ID & Park ID";
+                        if (entity.City == null) return "Invalid City ID";
+                        if (entity.Park == null && model.ParkID != null) return "Invalid Park ID";
+                    }
                 }
+                catch { }
+                return "Update Error";
             }
         }
         public bool DeleteTrail(int id)

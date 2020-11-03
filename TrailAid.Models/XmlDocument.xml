@@ -85,6 +85,46 @@
             park website
             </summary>
         </member>
+        <member name="P:TrailAid.Models.Visited.VisitedCreate.TrailID">
+            <summary>
+            ID of the trail visited
+            </summary>
+        </member>
+        <member name="P:TrailAid.Models.Visited.VisitedCreate.Rating">
+            <summary>
+            Rating of the trail visited
+            </summary>
+        </member>
+        <member name="P:TrailAid.Models.Visited.VisitedCreate.Review">
+            <summary>
+            Review of the trail visited
+            </summary>
+        </member>
+        <member name="P:TrailAid.Models.Visited.VisitedCreate.AddToFavorites">
+            <summary>
+            true / false
+            </summary>
+        </member>
+        <member name="P:TrailAid.Models.Visited.VisitedEdit.TrailID">
+            <summary>
+            ID of the trail visited
+            </summary>
+        </member>
+        <member name="P:TrailAid.Models.Visited.VisitedEdit.Rating">
+            <summary>
+            Rating of the trail visited
+            </summary>
+        </member>
+        <member name="P:TrailAid.Models.Visited.VisitedEdit.Review">
+            <summary>
+            Review of the trail visited
+            </summary>
+        </member>
+        <member name="P:TrailAid.Models.Visited.VisitedEdit.AddToFavorites">
+            <summary>
+            true / false
+            </summary>
+        </member>
         <member name="P:TrailAid.Models.Trail.TrailCreate.Name">
             <summary>
             trail name
@@ -150,6 +190,11 @@
             park id
             </summary>
         </member>
+        <member name="P:TrailAid.Models.Trail.TrailEdit.Rating">
+            <summary>
+            trail rating
+            </summary>
+        </member>
         <member name="P:TrailAid.Models.Trail.TrailEdit.Difficulty">
             <summary>
             trail difficulty
@@ -188,46 +233,6 @@
         <member name="P:TrailAid.Models.Trail.TrailEdit.RouteType">
             <summary>
             trail route type
-            </summary>
-        </member>
-        <member name="P:TrailAid.Models.Visited.VisitedCreate.TrailID">
-            <summary>
-            ID of the trail visited
-            </summary>
-        </member>
-        <member name="P:TrailAid.Models.Visited.VisitedCreate.Rating">
-            <summary>
-            Rating of the trail visited
-            </summary>
-        </member>
-        <member name="P:TrailAid.Models.Visited.VisitedCreate.Review">
-            <summary>
-            Review of the trail visited
-            </summary>
-        </member>
-        <member name="P:TrailAid.Models.Visited.VisitedCreate.AddToFavorites">
-            <summary>
-            true / false
-            </summary>
-        </member>
-        <member name="P:TrailAid.Models.Visited.VisitedEdit.TrailID">
-            <summary>
-            ID of the trail visited
-            </summary>
-        </member>
-        <member name="P:TrailAid.Models.Visited.VisitedEdit.Rating">
-            <summary>
-            Rating of the trail visited
-            </summary>
-        </member>
-        <member name="P:TrailAid.Models.Visited.VisitedEdit.Review">
-            <summary>
-            Review of the trail visited
-            </summary>
-        </member>
-        <member name="P:TrailAid.Models.Visited.VisitedEdit.AddToFavorites">
-            <summary>
-            true / false
             </summary>
         </member>
         <member name="P:TrailAid.Models.User.UserCreate.FirstName">

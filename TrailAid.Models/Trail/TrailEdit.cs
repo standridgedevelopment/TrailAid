@@ -23,10 +23,6 @@ namespace TrailAid.Models.Trail
         /// </summary>
         public int? ParkID { get; set; }
         /// <summary>
-        /// trail rating
-        /// </summary>
-        public int Rating { get; set; }
-        /// <summary>
         /// trail difficulty
         /// </summary>
         public string Difficulty { get; set; }
