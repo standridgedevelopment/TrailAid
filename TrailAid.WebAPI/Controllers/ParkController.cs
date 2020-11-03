@@ -106,7 +106,7 @@ namespace TrailAid.WebAPI.Controllers
 
             result = parkService.UpdatePark(park, id);
             if (result == "Invalid City ID") return BadRequest("Invalid City ID.");
-
+            if (result == "Update Error") return BadRequest("Invalid Park ID.");
             return Ok();
         }
         /// <summary>

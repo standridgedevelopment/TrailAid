@@ -203,7 +203,7 @@ namespace TrailAid.WebAPI.Controllers
             if (result == "Invalid City ID & Park ID") return BadRequest("Invalid City ID & Park ID.");
             if (result == "Invalid City ID") return BadRequest("Invalid City ID.");
             if (result == "Invalid Park ID") return BadRequest("Invalid Park ID.");
-
+            if (result == "Update Error") return BadRequest("Invalid Trail ID.");
             return Ok();
         }
         /// <summary>

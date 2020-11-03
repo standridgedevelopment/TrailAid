@@ -169,26 +169,29 @@ namespace TrailAid.Services
         {
             using (var ctx = new ApplicationDbContext())
             {
-                var entity = ctx.Parks.Single(e => e.ID == id);
-
-                entity.Name = model.Name;
-                entity.CityID = model.CityID;
-                entity.Acreage = model.Acreage;
-                entity.Hours = model.Hours;
-                entity.PhoneNumber = model.PhoneNumber;
-                entity.Website = model.Website;
-
                 try
                 {
-                    ctx.SaveChanges();
-                    return "Okay";
-                }
-                catch
-                {
-                    if (entity.City == null) return "Invalid City ID";
+                    var entity = ctx.Parks.Single(e => e.ID == id);
 
-                    return "True";
+                    if (model.Name != null) entity.Name = model.Name;
+                    if (model.CityID != 0) entity.CityID = model.CityID;
+                    if (model.Acreage != 0) entity.Acreage = model.Acreage;
+                    if (model.Hours != null) entity.Hours = model.Hours;
+                    if (model.PhoneNumber != null) entity.PhoneNumber = model.PhoneNumber;
+                    if (model.Website != null) entity.Website = model.Website;
+
+                    try
+                    {
+                        ctx.SaveChanges();
+                        return "Okay";
+                    }
+                    catch
+                    {
+                        if (entity.City == null) return "Invalid City ID";  
+                    }
                 }
+                catch { }
+                return "Update Error";
             }
         }
         public bool DeletePark(int id)
