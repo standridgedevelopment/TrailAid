@@ -33,7 +33,7 @@ namespace TrailAid.Models.Trail
         /// <summary>
         /// trail distance
         /// </summary>
-        public int Distance { get; set; }
+        public double Distance { get; set; }
         /// <summary>
         /// terrain type
         /// </summary>
@@ -49,7 +49,7 @@ namespace TrailAid.Models.Trail
         /// <summary>
         /// trail elevation
         /// </summary>
-        public int Elevation { get; set; }
+        public double Elevation { get; set; }
         /// <summary>
         /// trail route type
         /// </summary>

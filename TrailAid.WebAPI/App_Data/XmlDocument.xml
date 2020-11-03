@@ -904,6 +904,9 @@
     <member name="P:TrailAid.Models.City.CityCreate.Name">
       <summary> city name </summary>
     </member>
+    <member name="P:TrailAid.Models.City.CityCreate.StateID">
+      <summary> state name </summary>
+    </member>
     <member name="P:TrailAid.Models.Park.ParkEdit.CityID">
       <summary>
             city id
