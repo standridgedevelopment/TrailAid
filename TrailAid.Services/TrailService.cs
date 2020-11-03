@@ -36,14 +36,18 @@ namespace TrailAid.Services
             {
                 if (model.AddTags != null)
                 {
-                    var AllTags = ctx.AllTags.Single(e => e.ID == 1);
-                    entity.Tags = $"{model.AddTags} ";
-                    foreach (var tag in entity.Tags.Split(' '))
+                    if (entity.Tags == null) entity.Tags = "";
+                    foreach (var tag in model.AddTags.Split(' '))
                     {
-                        if (!AllTags.ListOfAllTags.Contains(tag))
+                        if (entity.AllTags != null && !entity.AllTags.ListOfAllTags.Contains(tag))
                         {
                             return "Tag Error";
                         }
+                        else if (!entity.Tags.Contains(tag))
+                        {
+                            entity.Tags += $"{tag} ";
+                        }
+                        
                     }
                 }
                 int result = 0;
