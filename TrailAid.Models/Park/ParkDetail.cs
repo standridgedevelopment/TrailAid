@@ -19,7 +19,7 @@ namespace TrailAid.Models.Park
         public string PhoneNumber { get; set; }
         public string Website { get; set; }
         public double AverageTrailRating { get; set; }
-        public List<TrailDetail> TrailsInPark { get; set; }
+        public List<TrailListInPark> TrailsInPark { get; set; }
     }
 }
 #pragma warning restore CS1591 // Missing XML comment for publicly visible type or member

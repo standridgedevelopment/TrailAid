@@ -62,13 +62,13 @@ namespace TrailAid.Services
         {
             using (var ctx = new ApplicationDbContext())
             {
-              
+               
                 var entity = ctx.Users.Single(e => e.ID == _userId);
 
-                entity.FirstName = model.FirstName;
-                entity.LastName = model.LastName;
-                entity.City = model.City;
-                entity.State = model.State;
+                if (model.FirstName != null) entity.FirstName = model.FirstName;
+                if (model.LastName != null) entity.LastName = model.LastName;
+                if (model.City != null) entity.City = model.City;
+                if (model.State != null) entity.State = model.State;
 
                 return ctx.SaveChanges() == 1;
             }
