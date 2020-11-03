@@ -28,9 +28,17 @@ namespace TrailAid.WebAPI.Controllers
         /// <returns>State Object by ID </returns>
         public IHttpActionResult Get(int id)
         {
-            StateService StateService = CreateStateService();
-            var state = StateService.GetStateByID(id);
+            StateService stateService = CreateStateService();
+            var state = stateService.GetStateByID(id);
             if (state.Name == null) return BadRequest("State ID not found");
+            return Ok(state);
+        }
+        public IHttpActionResult GetByName(string name)
+        {
+            StateService stateService = CreateStateService();
+            var state = stateService.GetStateByName(name);
+
+            if (state == null) return BadRequest("State not found");
             return Ok(state);
         }
         public IHttpActionResult Post(StateCreate state)
