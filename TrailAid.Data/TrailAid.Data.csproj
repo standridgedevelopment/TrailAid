@@ -117,6 +117,14 @@
     <Compile Include="Migrations\202011022202173_next5.Designer.cs">
       <DependentUpon>202011022202173_next5.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202011031450009_next6.cs" />
+    <Compile Include="Migrations\202011031450009_next6.Designer.cs">
+      <DependentUpon>202011031450009_next6.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202011031549168_next7.cs" />
+    <Compile Include="Migrations\202011031549168_next7.Designer.cs">
+      <DependentUpon>202011031549168_next7.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Park.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -156,6 +164,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202011022202173_next5.resx">
       <DependentUpon>202011022202173_next5.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202011031450009_next6.resx">
+      <DependentUpon>202011031450009_next6.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202011031549168_next7.resx">
+      <DependentUpon>202011031549168_next7.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

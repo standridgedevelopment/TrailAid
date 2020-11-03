@@ -144,7 +144,32 @@ namespace TrailAid.Services
                         };
                         searchResults.Add(foundPark);
                     }
-
+                return searchResults;
+            }
+        }
+        public List<ParkDetail> GetParkByStateName(string stateName)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var parks = ctx.Parks.Where(e => e.City.State.Name == stateName).ToList();
+                foreach (var park in parks)
+                {
+                    var foundPark = new ParkDetail
+                    {
+                        ID = park.ID,
+                        Name = park.Name,
+                        CityID = park.CityID,
+                        CityName = park.City.Name,
+                        StateID = park.City.StateID,
+                        StateName = park.City.State.Name,
+                        Acreage = park.Acreage,
+                        Hours = park.Hours,
+                        PhoneNumber = park.PhoneNumber,
+                        Website = park.Website,
+                        AverageTrailRating = park.AverageTrailRating
+                    };
+                    searchResults.Add(foundPark);
+                }
                 return searchResults;
             }
         }

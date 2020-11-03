@@ -11,6 +11,8 @@ namespace TrailAid.Services
 {
     public class CityService
     {
+        readonly List<CityDetail> searchResults = new List<CityDetail>();
+
         public bool CreateCities(CityCreate model)
         {
             var entity = new City()
@@ -62,6 +64,44 @@ namespace TrailAid.Services
                 return new CityDetail();
             }
         }
+        public List<CityDetail> GetCityByName(string name)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var cities = ctx.Cities.Where(e => e.Name.Contains(name)).ToList();
+                foreach (var city in cities)
+                {
+                    var foundCity = new CityDetail
+                    {
+                        ID = city.ID,
+                        Name = city.Name,
+                        StateID = city.StateID,
+                        StateName = city.State.Name
+                    };
+                    searchResults.Add(foundCity);
+                }
+                return searchResults;
+            }
+        }
+        public List<CityDetail> GetCityByState(string name)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var cities = ctx.Cities.Where(e => e.State.Name.Contains(name)).ToList();
+                foreach (var city in cities)
+                {
+                    var foundCity = new CityDetail
+                    {
+                        ID = city.ID,
+                        Name = city.Name,
+                        StateID = city.StateID,
+                        StateName = city.State.Name
+                    };
+                    searchResults.Add(foundCity);
+                }
+                return searchResults;
+            }
+        }
         public bool UpdateCity(CityEdit model, int id)
         {
             using (var ctx = new ApplicationDbContext())
@@ -71,7 +111,7 @@ namespace TrailAid.Services
                 var entity = ctx.Cities.Single(e => e.ID == id);
 
                 entity.Name = model.Name;
-                entity.StateID = model.StateID;
+                if (model.StateID != 0) entity.StateID = model.StateID;
                 }
                 catch { return false; }
                 return ctx.SaveChanges() == 1;

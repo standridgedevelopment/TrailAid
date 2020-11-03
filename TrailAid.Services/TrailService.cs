@@ -309,6 +309,63 @@ namespace TrailAid.Services
                 return searchResults;
             }
         }
+        public List<TrailDetail> GetTrailByStateName(string stateName)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var trails = ctx.Trails.Where(e => e.City.State.Name.Contains(stateName)).ToList();
+                foreach (var trail in trails)
+                {
+                    if (trail.ParkID != null)
+                    {
+                        var foundTrail = new TrailDetail
+                        {
+                            ID = trail.ID,
+                            Name = trail.Name,
+                            CityID = trail.CityID,
+                            CityName = trail.City.Name,
+                            StateID = trail.City.StateID,
+                            StateName = trail.City.State.Name,
+                            ParkID = trail.ParkID,
+                            ParkName = trail.Park.Name,
+                            Rating = trail.Rating,
+                            Difficulty = trail.Difficulty,
+                            Description = trail.Description,
+                            Distance = trail.Distance,
+                            TypeOfTerrain = trail.TypeOfTerrain,
+                            Tags = trail.Tags,
+                            Elevation = trail.Elevation,
+                            RouteType = trail.RouteType,
+                        };
+                        searchResults.Add(foundTrail);
+                    }
+                    else
+                    {
+                        var foundTrail = new TrailDetail
+                        {
+                            ID = trail.ID,
+                            Name = trail.Name,
+                            CityID = trail.CityID,
+                            CityName = trail.City.Name,
+                            StateID = trail.City.StateID,
+                            StateName = trail.City.State.Name,
+                            ParkID = trail.ParkID,
+                            ParkName = trail.Park.Name,
+                            Rating = trail.Rating,
+                            Difficulty = trail.Difficulty,
+                            Description = trail.Description,
+                            Distance = trail.Distance,
+                            TypeOfTerrain = trail.TypeOfTerrain,
+                            Tags = trail.Tags,
+                            Elevation = trail.Elevation,
+                            RouteType = trail.RouteType,
+                        };
+                        searchResults.Add(foundTrail);
+                    }
+                }
+                return searchResults;
+            }
+        }
         public List<TrailDetail> GetTrailByParkName(string parkName)
         {
             using (var ctx = new ApplicationDbContext())

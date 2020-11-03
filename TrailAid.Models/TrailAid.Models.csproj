@@ -71,6 +71,7 @@
     <Compile Include="State\StateDetail.cs" />
     <Compile Include="State\StateEdit.cs" />
     <Compile Include="State\StateListItem.cs" />
+    <Compile Include="Trail\TrailListInPark.cs" />
     <Compile Include="Visited\VisitedCreate.cs" />
     <Compile Include="Visited\VisitedDetail.cs" />
     <Compile Include="Visited\VisitedEdit.cs" />
