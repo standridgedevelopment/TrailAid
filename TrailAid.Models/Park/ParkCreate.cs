@@ -17,10 +17,6 @@ namespace TrailAid.Models.Park
         [Required]
         public int CityID { get; set; }
         /// <summary>
-        /// city name
-        /// </summary>
-        public string CityName { get; set; }
-        /// <summary>
         /// park name
         /// </summary>
         [Required]
