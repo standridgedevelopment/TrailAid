@@ -11,7 +11,6 @@ namespace TrailAid.Models.Park
     {
         [Required]
         public int CityID { get; set; }
-        public string CityName { get; set; }
         [Required]
         public string Name { get; set; }
         public int Acreage { get; set; }

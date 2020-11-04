@@ -18,7 +18,7 @@ namespace TrailAid.Models.Visited
         /// <summary>
         /// Rating of the trail visited
         /// </summary>
-        [Range(0, 5)]
+        [Range(1, 5)]
         public int Rating { get; set; }
         /// <summary>
         /// Review of the trail visited
