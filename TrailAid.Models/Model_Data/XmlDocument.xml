@@ -29,7 +29,7 @@
             <summary> city name </summary>
         </member>
         <member name="P:TrailAid.Models.City.CityCreate.StateID">
-            <summary> state name </summary>
+            <summary> state id </summary>
         </member>
         <member name="P:TrailAid.Models.Park.ParkCreate.CityID">
             <summary>
