@@ -89,45 +89,9 @@
     <Compile Include="AllTags.cs" />
     <Compile Include="City.cs" />
     <Compile Include="IdentityModels.cs" />
-    <Compile Include="Migrations\202011021942485_InitialCreate.cs" />
-    <Compile Include="Migrations\202011021942485_InitialCreate.Designer.cs">
-      <DependentUpon>202011021942485_InitialCreate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202011022000336_first.cs" />
-    <Compile Include="Migrations\202011022000336_first.Designer.cs">
-      <DependentUpon>202011022000336_first.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202011022048151_next.cs" />
-    <Compile Include="Migrations\202011022048151_next.Designer.cs">
-      <DependentUpon>202011022048151_next.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202011022111020_next2.cs" />
-    <Compile Include="Migrations\202011022111020_next2.Designer.cs">
-      <DependentUpon>202011022111020_next2.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202011022136144_next3.cs" />
-    <Compile Include="Migrations\202011022136144_next3.Designer.cs">
-      <DependentUpon>202011022136144_next3.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202011022159356_next4.cs" />
-    <Compile Include="Migrations\202011022159356_next4.Designer.cs">
-      <DependentUpon>202011022159356_next4.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202011022202173_next5.cs" />
-    <Compile Include="Migrations\202011022202173_next5.Designer.cs">
-      <DependentUpon>202011022202173_next5.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202011031450009_next6.cs" />
-    <Compile Include="Migrations\202011031450009_next6.Designer.cs">
-      <DependentUpon>202011031450009_next6.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202011031549168_next7.cs" />
-    <Compile Include="Migrations\202011031549168_next7.Designer.cs">
-      <DependentUpon>202011031549168_next7.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202011031737270_state.cs" />
-    <Compile Include="Migrations\202011031737270_state.Designer.cs">
-      <DependentUpon>202011031737270_state.cs</DependentUpon>
+    <Compile Include="Migrations\202011031703371_InitialCreate.cs" />
+    <Compile Include="Migrations\202011031703371_InitialCreate.Designer.cs">
+      <DependentUpon>202011031703371_InitialCreate.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Park.cs" />
@@ -148,35 +112,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202011021942485_InitialCreate.resx">
-      <DependentUpon>202011021942485_InitialCreate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202011022000336_first.resx">
-      <DependentUpon>202011022000336_first.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202011022048151_next.resx">
-      <DependentUpon>202011022048151_next.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202011022111020_next2.resx">
-      <DependentUpon>202011022111020_next2.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202011022136144_next3.resx">
-      <DependentUpon>202011022136144_next3.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202011022159356_next4.resx">
-      <DependentUpon>202011022159356_next4.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202011022202173_next5.resx">
-      <DependentUpon>202011022202173_next5.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202011031450009_next6.resx">
-      <DependentUpon>202011031450009_next6.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202011031549168_next7.resx">
-      <DependentUpon>202011031549168_next7.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202011031737270_state.resx">
-      <DependentUpon>202011031737270_state.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202011031703371_InitialCreate.resx">
+      <DependentUpon>202011031703371_InitialCreate.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
