@@ -85,7 +85,7 @@ namespace TrailAid.Data.Migrations
                 new State { Name = "Wyoming" }
                 );
             context.SaveChanges();
-            //
+            //Small Change
         }
     }
 }
