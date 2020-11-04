@@ -61,7 +61,6 @@ namespace TrailAid.Services
                         CityName = e.City.Name,
                         StateName = e.City.State.Name,
                         ID = e.ID,
-                        AverageTrailRating = e.AverageTrailRating
                     }
                     );
                 return query.ToArray();

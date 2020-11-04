@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,6 +18,7 @@ namespace TrailAid.Models.Visited
         /// <summary>
         /// Rating of the trail visited
         /// </summary>
+        [Range(0, 5)]
         public int Rating { get; set; }
         /// <summary>
         /// Review of the trail visited
