@@ -17,7 +17,6 @@ namespace TrailAid.Services
             var entity = new Park()
             {
                 CityID = model.CityID,
-                CityName = model.CityName,
                 Name = model.Name,
                 Acreage = model.Acreage,
                 Hours = model.Hours,
@@ -61,7 +60,6 @@ namespace TrailAid.Services
                         CityName = e.City.Name,
                         StateName = e.City.State.Name,
                         ID = e.ID,
-                        AverageTrailRating = e.AverageTrailRating
                     }
                     );
                 return query.ToArray();
