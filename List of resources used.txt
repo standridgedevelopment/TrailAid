@@ -1,0 +1,13 @@
+List of resources used
+
+https://www.openbrewerydb.org/documentation/01-listbreweries
+https://www.alltrails.com/
+https://trello.com/b/W372LVbS/kanban-template
+https://social.msdn.microsoft.com/Forums/vstudio/en-US/744047ec-8736-4296-98ac-bae769f48373/delete-substring-in-string-giving-that-substring?forum=csharpgeneral
+https://entityframeworkcore.com/knowledge-base/52268985/may-cause-cycles-or-multiple-cascade-paths--specify-on-delete-no-action-or-on-update-no-action--or-modify-other-foreign-key-constraints
+https://stackoverflow.com/questions/14899422/how-to-navigate-a-few-folders-up
+https://stackoverflow.com/questions/7795300/validation-failed-for-one-or-more-entities-see-entityvalidationerrors-propert
+https://stackoverflow.com/questions/38238043/how-and-where-to-call-database-ensurecreated-and-database-migrate
+https://ivanderevianko.com/2016/01/asp-net-core-1-0-automatic-migrations-entity-framework-7-ef-core-1-0
+https://stackoverflow.com/questions/14899422/how-to-navigate-a-few-folders-up
+https://stackoverflow.com/questions/40216052/why-detailed-error-message-is-not-passed-to-httpclient
