@@ -11,3 +11,4 @@ https://stackoverflow.com/questions/38238043/how-and-where-to-call-database-ensu
 https://ivanderevianko.com/2016/01/asp-net-core-1-0-automatic-migrations-entity-framework-7-ef-core-1-0
 https://stackoverflow.com/questions/14899422/how-to-navigate-a-few-folders-up
 https://stackoverflow.com/questions/40216052/why-detailed-error-message-is-not-passed-to-httpclient
+https://stackoverflow.com/questions/30562235/generate-model-description-in-aspnet-webapi-help-pages
