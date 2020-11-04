@@ -39,56 +39,12 @@ namespace TrailAid.Services
             }
 
         }
-        public StateDetail GetStateByID(int id)
-        {
-            using (var ctx = new ApplicationDbContext())
-            {
-                try
-                {
-                    var entity = ctx.States.Single(e => e.ID == id);
-                    return new StateDetail
-                    {
-                        Name = entity.Name
-                    };
-                }
-                catch { }
-                return new StateDetail();
-            }
-        }
         public State GetStateByName(string name)
         {
             using (var ctx = new ApplicationDbContext())
             {
                 State state = ctx.States.Single(e => e.Name.Contains(name));
                 return state;
-            }
-        }
-        public bool UpdateState(StateEdit model, int id)
-        {
-            using (var ctx = new ApplicationDbContext())
-            {
-                try
-                {
-                    var entity = ctx.States.Single(e => e.ID == id);
-
-                    entity.Name = model.Name;
-                }
-                catch { return false; }
-                return ctx.SaveChanges() == 1;
-            }
-        }
-        public bool DeleteState(int id)
-        {
-            using (var ctx = new ApplicationDbContext())
-            {
-                try
-                {
-                    var entity = ctx.States.Single(e => e.ID == id);
-
-                    ctx.States.Remove(entity);
-                }
-                catch { return false; }
-                return ctx.SaveChanges() == 1;
             }
         }
     }

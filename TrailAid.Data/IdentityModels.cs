@@ -54,6 +54,7 @@ namespace TrailAid.Data
         }
 
 
+
         public class IdentityUserLoginConfiguration : EntityTypeConfiguration<IdentityUserLogin>
         {
             public IdentityUserLoginConfiguration()

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using Microsoft.Owin;
 using Owin;
@@ -15,6 +16,8 @@ namespace TrailAid.WebAPI
 #pragma warning restore CS1591 // Missing XML comment for publicly visible type or member
         {
             ConfigureAuth(app);
+           
         }
+
     }
 }

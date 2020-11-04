@@ -24,57 +24,16 @@ namespace TrailAid.WebAPI.Controllers
             return Ok(state);
         }
         /// <summary>
-        /// Get State By ID
+        /// Get State By name
         /// </summary>
-        /// <param name="id"> state id</param>
+        /// <param name="Name"> state id</param>
         /// <returns>Returns State Object by ID</returns>
-        public IHttpActionResult Get(int id)
+        public IHttpActionResult Get(string Name)
         {
             StateService StateService = CreateStateService();
-            var state = StateService.GetStateByID(id);
-            if (state.Name == null) return BadRequest("State ID not found");
+            var state = StateService.GetStateByName(Name);
+            if (state.Name == null) return BadRequest("State not found");
             return Ok(state);
-        }
-        /// <summary>
-        /// Create a New State
-        /// </summary>
-        /// <returns>Returns A New State</returns>
-        public IHttpActionResult Post(StateCreate state)
-        {
-            if (!ModelState.IsValid)
-                return BadRequest(ModelState);
-
-            var stateService = CreateStateService();
-
-            if (!stateService.CreateStates(state)) return InternalServerError();
-
-            return Ok();
-        }
-        /// <summary> Update State </summary>
-        /// <param name="id"> state id </param>
-        /// <param name="state"></param>
-        /// <returns> Updates State Object </returns>
-        public IHttpActionResult Put(StateEdit state, int id)
-        {
-            if (!ModelState.IsValid) return BadRequest(ModelState);
-
-            var service = CreateStateService();
-
-            if (!service.UpdateState(state, id)) return BadRequest("State ID not found.");
-            return Ok();
-        }
-        /// <summary>
-        /// Delete State
-        /// </summary>
-        /// <param name="id"> state id</param>
-        /// <returns>Deletes State Object</returns>
-        public IHttpActionResult Delete(int id)
-        {
-            var service = CreateStateService();
-
-            if (!service.DeleteState(id)) return BadRequest("State ID not found.");
-
-            return Ok();
         }
         private StateService CreateStateService()
         {
