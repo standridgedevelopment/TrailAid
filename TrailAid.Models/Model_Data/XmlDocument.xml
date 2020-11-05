@@ -36,11 +36,6 @@
             city id
             </summary>
         </member>
-        <member name="P:TrailAid.Models.Park.ParkCreate.CityName">
-            <summary>
-            city name
-            </summary>
-        </member>
         <member name="P:TrailAid.Models.Park.ParkCreate.Name">
             <summary>
             park name
