@@ -777,7 +777,10 @@
       <summary>
             Get Trail By Distance
             </summary>
-      <param name="distance"> trail distance</param>
+      <param name="minDistance">
+      </param>
+      <param name="maxDistance">
+      </param>
       <returns>Returns trail Object by Distance</returns>
     </member>
     <member name="M:TrailAid.WebAPI.Controllers.TrailController.GetByTypeOfTerrain(System.String)">
@@ -787,11 +790,14 @@
       <param name="typeOfTerrain"> terrain type</param>
       <returns>Returns trail Object by Type Of Terrain</returns>
     </member>
-    <member name="M:TrailAid.WebAPI.Controllers.TrailController.GetByElevation(System.Int32)">
+    <member name="M:TrailAid.WebAPI.Controllers.TrailController.GetByElevation(System.Double,System.Double)">
       <summary>
             Get Trail By Elevation
             </summary>
-      <param name="elevation"> trail elevation</param>
+      <param name="minElevation">
+      </param>
+      <param name="maxElevation">
+      </param>
       <returns>Returns trail Object by Elevation</returns>
     </member>
     <member name="M:TrailAid.WebAPI.Controllers.TrailController.GetByRouteType(System.String)">
