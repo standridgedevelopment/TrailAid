@@ -13,7 +13,6 @@ namespace TrailAid.Models.Park
         public string CityName { get; set; }
         public string StateName { get; set; }
         public int ID { get; set; }
-        public double AverageTrailRating { get; set; }
 
     }
 }
