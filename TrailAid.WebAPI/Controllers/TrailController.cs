@@ -159,12 +159,13 @@ namespace TrailAid.WebAPI.Controllers
         /// <summary>
         /// Get Trail By Elevation
         /// </summary>
-        /// <param name="elevation"> trail elevation</param>
+        /// <param name="minElevation"></param>
+        /// <param name="maxElevation"></param>
         /// <returns>Returns trail Object by Elevation</returns>
-        public IHttpActionResult GetByElevation(int elevation)
+        public IHttpActionResult GetByElevation(double minElevation, double maxElevation)
         {
             TrailService trailService = CreateTrailService();
-            var trail = trailService.GetTrailByElevation(elevation);
+            var trail = trailService.GetTrailByElevation(minElevation, maxElevation);
 
             if (trail.Count == 0) return BadRequest("Elevation not found");
             return Ok(trail);
