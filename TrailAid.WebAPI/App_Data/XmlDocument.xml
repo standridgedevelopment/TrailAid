@@ -773,7 +773,7 @@
       <param name="description"> trail description</param>
       <returns>Returns trail Object by Description</returns>
     </member>
-    <member name="M:TrailAid.WebAPI.Controllers.TrailController.GetByDistance(System.Int32)">
+    <member name="M:TrailAid.WebAPI.Controllers.TrailController.GetByDistance(System.Double,System.Double)">
       <summary>
             Get Trail By Distance
             </summary>

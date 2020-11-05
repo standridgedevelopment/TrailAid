@@ -134,10 +134,10 @@ namespace TrailAid.WebAPI.Controllers
         /// </summary>
         /// <param name="distance"> trail distance</param>
         /// <returns>Returns trail Object by Distance</returns>
-        public IHttpActionResult GetByDistance(int distance)
+        public IHttpActionResult GetByDistance(double minDistance, double maxDistance)
         {
             TrailService trailService = CreateTrailService();
-            var trail = trailService.GetTrailByDistance(distance);
+            var trail = trailService.GetTrailByDistance(minDistance, maxDistance);
 
             if (trail.Count == 0) return BadRequest("Distance not found");
             return Ok(trail);
