@@ -576,7 +576,7 @@ namespace TrailAid.Services
                 return searchResults;
             }
         }
-        public List<TrailDetail> GetTrailByDistance(int distance)
+        public List<TrailDetail> GetTrailByDistance(double distance)
         {
             using (var ctx = new ApplicationDbContext())
             {
@@ -686,7 +686,7 @@ namespace TrailAid.Services
                 return searchResults;
             }
         }
-        public List<TrailDetail> GetTrailByElevation(int elevation)
+        public List<TrailDetail> GetTrailByElevation(double elevation)
         {
             using (var ctx = new ApplicationDbContext())
             {
