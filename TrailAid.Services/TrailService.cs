@@ -576,11 +576,11 @@ namespace TrailAid.Services
                 return searchResults;
             }
         }
-        public List<TrailDetail> GetTrailByDistance(int distance)
+        public List<TrailDetail> GetTrailByDistance(double minDistance, double maxDistance)
         {
             using (var ctx = new ApplicationDbContext())
             {
-                var trails = ctx.Trails.Where(e => e.Distance == distance).ToList();
+                var trails = ctx.Trails.Where(e => (e.Distance >= minDistance && e.Distance <= maxDistance)).ToList();
                 foreach (var trail in trails)
                 {
                     if (trail.ParkID != null)
