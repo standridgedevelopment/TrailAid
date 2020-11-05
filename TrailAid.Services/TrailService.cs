@@ -686,11 +686,11 @@ namespace TrailAid.Services
                 return searchResults;
             }
         }
-        public List<TrailDetail> GetTrailByElevation(int elevation)
+        public List<TrailDetail> GetTrailByElevation(double minElevation, double maxElevation)
         {
             using (var ctx = new ApplicationDbContext())
             {
-                var trails = ctx.Trails.Where(e => e.Elevation == elevation).ToList();
+                var trails = ctx.Trails.Where(e => (e.Distance >= minElevation && e.Distance <= maxElevation)).ToList();
                 foreach (var trail in trails)
                 {
                     if (trail.ParkID != null)
