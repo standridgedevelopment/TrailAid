@@ -132,7 +132,8 @@ namespace TrailAid.WebAPI.Controllers
         /// <summary>
         /// Get Trail By Distance
         /// </summary>
-        /// <param name="distance"> trail distance</param>
+        /// <param name="minDistance"></param>
+        /// <param name="maxDistance"></param>
         /// <returns>Returns trail Object by Distance</returns>
         public IHttpActionResult GetByDistance(double minDistance, double maxDistance)
         {
