@@ -50,7 +50,7 @@ namespace TrailAid.Services
                         LastName = entity.LastName,
                         City = entity.City,
                         State = entity.State,
-                        Favorites = entity.Favorites,
+                        Favorites = entity.Favorites
                     };
                 }
                 catch { }
