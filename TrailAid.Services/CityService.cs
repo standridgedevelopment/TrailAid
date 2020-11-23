@@ -43,7 +43,6 @@ namespace TrailAid.Services
                     );
                 return query.ToArray();
             }
-
         }
         public CityDetail GetCityByID(int id)
         {

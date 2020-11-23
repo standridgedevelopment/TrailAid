@@ -40,7 +40,6 @@ namespace TrailAid.Services
         {
             using (var ctx = new ApplicationDbContext())
             {
-                
                 try
                 {
                     var entity = ctx.Users.Single(e => e.ID == _userId);
@@ -55,14 +54,12 @@ namespace TrailAid.Services
                 }
                 catch { }
                 return new UserDetail();
-                
             }
         }
         public bool UpdateUser(UserEdit model)
         {
             using (var ctx = new ApplicationDbContext())
             {
-               
                 var entity = ctx.Users.Single(e => e.ID == _userId);
 
                 if (model.FirstName != null) entity.FirstName = model.FirstName;
